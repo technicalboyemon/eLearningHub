@@ -1,24 +1,95 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import About from "./Pages/About";
+import Cart from "./Pages/Cart";
+import CategoryList from "./Pages/CategoryList";
+import CategoryDetails from "./Pages/CategoryDetails";
+import Checkout from "./Pages/Checkout";
+import Contact from "./Pages/Contact";
+import CourseDetails from "./Pages/CourseDetails";
+import CourseList from "./Pages/CourseList";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Welcome from "./Components/Backend/Welcome";
+import Dashboard from "./Pages/Dashboard";
+import NotFound from "./Pages/NotFound";
+import Account from "./Components/Backend/Account";
+import EnrolledCourse from "./Components/Backend/Student/EnrolledCourse";
+import AddCourse from "./Components/Backend/Instructor/AddCourse";
+import WatchCourse from "./Components/Backend/Student/WatchCourse";
+import UpdateCourse from "./Components/Backend/Instructor/UpdateCourse";
+import Instructor from "./Pages/Instructor";
+import Faq from "./Pages/FAQ";
+import InstructorRegister from "./Pages/InstructorRegister";
+import StudentRegister from "./Pages/StudentRegister";
+import StudentProfile from "./Pages/StudentProfile";
+import MyCourse from "./Components/Backend/Instructor/MyCourse";
+import Inbox from "./Components/Backend/Inbox";
+import AddStudent from "./Components/Backend/AddStudent";
+import AddInstructor from "./Components/Backend/Admin/AddInstructor";
+import AdminDashboard from "./Pages/AdminDashboard";
+import AdminWelcome from "./Components/Backend/Admin/Welcome"
+import TotalStudent from "./Components/Backend/Admin/TotalStudent";
+import AddAdmin from "./Components/Backend/Admin/AddAdmin";
+import TotalInstructor from "./Components/Backend/Admin/TotalInstructor";
+import TotalCourse from "./Components/Backend/Admin/TotalCourse";
+import AuthProvider from "./ContextAPI/AuthProvider";
+import Password from "./Pages/Password";
+import ConfirmedEmail from "./Pages/ConfirmedEmail";
+import ForgetPassword from "./Pages/ForgetPassword";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      {/* <NavBar/> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="watch" element={<WatchCourse />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="checkout" element={<Checkout />} />
+        <Route path="courseList" element={<CourseList />} />
+        <Route path="courseDetails" element={<CourseDetails />} />
+        <Route path="category" element={<CategoryList />} />
+        <Route path="categoryDetails" element={<CategoryDetails />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="instructorRegister" element={<InstructorRegister />} />
+        <Route path="studentRegister" element={<StudentRegister />} />
+        <Route path="instructor" element={<Instructor />} />
+        <Route path="faq" element={<Faq />} />
+        <Route path="password" element={<Password />} />
+        <Route path="forget-password" element={<ForgetPassword />} />
+        <Route path="confirmed-email" element={<ConfirmedEmail />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<Welcome />} />
+          <Route path="addStudent" element={<AddStudent />} />
+          <Route path="addInstructor" element={<AddInstructor />} />
+          <Route path="account" element={<Account />} />
+          <Route path="enrolledCourse" element={<EnrolledCourse />} />
+          <Route path="myCourse" element={<MyCourse />} />
+          <Route path="inbox" element={<Inbox />} />
+          <Route path="addCourse" element={<AddCourse />} />
+          <Route path="updateCourse" element={<UpdateCourse />} />
+        </Route>
+        <Route path="adminDashboard" element={<AdminDashboard />}>
+          <Route index element={<AdminWelcome />} />
+          <Route path="addAdmin" element={<AddAdmin />} />
+          <Route path="addInstructor" element={<AddInstructor />} />
+          <Route path="addStudent" element={<AddStudent />} />
+          <Route path="addCourse" element={<AddCourse />} />
+          <Route path="totalCourse" element={<TotalCourse />} />
+          <Route path="totalStudent" element={<TotalStudent />} />
+          <Route path="totalInstructor" element={<TotalInstructor />} />
+          <Route path="account" element={<Account />} />
+        </Route>
+        <Route path="studentProfile" element={<StudentProfile />} />
+      </Routes>
+      {/* <Footer/> */}
+    </AuthProvider>
   );
 }
 
