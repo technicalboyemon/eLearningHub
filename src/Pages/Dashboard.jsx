@@ -83,9 +83,9 @@ const Dashboard = () => {
                 <Link to="/dashboard/addStudent">
                   <div className="py-3 NavText">Add Student</div>
                 </Link>
-                <Link to="/dashboard/inbox">
+                {/* <Link to="/dashboard/inbox">
                   <div className="py-3 NavText">Inbox</div>
-                </Link>
+                </Link> */}
                 <Link to="/dashboard/account">
                   <div className="py-3 NavText">Setting</div>
                 </Link>
@@ -124,11 +124,11 @@ const Dashboard = () => {
                     <BsPersonPlusFill />
                   </div>
                 </Link>
-                <Link to="/dashboard/inbox">
+                {/* <Link to="/dashboard/inbox">
                   <div className="py-3 NavText" title="Inbox">
                     <BsChatDotsFill />
                   </div>
-                </Link>
+                </Link> */}
                 <Link to="/dashboard/account">
                   <div className="py-3 NavText" title="Setting">
                     <BsFillInfoCircleFill />

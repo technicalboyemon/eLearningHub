@@ -34,6 +34,10 @@ const AdminDashboard = () => {
                 <BsPersonPlusFill/>
                   <span className="NavText"> Add Instructor</span>
                 </Link>
+                <Link className="align-items-center d-flex NavText py-2 my-1" to="/adminDashboard/addAdmin">
+                <BsPersonPlusFill/>
+                  <span className="NavText"> Add Admin</span>
+                </Link>
                 <Link className="align-items-center d-flex NavText py-2 my-1" to="/adminDashboard/totalCourse">
                   <BsPersonLinesFill />
                   <span className="NavText"> Total Course</span>

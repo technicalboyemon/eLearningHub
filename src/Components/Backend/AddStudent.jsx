@@ -2,15 +2,40 @@ import React, { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 
 const AddStudent = () => {
-  const { AuthEmailSend, error, user, logout, googleLog } = useAuth();
+  const { AuthEmailSend, error } = useAuth();
   const [loginData, setLoginData] = useState({});
+
   const handleLog = (e) => {
     setLoginData(e.target.value);
   };
+
   const loginSubmit = () => {
     AuthEmailSend(loginData);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: loginData,
+        isStudent: true,
+        name: "",
+        about: "",
+        phone: "",
+        national: "",
+        photo: "",
+        profession: ""
+
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Added Data");
+          setLoginData("");
+        }
+      });
   };
-  console.log(user);
 
   return (
     <div className="bg-white rounded">
