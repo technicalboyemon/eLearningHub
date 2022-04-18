@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import useAuth from "./../../Hooks/useAuth";
 
 const Account = () => {
-  const { user, setPassword, error, UpdatePass } = useAuth();
+  const { user, setPassword, UpdatePass } = useAuth();
   const [updateUser, setUpdateUser] = useState({});
   const [accountInfo, setAccountInfo] = useState({});
 
   const getPassword = (e) => {
-    const pass = e.target.value;
-    setPassword(pass);
+    setPassword(e.target.value);
   };
 
   const handleInput = (e) => {
@@ -34,7 +32,6 @@ const Account = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Click2");
         if (data.modifiedCount > 0) {
           alert("Updated User");
         }
@@ -81,7 +78,7 @@ const Account = () => {
                   placeholder="example@mail.com"
                 />
               </div>
-              <div className="my-4">
+              {/* <div className="my-4">
                 <label
                   for="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
@@ -89,14 +86,14 @@ const Account = () => {
                   <span>What Do You Do</span>
                 </label>
                 <input
-                 defaultValue={updateUser[0]?.profession}
                   onBlur={(e) => handleInput(e)}
                   type="text"
                   className="form-control"
                   id="exampleInputEmail1"
                   placeholder="Developer"
+                  // defaultValue={updateUser[0]?.profession}
                 />
-              </div>
+              </div> */}
               <div className="my-4">
                 <label
                   for="exampleInputEmail1"
