@@ -5,8 +5,6 @@ import {
   signOut,
   onAuthStateChanged,
   sendSignInLinkToEmail,
-  GoogleAuthProvider,
-  signInWithPopup,
   updatePassword,
   signInWithEmailLink,
   isSignInWithEmailLink,
@@ -20,6 +18,7 @@ const useHooks = () => {
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [forgetEmail, setForgetEmail] = useState("");
+  const [ loading, setLoading] = useState(true)
   const auth = getAuth();
 
   const loginUser = (email, password) => {
