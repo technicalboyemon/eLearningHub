@@ -47,7 +47,7 @@ const Account = () => {
             <div className="w-100">
               <div className="my-4">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>Full Name</span>
@@ -64,7 +64,7 @@ const Account = () => {
               </div>
               <div className="my-4">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>Email</span>
@@ -80,7 +80,7 @@ const Account = () => {
               </div>
               {/* <div className="my-4">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>What Do You Do</span>
@@ -96,7 +96,7 @@ const Account = () => {
               </div> */}
               <div className="my-4">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>About Yourself</span>
@@ -116,7 +116,7 @@ const Account = () => {
                 <div className="col-md-6">
                   <div className="my-4">
                     <label
-                      for="exampleInputEmail1"
+                      htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>Phone Number</span>
@@ -171,7 +171,7 @@ const Account = () => {
               src="https://eduguard-html.netlify.app/dist/images/user/user-img-01.jpg"
               alt="Profile"
             />
-            <button type="button" class="btn btn-outline-primary my-3">
+            <button type="button" className="btn btn-outline-primary my-3">
               Change Image
             </button>
           </div>
@@ -184,7 +184,7 @@ const Account = () => {
             <div className="w-100">
               <div className="my-4">
                 <label
-                  for="exampleInputEmail1"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>New Password</span>

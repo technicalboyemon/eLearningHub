@@ -1,9 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../../Frontend/Footer";
 import NavBar from "../../Frontend/NavBar";
 
 const WatchCourse = () => {
+  const [courseWatch, setCourseWatch] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/courses/${id}`)
+      .then((res) => res.json())
+      .then((data) => setCourseWatch(data));
+  }, []);
+  console.log(courseWatch);
   return (
     <>
       <NavBar />
@@ -12,7 +21,7 @@ const WatchCourse = () => {
           <div className="my-5">
             <div className="d-flex justify-content-between align-items-center">
               <div className="rounded-circle bg-white d-inline-block p-3">
-                <Link to="/dashboard/addCourse" className="text-black">
+                <Link to="/dashboard/enrolledCourse" className="text-black">
                   <svg
                     width="24"
                     height="25"
@@ -47,42 +56,43 @@ const WatchCourse = () => {
                     src="https://eduguard-html.netlify.app/dist/images/courses/thumb.jpg"
                     alt=""
                   />
-                  <div className="h3 p-4">
-                    3. What Is UI Vs UX - User Interface Vs User Experience
+                  <div className="h3 p-4">{courseWatch?.name}</div>
+                  <div>
+                    
                   </div>
                 </div>
               </div>
               <div className="col-md-4 bg-white p-4 rounded h-100">
                 <div className="h5">Course Contents</div>
                 <hr />
-                <div className="row align-items-center py-2 my-2">
-                  <div className="col-md-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="feather feather-play-circle"
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                    </svg>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="text-black">
-                      1. Introduction to Adobe XD
+                {courseWatch?.files?.map((file) => (
+                  <div className="row align-items-center py-2 my-2">
+                    <div className="col-md-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        className="feather feather-play-circle"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                      </svg>
+                    </div>
+                    <div className="col-md-9">
+                      <div className="text-black">{file?.addTitle}</div>
+                    </div>
+                    <div className="col-md-2">
+                      <div className="text-black">12.29</div>
                     </div>
                   </div>
-                  <div className="col-md-2">
-                    <div className="text-black">12.29</div>
-                  </div>
-                </div>
-                <div className="row align-items-center py-2 my-2">
+                ))}
+                {/* <div className="row align-items-center py-2 my-2">
                   <div className="col-md-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +104,7 @@ const WatchCourse = () => {
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      class="feather feather-file"
+                      className="feather feather-file"
                     >
                       <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                       <polyline points="13 2 13 9 20 9"></polyline>
@@ -108,7 +118,7 @@ const WatchCourse = () => {
                   <div className="col-md-2">
                     <div className="text-black">12.29</div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

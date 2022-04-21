@@ -35,7 +35,7 @@ const Login = () => {
                 <p className="text-danger">{error}</p>
                 <div className="my-5 w-75">
                   <div className="my-4 input-group-lg">
-                    <label for="exampleInputEmail1" className="form-label">
+                    <label htmlFor="exampleInputEmail1" className="form-label">
                       Email
                     </label>
                     <input

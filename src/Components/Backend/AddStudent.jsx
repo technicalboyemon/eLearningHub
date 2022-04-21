@@ -42,7 +42,7 @@ const AddStudent = () => {
       <div className="row align-items-center py-4 px-5">
         <div className="col-md-3">
           <label
-            for="addStudent"
+            htmlFor="addStudent"
             className="form-label d-flex justify-content-between align-items-center"
           >
             <span className="fs-5">Student Email </span>
@@ -66,7 +66,7 @@ const AddStudent = () => {
           <button
             onClick={loginSubmit}
             type="button"
-            class="btn btn-dark d-inline-block"
+            className="btn btn-dark d-inline-block"
           >
             Add Student
           </button>

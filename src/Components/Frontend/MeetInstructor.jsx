@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Link } from "react-router-dom";
-import InstructorData from "./../../Data/Instructor.json";
 
 const MeetInstructor = () => {
+  const [instructorData, setInstructorData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/users/instructor")
+      .then((res) => res.json())
+      .then((data) => setInstructorData(data));
+  }, []);
+  
   return (
     <div className="py-5">
       <div className="container py-3">
@@ -30,7 +36,7 @@ const MeetInstructor = () => {
               }}
               className="mySwiper"
             >
-              {InstructorData.map((i) => (
+              {instructorData.map((i) => (
                 <SwiperSlide className="mx-2 my-5">
                   <div>
                     <img

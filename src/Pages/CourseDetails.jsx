@@ -1,5 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useCart } from "react-use-cart";
+import NavBar from "../Components/Frontend/NavBar";
+import Footer from "../Components/Frontend/Footer";
 import {
   BsFacebook,
   BsInstagram,
@@ -7,12 +10,27 @@ import {
   BsYoutube,
   BsLinkedin,
 } from "react-icons/bs";
-import NavBar from "../Components/Frontend/NavBar";
-import Footer from "../Components/Frontend/Footer";
+
 const CourseDetails = () => {
+  const { addItem } = useCart();
+
+  const [CourseDetails, setCourseDetails] = useState([]);
+
+  const { id } = useParams();
+  useEffect(() => {
+    fetch(`http://localhost:5000/courses/${id}`)
+      .then((res) => res.json())
+      .then((data) => setCourseDetails(data));
+  }, []);
+
+  let Navigate = useNavigate();
+  const courseBuy = () => {
+    addItem(CourseDetails)
+    Navigate("/cart");
+  };
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="courseBreadcrumb">
         <div className="container pt-5 pb-3  text-secondary">
           <span> Home &gt; Course </span>
@@ -20,7 +38,7 @@ const CourseDetails = () => {
             <div className="col-md-8">
               <div className="courseTitle">
                 <span className="fs-2 text-black fw-bold">
-                  JavaScript Master Class Course
+                  {CourseDetails.name}
                 </span>
                 <div className="d-flex align-items-center">
                   <div className="py-1">
@@ -31,7 +49,7 @@ const CourseDetails = () => {
                   </div>
                   <div className="px-2">
                     <span>Created By</span> <br />
-                    <span className="fw-bold">Martin Bator</span>
+                    <span className="fw-bold">{CourseDetails.user}</span>
                   </div>
                 </div>
               </div>
@@ -150,16 +168,20 @@ const CourseDetails = () => {
                 <div className="coursePreview">
                   <img
                     className="rounded w-100"
-                    src="https://eduguard-html.netlify.app/dist/images/courses/thumb.jpg"
-                    alt=""
+                    src={CourseDetails?.preview?.secure_url}
+                    alt="Preview Photo"
                   />
                 </div>
 
                 <div className="my-5">
-                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                  <ul
+                    className="nav nav-pills mb-3"
+                    id="pills-tab"
+                    role="tablist"
+                  >
+                    <li className="nav-item" role="presentation">
                       <div
-                        class="NavText ps-0 active h5"
+                        className="NavText ps-0 active h5"
                         id="pills-home-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-home"
@@ -171,9 +193,9 @@ const CourseDetails = () => {
                         Overview
                       </div>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <div
-                        class="NavText h5"
+                        className="NavText h5"
                         id="pills-profile-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-profile"
@@ -185,9 +207,9 @@ const CourseDetails = () => {
                         Curriculum
                       </div>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li className="nav-item" role="presentation">
                       <div
-                        class="NavText h5"
+                        className="NavText h5"
                         id="pills-contact-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#pills-contact"
@@ -200,26 +222,18 @@ const CourseDetails = () => {
                       </div>
                     </li>
                   </ul>
-                  <div class="tab-content" id="pills-tabContent">
+                  <div className="tab-content" id="pills-tabContent">
                     <div
-                      class="tab-pane fade show active text-black bg-white p-4 rounded"
+                      className="tab-pane fade show active text-black bg-white p-4 rounded"
                       id="pills-home"
                       role="tabpanel"
                       aria-labelledby="pills-home-tab"
                     >
                       <p>Description </p>
-                      Duis placerat eleifend leo nec mattis. Phasellus
-                      scelerisque arcu quis feugiat efficitur. Lorem ipsum dolor
-                      sit amet, consectetur adipiscing elit. Integer laoreet est
-                      eget est sagittis, et scelerisque quam convallis. Praesent
-                      at tortor facilisis, tempus ex quis, tempor arcu. Duis id
-                      velit mattis diam fermentum tincidunt. Sed et vehicula
-                      lectus. Sed ut tincidunt velit, eu bibendum turpis. Fusce
-                      in posuere felis, sed lobortis elit. Integer mollis
-                      sodales congue
+                      {CourseDetails.overview}
                     </div>
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="pills-profile"
                       role="tabpanel"
                       aria-labelledby="pills-profile-tab"
@@ -239,7 +253,7 @@ const CourseDetails = () => {
                                 stroke-width="2"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="feather feather-play-circle"
+                                className="feather feather-play-circle"
                               >
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <polygon points="10 8 16 12 10 16 10 8"></polygon>
@@ -266,7 +280,7 @@ const CourseDetails = () => {
                                 stroke-width="2"
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="feather feather-file"
+                                className="feather feather-file"
                               >
                                 <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                                 <polyline points="13 2 13 9 20 9"></polyline>
@@ -285,7 +299,7 @@ const CourseDetails = () => {
                       </div>
                     </div>
                     <div
-                      class="tab-pane fade"
+                      className="tab-pane fade"
                       id="pills-contact"
                       role="tabpanel"
                       aria-labelledby="pills-contact-tab"
@@ -330,13 +344,14 @@ const CourseDetails = () => {
             <div className="col-md-4">
               <div className="purchaseArea shadow">
                 <div className="bg-white rounded p-4 border-bottom">
-                  <div className="fs-3">$19.99</div>
-                  <Link
+                  <div className="fs-3 ">${CourseDetails.price}</div>
+                  <div
+                    onClick={courseBuy}
                     to="/courseList"
-                    className="primaryBgColor d-block px-4 py-3 my-3 text-white fw-bolder rounded text-uppercase text-center"
+                    className="primaryBgColor d-block px-4 py-3 my-3 text-white fw-bolder rounded text-uppercase text-center pointer"
                   >
-                    Add To Cart
-                  </Link>
+                    BUY NOW
+                  </div>
                   <hr />
                   <p className="text-black h5">This course includes:</p>
                   <div className="py-1">
@@ -402,7 +417,7 @@ const CourseDetails = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

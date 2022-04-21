@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-import InstructorData from "./../Data/Instructor.json";
 const Instructor = () => {
+  const [instructorData, setInstructorData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/users/instructor")
+      .then((res) => res.json())
+      .then((data) => setInstructorData(data));
+  }, []);
+
   return (
     <div>
       <NavBar />
@@ -15,18 +22,18 @@ const Instructor = () => {
         <h1 className="text-center fw-bolder my-5">Meet Our Best Instructor</h1>
         <div>
           <div className="row">
-            {InstructorData.map((i) => (
+            {instructorData.map((i) => (
               <div className="col-md-3 py-3">
                 <div>
                   <img
                     className="w-100 h-100 position-relative"
-                    src={i.image}
+                    src={i?.image}
                     alt="Instructor"
                   />
                   <div className="instructorInfo p-3 border border-top-0">
-                    <span className="fw-bold fs-5">{i.title}</span> <br />
+                    <span className="fw-bold fs-5">{i.name}</span> <br />
                     <span className="d-inline-block text-secondary">
-                      {i.subtitle}
+                      {i?.subtitle}
                     </span>
                   </div>
                 </div>

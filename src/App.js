@@ -23,7 +23,6 @@ import Instructor from "./Pages/Instructor";
 import Faq from "./Pages/FAQ";
 import InstructorRegister from "./Pages/InstructorRegister";
 import StudentRegister from "./Pages/StudentRegister";
-import StudentProfile from "./Pages/StudentProfile";
 import MyCourse from "./Components/Backend/Instructor/MyCourse";
 import Inbox from "./Components/Backend/Inbox";
 import AddStudent from "./Components/Backend/AddStudent";
@@ -43,17 +42,15 @@ import PrivateOutlet from "./Routes/PrivateOutlet";
 function App() {
   return (
     <AuthProvider>
-      {/* <NavBar/> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="studentProfile" element={<StudentProfile />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="cart" element={<Cart />} />
         <Route path="courseList" element={<CourseList />} />
-        <Route path="courseDetails" element={<CourseDetails />} />
+        <Route path="courses/:id" element={<CourseDetails />} />
         <Route path="category" element={<CategoryList />} />
-        <Route path="categoryDetails" element={<CategoryDetails />} />
+        <Route path="category/:categoryID" element={<CategoryDetails />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="instructorRegister" element={<InstructorRegister />} />
@@ -61,11 +58,11 @@ function App() {
         <Route path="faq" element={<Faq />} />
         <Route path="instructor" element={<Instructor />} />
         <Route path="forget-password" element={<ForgetPassword />} />
+        <Route path="password" element={<Password />} />
+        <Route path="confirmed-email" element={<ConfirmedEmail />} />
         <Route path="/*" element={<PrivateOutlet />}>
-          <Route path="watch" element={<WatchCourse />} />
+          <Route path="watch/:id" element={<WatchCourse />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="password" element={<Password />} />
-          <Route path="confirmed-email" element={<ConfirmedEmail />} />
           <Route path="dashboard" element={<Dashboard />}>
             <Route index element={<Welcome />} />
             <Route path="addStudent" element={<AddStudent />} />
@@ -77,21 +74,20 @@ function App() {
             <Route path="addCourse" element={<AddCourse />} />
             <Route path="updateCourse" element={<UpdateCourse />} />
           </Route>
-          <Route path="adminDashboard" element={<AdminDashboard />}>
-            <Route index element={<AdminWelcome />} />
-            <Route path="addAdmin" element={<AddAdmin />} />
-            <Route path="addInstructor" element={<AddInstructor />} />
-            <Route path="addStudent" element={<AddStudent />} />
-            <Route path="addCourse" element={<AddCourse />} />
-            <Route path="totalCourse" element={<TotalCourse />} />
-            <Route path="totalStudent" element={<TotalStudent />} />
-            <Route path="totalInstructor" element={<TotalInstructor />} />
-            <Route path="account" element={<Account />} />
-          </Route>
+        </Route>
+        <Route path="adminDashboard" element={<AdminDashboard />}>
+          <Route index element={<AdminWelcome />} />
+          <Route path="addAdmin" element={<AddAdmin />} />
+          <Route path="addInstructor" element={<AddInstructor />} />
+          <Route path="addStudent" element={<AddStudent />} />
+          <Route path="addCourse" element={<AddCourse />} />
+          <Route path="totalCourse" element={<TotalCourse />} />
+          <Route path="totalStudent" element={<TotalStudent />} />
+          <Route path="totalInstructor" element={<TotalInstructor />} />
+          <Route path="account" element={<Account />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* <Footer/> */}
     </AuthProvider>
   );
 }

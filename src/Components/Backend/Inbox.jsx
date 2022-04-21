@@ -4,28 +4,28 @@ const Inbox = () => {
   return (
     <div className="row mx-1">
       {/* <!-- Users box--> */}
-      <div class="col-md-5 px-0">
-        <div class="bg-white">
-          <div class="bg-gray px-4 py-3 bg-light">
-            <p class="h5 mb-0 py-1">Recent</p>
+      <div className="col-md-5 px-0">
+        <div className="bg-white">
+          <div className="bg-gray px-4 py-3 bg-light">
+            <p className="h5 mb-0 py-1">Recent</p>
           </div>
 
-          <div class="messages-box">
-            <div class="list-group rounded-0">
-              <a class="list-group-item list-group-item-action active text-white rounded-0">
-                <div class="d-flex d-flex">
+          <div className="messages-box">
+            <div className="list-group rounded-0">
+              <a className="list-group-item list-group-item-action active text-white rounded-0">
+                <div className="d-flex d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">25 Dec</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">25 Dec</small>
                     </div>
-                    <p class="font-italic mb-0 text-small">
+                    <p className="font-italic mb-0 text-small">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore.
                     </p>
@@ -35,21 +35,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">14 Dec</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">14 Dec</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       Lorem ipsum dolor sit amet, consectetur. incididunt ut
                       labore.
                     </p>
@@ -59,21 +59,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">9 Nov</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">9 Nov</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       consectetur adipisicing elit, sed do eiusmod tempor
                       incididunt ut labore.
                     </p>
@@ -83,21 +83,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">18 Oct</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">18 Oct</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore.
                     </p>
@@ -107,21 +107,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">17 Oct</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">17 Oct</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       consectetur adipisicing elit, sed do eiusmod tempor
                       incididunt ut labore.
                     </p>
@@ -131,21 +131,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">2 Sep</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">2 Sep</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       Quis nostrud exercitation ullamco laboris nisi ut aliquip
                       ex ea commodo consequat.
                     </p>
@@ -155,21 +155,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-1">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">30 Aug</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-1">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">30 Aug</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore.
                     </p>
@@ -179,21 +179,21 @@ const Inbox = () => {
 
               <a
                 href="#"
-                class="list-group-item list-group-item-action list-group-item-light rounded-0"
+                className="list-group-item list-group-item-action list-group-item-light rounded-0"
               >
-                <div class="d-flex">
+                <div className="d-flex">
                   <img
                     src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
                     alt="user"
                     width="50"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
-                  <div class="d-flex-body ms-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                      <h6 class="mb-0">Jason Doe</h6>
-                      <small class="small font-weight-bold">21 Aug</small>
+                  <div className="d-flex-body ms-4">
+                    <div className="d-flex align-items-center justify-content-between mb-3">
+                      <h6 className="mb-0">Jason Doe</h6>
+                      <small className="small font-weight-bold">21 Aug</small>
                     </div>
-                    <p class="font-italic text-muted mb-0 text-small">
+                    <p className="font-italic text-muted mb-0 text-small">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore.
                     </p>
@@ -205,111 +205,111 @@ const Inbox = () => {
         </div>
       </div>
       {/* <!-- Chat Box--> */}
-      <div class="col-md-7 px-0">
-        <div class="px-4 py-4 chat-box bg-white">
+      <div className="col-md-7 px-0">
+        <div className="px-4 py-4 chat-box bg-white">
           {/* <!-- Sender Message--> */}
-          <div class="d-flex w-50 mb-3">
+          <div className="d-flex w-50 mb-3">
             <img
               src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
               alt="user"
               width="50"
-              class="rounded-circle"
+              className="rounded-circle"
             />
-            <div class="d-flex-body ms-3">
-              <div class="bg-light rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-muted">
+            <div className="d-flex-body ms-3">
+              <div className="bg-light rounded py-2 px-3 mb-2">
+                <p className="text-small mb-0 text-muted">
                   Test which is a new approach all solutions
                 </p>
               </div>
-              <p class="small text-muted">12:00 PM | Aug 13</p>
+              <p className="small text-muted">12:00 PM | Aug 13</p>
             </div>
           </div>
 
           {/* <!-- Reciever Message--> */}
-          <div class="d-flex w-50 ms-auto mb-3">
-            <div class="d-flex-body">
-              <div class="bg-primary rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-white">
+          <div className="d-flex w-50 ms-auto mb-3">
+            <div className="d-flex-body">
+              <div className="bg-primary rounded py-2 px-3 mb-2">
+                <p className="text-small mb-0 text-white">
                   Test which is a new approach to have all solutions
                 </p>
               </div>
-              <p class="small text-muted">12:00 PM | Aug 13</p>
+              <p className="small text-muted">12:00 PM | Aug 13</p>
             </div>
           </div>
 
           {/* <!-- Sender Message--> */}
-          <div class="d-flex w-50 mb-3">
+          <div className="d-flex w-50 mb-3">
             <img
               src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
               alt="user"
               width="50"
-              class="rounded-circle"
+              className="rounded-circle"
             />
-            <div class="d-flex-body ms-3">
-              <div class="bg-light rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-muted">
+            <div className="d-flex-body ms-3">
+              <div className="bg-light rounded py-2 px-3 mb-2">
+                <p className="text-small mb-0 text-muted">
                   Test, which is a new approach to have
                 </p>
               </div>
-              <p class="small text-muted">12:00 PM | Aug 13</p>
+              <p className="small text-muted">12:00 PM | Aug 13</p>
             </div>
           </div>
 
           {/* <!-- Reciever Message--> */}
-          <div class="d-flex w-50 ms-auto mb-3">
-            <div class="d-flex-body">
-              <div class="bg-primary rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-white">
+          <div className="d-flex w-50 ms-auto mb-3">
+            <div className="d-flex-body">
+              <div className="bg-primary rounded py-2 px-3 mb-2">
+                <p className="text-small mb-0 text-white">
                   Apollo University, Delhi, India Test
                 </p>
               </div>
-              <p class="small text-muted">12:00 PM | Aug 13</p>
+              <p className="small text-muted">12:00 PM | Aug 13</p>
             </div>
           </div>
 
           {/* <!-- Sender Message--> */}
-          <div class="d-flex w-50 mb-3">
+          <div className="d-flex w-50 mb-3">
             <img
               src="https://bootstrapious.com/i/snippets/sn-chat/avatar.svg"
               alt="user"
               width="50"
-              class="rounded-circle"
+              className="rounded-circle"
             />
-            <div class="d-flex-body ms-3">
-              <div class="bg-light rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-muted">
+            <div className="d-flex-body ms-3">
+              <div className="bg-light rounded py-2 px-3 mb-2">
+                <p className="text-small mb-0 text-muted">
                   Test, which is a new approach
                 </p>
               </div>
-              <p class="small text-muted">12:00 PM | Aug 13</p>
+              <p className="small text-muted">12:00 PM | Aug 13</p>
             </div>
           </div>
 
           {/* <!-- Reciever Message--> */}
-          <div class="d-flex w-50 ms-auto mb-3">
-            <div class="d-flex-body">
-              <div class="bg-primary rounded py-2 px-3 mb-2">
-                <p class="text-small mb-0 text-white">
+          <div className="d-flex w-50 ms-auto mb-3">
+            <div className="d-flex-body">
+              <div className="bg-primary rounded py-2 px-3 mb-2">
+                <p className="text-small mb-0 text-white">
                   Apollo University, Delhi, India Test
                 </p>
               </div>
-              <p class="small text-muted">12:00 PM | Aug 13</p>
+              <p className="small text-muted">12:00 PM | Aug 13</p>
             </div>
           </div>
         </div>
 
         {/* <!-- Typing area --> */}
-        <form action="#" class="bg-light">
-          <div class="input-group">
+        <form action="#" className="bg-light">
+          <div className="input-group">
             <input
               type="text"
               placeholder="Type a message"
               aria-describedby="button-addon2"
-              class="form-control rounded-0 border-0 py-4 bg-light"
+              className="form-control rounded-0 border-0 py-4 bg-light"
             />
-            <div class="input-group-append contactIcon">
-              <button id="button-addon2" type="submit" class="btn btn-link">
-                <i class="fa fa-paper-plane"></i>
+            <div className="input-group-append contactIcon">
+              <button id="button-addon2" type="submit" className="btn btn-link">
+                <i className="fa fa-paper-plane"></i>
               </button>
             </div>
           </div>

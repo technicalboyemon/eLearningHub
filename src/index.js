@@ -10,12 +10,12 @@ import { CartProvider } from "react-use-cart";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <CartProvider>
+    <CartProvider>
+      <BrowserRouter>
         <ScrollToTop />
         <App />
-      </CartProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </CartProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

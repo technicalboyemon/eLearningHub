@@ -19,7 +19,7 @@ const InstructorRegister = () => {
                 </p>
                 <div className="my-4 w-75">
                   <div className="my-2 text-black input-group-lg">
-                    <label for="fullName" className="form-label">
+                    <label htmlFor="fullName" className="form-label">
                       Full Name
                     </label>
                     <input
@@ -30,7 +30,7 @@ const InstructorRegister = () => {
                     />
                   </div>
                   {/* <div className="my-2 text-black input-group-lg">
-                    <label for="exampleInputEmail1" className="form-label">
+                    <label htmlFor="exampleInputEmail1" className="form-label">
                       Department
                     </label>
                     <input
@@ -42,7 +42,7 @@ const InstructorRegister = () => {
                     />
                   </div> */}
                   <div className="my-2 text-black input-group-lg">
-                    <label for="exampleInputEmail1" className="form-label">
+                    <label htmlFor="exampleInputEmail1" className="form-label">
                       Email
                     </label>
                     <input
@@ -56,7 +56,7 @@ const InstructorRegister = () => {
 
                   <div className="my-2 text-black input-group-lg">
                     <label
-                      for="exampleInputEmail1"
+                      htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>Password </span>
@@ -71,7 +71,7 @@ const InstructorRegister = () => {
                   </div>
                   <div className="my-2 text-black input-group-lg">
                     <label
-                      for="exampleInputEmail1"
+                      htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>Confirm Password </span>

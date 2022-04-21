@@ -29,7 +29,7 @@ const TotalInstructor = () => {
         <div className="h1 fw-bolder">Total Instructor</div>
         <hr />
         <div className="bg-white rounded p-4 my-5">
-          <table class="table text-center">
+          <table className="table text-center">
             <thead>
               <tr>
                 {/* <th scope="col">#</th> */}

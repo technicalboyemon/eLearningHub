@@ -26,7 +26,7 @@ const Password = () => {
                 <div className="my-5 w-75">
                   <div className="my-4 input-group-lg">
                     <label
-                      for="exampleInputEmail1"
+                      htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>Password</span>

@@ -3,8 +3,10 @@ import { BsCartPlus } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import LOGO from "./../../Images/logo.png";
 import useAuth from "./../../Hooks/useAuth.jsx";
+import { useCart } from "react-use-cart";
 const NavBar = () => {
-  const { user,logout } = useAuth();
+  const { user, logout } = useAuth();
+  const { totalItems } = useCart();
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light py-3">
@@ -68,7 +70,8 @@ const NavBar = () => {
                       <BsCartPlus />
                     </span>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill primaryBgColor">
-                      9<span className="visually-hidden">Cart Items</span>
+                      {totalItems}
+                      <span className="visually-hidden">Cart Items</span>
                     </span>
                   </span>
                 </Link>
