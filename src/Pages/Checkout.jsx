@@ -17,13 +17,14 @@ const Checkout = () => {
   const purchasedItems = JSON.parse(
     localStorage.getItem("react-use-cart") || ""
   );
+  const allData = { accountInfo, purchasedItems, email: user.email };
   const OrderPlace = () => {
     fetch("http://localhost:5000/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ accountInfo, purchasedItems, user }),
+      body: JSON.stringify(allData),
     })
       .then((res) => res.json())
       .then((data) => {

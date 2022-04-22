@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Footer from "../../Frontend/Footer";
 import NavBar from "../../Frontend/NavBar";
+import Comment from "../Comment/Comment";
 
 const WatchCourse = () => {
   const [courseWatch, setCourseWatch] = useState([]);
   const { id } = useParams();
-
   useEffect(() => {
     fetch(`http://localhost:5000/courses/${id}`)
       .then((res) => res.json())
@@ -58,7 +58,7 @@ const WatchCourse = () => {
                   />
                   <div className="h3 p-4">{courseWatch?.name}</div>
                   <div>
-                    
+                  <Comment blog_id={courseWatch?._id} blog_user_id={courseWatch?.user}/>
                   </div>
                 </div>
               </div>

@@ -11,6 +11,7 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
+import io from "socket.io-client";
 
 initializeAuth();
 const useHooks = () => {
@@ -18,8 +19,18 @@ const useHooks = () => {
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [forgetEmail, setForgetEmail] = useState("");
-  const [ loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const auth = getAuth();
+
+  const [realTime, setRealTime] = useState(null);
+
+  useEffect(() => {
+    const socket = io("http://localhost:5000/");
+    setRealTime(socket);
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   const loginUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
@@ -112,7 +123,8 @@ const useHooks = () => {
     AuthEmailLogin,
     loginUser,
     ForgetPassword,
-    setForgetEmail
+    setForgetEmail,
+    realTime
   };
 };
 

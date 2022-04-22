@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 const EnrolledCourse = () => {
   const [enrollCourse, setEnrollCourse] = useState([]);
-
+  const { user } = useAuth();
   useEffect(() => {
-    fetch("http://localhost:5000/order")
+    fetch(`http://localhost:5000/order/account?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setEnrollCourse(data));
   }, []);

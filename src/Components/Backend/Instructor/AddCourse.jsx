@@ -66,7 +66,7 @@ const AddCourse = () => {
     price: coursePrice,
     id: Math.floor(Math.random() * 100 + 1),
     files: addAllFiles,
-    user: user?.email,
+    email: user?.email,
     preview: coursePreviewData,
   };
 
@@ -90,8 +90,9 @@ const AddCourse = () => {
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center">
-        <div className="rounded-circle bg-white d-inline-block p-3">
-          <Link to="/dashboard/addCourse" className="text-black">
+        <div className="text-end rounded-circle bg-white d-inline-block p-3">
+  
+          {/* <Link to="/" className="text-black">
             <svg
               width="24"
               height="25"
@@ -107,7 +108,7 @@ const AddCourse = () => {
                 stroke-linejoin="round"
               ></path>
             </svg>
-          </Link>
+          </Link> */}
         </div>
         <div className="">
           <div
@@ -198,7 +199,7 @@ const AddCourse = () => {
                   File
                 </div>
               </li>
-              <li className="nav-item" role="presentation">
+              {/* <li className="nav-item" role="presentation">
                 <div
                   className="px-4 py-2 rounded bg-black text-white mx-1 pointer"
                   id="pills-contact-tab"
@@ -210,7 +211,7 @@ const AddCourse = () => {
                 >
                   Form
                 </div>
-              </li>
+              </li> */}
             </ul>
             <div className="tab-content" id="pills-tabContent">
               <div
@@ -400,12 +401,12 @@ const AddCourse = () => {
                 <div className="col-md-9">
                   <div className="text-black-50">{i.addTitle}</div>
                 </div>
-                <div className="col-md-2">
+                {/* <div className="col-md-2">
                   <div className="text-secondary">12.29</div>
-                </div>
+                </div> */}
               </div>
             ))}
-            <div className="row py-2 my-2">
+            {/* <div className="row py-2 my-2">
               <div className="col-md-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -429,7 +430,7 @@ const AddCourse = () => {
               <div className="col-md-2">
                 <div className="text-secondary">12.29</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
