@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useRef } from "react";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-import contactUs from "./../Images/contactUs.jpg";
+import Swal from "sweetalert2";
+import emailjs from "emailjs-com";
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_z1zlo4z",
+        "template_ylao85l",
+        form.current,
+        "3NYoRQHKBkDL7-aCy"
+      )
+      .then(
+        (result) => {
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            title: "Email Send Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
+          e.target.reset();
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
   return (
     <>
       <NavBar />
@@ -15,7 +44,13 @@ const Contact = () => {
         <div className="row py-5 align-items-center">
           <div className="col-md-6">
             <div className="about-img">
-              <img className="rounded-3 w-100" src={"https://www.seekpng.com/png/full/10-103122_world-map-designs-png-world-map-web-design.png"} alt="Contact" />
+              <img
+                className="rounded-3 w-100"
+                src={
+                  "https://www.seekpng.com/png/full/10-103122_world-map-designs-png-world-map-web-design.png"
+                }
+                alt="Contact"
+              />
             </div>
           </div>
           <div className="col-md-6">
@@ -178,66 +213,71 @@ const Contact = () => {
             </div>
             <div className="col-md-7">
               <div className="contactForm rounded py-3 bg-white p-4">
-                <div className="row">
-                  <div className="col-md-6">
+                <form ref={form} onSubmit={sendEmail} className="">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label htmlFor="fName" className="form-label fw-bold">
+                          First Name
+                        </label>
+                        <input
+                          name="from_name"
+                          type="text"
+                          className="form-control"
+                          id="fName"
+                          placeholder="First name"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="mb-3">
+                        <label htmlFor="fName" className="form-label fw-bold">
+                          Email
+                        </label>
+                        <input
+                          name="email"
+                          type="text"
+                          className="form-control"
+                          id="fName"
+                          placeholder="Your Email"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
                     <div className="mb-3">
-                      <label htmlFor="fName" className="form-label fw-bold">
-                        First Name
+                      <label htmlFor="subject" className="form-label fw-bold">
+                        Subject
                       </label>
                       <input
+                        name="user_subject"
                         type="text"
                         className="form-control"
-                        id="fName"
-                        placeholder="First name"
+                        id="subject"
+                        placeholder="Subject"
                       />
                     </div>
                   </div>
-                  <div className="col-md-6">
-                    <div className="mb-3">
-                      <label htmlFor="fName" className="form-label fw-bold">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="fName"
-                        placeholder="First name"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div>
                   <div className="mb-3">
-                    <label htmlFor="subject" className="form-label fw-bold">
-                      Subject
+                    <label htmlFor="Messages" className="form-label fw-bold">
+                      Messages
                     </label>
-                    <input
-                      type="text"
+                    <textarea
+                      name="message"
                       className="form-control"
-                      id="subject"
-                      placeholder="Subject"
+                      id="Messages"
+                      rows="3"
+                      placeholder="Type Here"
+                    ></textarea>
+                  </div>
+                  <div className="text-end">
+                    <input
+                      type="submit"
+                      value="Send Messages"
+                      className="border-0 primaryBgColor d-inline-block my-3 px-4 py-3 text-white rounded text-uppercase"
                     />
                   </div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="Messages" className="form-label fw-bold">
-                    Messages
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="Messages"
-                    rows="3"
-                    placeholder="Type Here"
-                  ></textarea>
-                </div>
-                <div className="text-end">
-                  <div
-                    to="/courseList"
-                    className="primaryBgColor d-inline-block my-3 px-4 py-3 text-white rounded text-uppercase"
-                  >
-                    Send Messages
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>

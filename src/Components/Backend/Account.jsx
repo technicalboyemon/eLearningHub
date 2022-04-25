@@ -1,51 +1,41 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
 import { getAuth, updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 const auth = getAuth();
 
 const Account = () => {
   const { user, setPassword, UpdatePass } = useAuth();
-  const [updateUser, setUpdateUser] = useState({});
-  // const [accountInfo, setAccountInfo] = useState({});
+  const [accountInfo, setAccountInfo] = useState({});
   const [profilePic, setProfilePic] = useState("");
   const [preLoading, setPreLoading] = useState(false);
-  const [name, setName] = useState(updateUser?.name);
-  const [profession, setProfession] = useState("");
-  const [about, setAbout] = useState("");
-  const [phone, setPhone] = useState("");
-  const [national, setNational] = useState("");
-  console.log(updateUser[0]?.name);
-
-  useEffect(() => {
-    setName(updateUser?.name);
-  }, [updateUser?.name]);
+  const [loading, setLoading] = useState(false);
 
   const getPassword = (e) => {
     setPassword(e.target.value);
   };
 
-  // const handleInput = (e) => {
-  //   let input = { [e.target.name]: e.target.value };
-  //   setAccountInfo({ ...accountInfo, ...input });
-  // };
-
-  const accountInfo = {
-    name: name,
-    profession,
-    about,
-    phone,
-    national,
+  const handleInput = (e) => {
+    let input = { [e.target.name]: e.target.value };
+    setAccountInfo({ ...accountInfo, ...input });
   };
-  console.log(accountInfo);
+
   useEffect(() => {
-    const url = `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setUpdateUser(data));
+    setLoading(true);
+    const url = `http://localhost:5000/users/account?email=${user.email}`;
+    const get = async () => {
+      await fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setAccountInfo(data[0]);
+          setLoading(false);
+        });
+    };
+    get();
   }, [user.email]);
 
   const UpdateUserInfo = (e) => {
-    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account/${user.email}`, {
+    fetch(`http://localhost:5000/users/account/${user.email}`, {
       method: "PUT",
       headers: {
         "content-type": " application/json",
@@ -55,7 +45,13 @@ const Account = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          alert("Updated User");
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            title: "Account Updated Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
         }
       });
   };
@@ -73,6 +69,7 @@ const Account = () => {
       }
     );
     const file = await res.json();
+
     if (file.asset_id) {
       updateProfile(auth.currentUser, {
         photoURL: file.url,
@@ -84,8 +81,25 @@ const Account = () => {
           console.log(error);
         });
       setPreLoading(false);
+      Swal.fire({
+        position: "center-center",
+        icon: "success",
+        title: "Profile Picture Updated",
+        showConfirmButton: false,
+        timer: 2500,
+      });
     }
   };
+
+  if (loading) {
+    return (
+      <div className="spinner-border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+  }
+  console.log(user);
+
   return (
     <div>
       <div className="row">
@@ -95,89 +109,89 @@ const Account = () => {
             <div className="w-100">
               <div className="my-4">
                 <label
-                  htmlFor="name"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>Full Name</span>
                 </label>
                 <input
-                  onBlur={(e) => setName(e.target.value)}
-                  defaultValue={updateUser[0]?.name}
+                  onChange={(e) => handleInput(e)}
+                  value={accountInfo?.name}
                   name="name"
                   type="text"
                   className="form-control"
-                  id="name"
+                  id="exampleInputEmail1"
                   placeholder="Type Here"
                 />
               </div>
               <div className="my-4">
                 <label
-                  htmlFor="email"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>Email</span>
                 </label>
                 <input
                   disabled
-                  defaultValue={user.email}
+                  value={user.email}
                   type="email"
                   className="form-control"
-                  id="email"
+                  id="exampleInputEmail1"
                   placeholder="example@mail.com"
                 />
               </div>
               <div className="my-4">
                 <label
-                  htmlFor="profession"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>What Do You Do</span>
                 </label>
                 <input
-                  onBlur={(e) => setProfession(e.target.value)}
+                  onChange={(e) => handleInput(e)}
                   name="profession"
                   type="text"
                   className="form-control"
-                  id="profession"
+                  id="exampleInputEmail1"
                   placeholder="Developer"
-                  defaultValue={updateUser[0]?.profession}
+                  value={accountInfo?.profession}
                 />
               </div>
               <div className="my-4">
                 <label
-                  htmlFor="about"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>About Yourself</span>
                 </label>
                 <textarea
-                  onBlur={(e) => setAbout(e.target.value)}
+                  onChange={(e) => handleInput(e)}
                   rows="3"
                   name="about"
                   type="text"
                   className="form-control"
-                  id="about"
+                  id="exampleInputEmail1"
                   placeholder="Type Here"
-                  defaultValue={updateUser[0]?.about}
+                  value={accountInfo?.about}
                 />
               </div>
               <div className="row">
                 <div className="col-md-6">
                   <div className="my-4">
                     <label
-                      htmlFor="number"
+                      htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>Phone Number</span>
                     </label>
                     <input
-                      onBlur={(e) => setPhone(e.target.value)}
+                      onChange={(e) => handleInput(e)}
                       name="phone"
                       type="text"
                       className="form-control"
-                      id="number"
+                      id="exampleInputEmail1"
                       placeholder="+880 1921412932"
-                      defaultValue={updateUser[0]?.phone}
+                      value={accountInfo?.phone}
                     />
                   </div>
                 </div>
@@ -190,13 +204,13 @@ const Account = () => {
                       <span>Nationality</span>
                     </label>
                     <input
-                      onBlur={(e) => setNational(e.target.value)}
+                      onChange={(e) => handleInput(e)}
                       type="text"
                       name="national"
                       className="form-control"
                       id="national"
                       placeholder="Bangladesh"
-                      defaultValue={updateUser[0]?.national}
+                      value={accountInfo?.national}
                     />
                   </div>
                 </div>
@@ -257,16 +271,16 @@ const Account = () => {
             <div className="w-100">
               <div className="my-4">
                 <label
-                  htmlFor="password"
+                  htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>New Password</span>
                 </label>
                 <input
-                  onBlur={getPassword}
+                  onChange={getPassword}
                   type="password"
                   className="form-control"
-                  id="password"
+                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="Type Here"
                 />

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const TotalCourse = () => {
   const [totalCourse, setTotalCourse] = useState([]);
@@ -17,7 +18,13 @@ const TotalCourse = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          alert("Deleted");
+          Swal.fire({
+            position: "center-center",
+            icon: "error",
+            title: "Course Deleted Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
           const remainingUser = totalCourse.filter((user) => user._id !== id);
           setTotalCourse(remainingUser);
         }
@@ -38,7 +45,7 @@ const TotalCourse = () => {
             </tr>
           </thead>
           <tbody>
-            {totalCourse.map((course,index) => (
+            {totalCourse.map((course, index) => (
               <tr key={index}>
                 <td>{course.name}</td>
                 <td>{course.instructorName}</td>

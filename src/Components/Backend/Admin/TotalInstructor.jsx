@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const TotalInstructor = () => {
   const [totalUsers, setTotalUser] = useState([]);
@@ -17,7 +18,13 @@ const TotalInstructor = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          alert("Deleted");
+          Swal.fire({
+            position: "center-center",
+            icon: "error",
+            title: "Instructor Deleted Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
           const remainingUser = totalUsers.filter((user) => user._id !== id);
           setTotalUser(remainingUser);
         }
@@ -39,7 +46,7 @@ const TotalInstructor = () => {
               </tr>
             </thead>
             <tbody>
-              {totalUsers.map((user) => (
+              {totalUsers?.map((user) => (
                 <tr>
                   <td>{user.name}</td>
                   <td>{user.email}</td>

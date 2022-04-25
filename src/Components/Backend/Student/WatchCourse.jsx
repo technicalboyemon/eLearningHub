@@ -6,17 +6,25 @@ import Comment from "../Comment/Comment";
 import ReactPlayer from "react-player";
 
 const WatchCourse = () => {
-  const [courseWatch, setCourseWatch] = useState([]);
   const { id } = useParams();
-  const [playList, setPlayList] = useState({});
-  const [playListTitle, setPlayListTitle] = useState({});
+  const [courseWatch, setCourseWatch] = useState({});
+  const [playList, setPlayList] = useState({ addFileDataLink: "" });
+  const [playListTitle, setPlayListTitle] = useState([]);
+
+  useEffect(() => {
+    setPlayList(courseWatch?.files?.find((i) => i?.addFileDataLink) || "");
+  }, [courseWatch]);
 
   useEffect(() => {
     fetch(`https://cryptic-temple-44121.herokuapp.com/courses/${id}`)
       .then((res) => res.json())
       .then((data) => setCourseWatch(data));
   }, []);
-  console.log(playList);
+
+  function get_url_extension(url) {
+    return url?.split(/[#?]/)[0]?.split(".").pop().trim();
+  }
+
   return (
     <>
       <NavBar />
@@ -43,34 +51,41 @@ const WatchCourse = () => {
                   </svg>
                 </Link>
               </div>
-              {/* <div className="">
-                <Link
-                  to="/dashboard/myCourse"
-                  className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded text-uppercase"
-                >
-                  Next Lesson
-                </Link>
-              </div> */}
             </div>
             <div className="row my-5">
               <div className="col-md-8">
                 <div className="courseVide  rounded  bg-white">
-                  {/* <img
-                    className="rounded w-100"
-                    src="https://eduguard-html.netlify.app/dist/images/courses/thumb.jpg"
-                    alt=""
-                  /> */}
-                  <div className="player-wrapper">
-                    <ReactPlayer
-                      width="100%"
-                      height="100%"
-                      url={playList}
-                      playing
-                      controls
+                  {get_url_extension(playList?.addFileDataLink) ==
+                    ("mp4" || "flv") && (
+                    <div className="player-wrapper">
+                      <ReactPlayer
+                        width="100%"
+                        height="100%"
+                        url={playList?.addFileDataLink}
+                        playing
+                        controls
+                      />
+                    </div>
+                  )}
+                  {get_url_extension(playList?.addFileDataLink) ==
+                    ("jpg" || "flv") && (
+                    <img
+                      className="rounded w-100"
+                      src={playList?.addFileDataLink}
+                      alt="IMG"
                     />
-                  </div>
+                  )}
 
-                  {/* <div className="h3 p-4">{courseWatch?.name}</div> */}
+                  {get_url_extension(playList?.addFileDataLink) == "pdf" && (
+                    <div>
+                      <embed
+                        src={playList?.addFileDataLink}
+                        width="100%"
+                        height="700px"
+                      />
+                    </div>
+                  )}
+
                   <div className="h5 fw-bold px-4 py-3">{playListTitle}</div>
                 </div>
                 <div>
@@ -85,39 +100,109 @@ const WatchCourse = () => {
                 <hr />
                 {courseWatch?.files?.map((file, index) => (
                   <div key={index} className="row align-items-center py-2 my-2">
-                    <div className="col-md-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-play-circle"
-                      >
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                      </svg>
-                    </div>
-                    <div className="col-md-9 pointer">
+                    {get_url_extension(file?.addFileDataLink) ==
+                      ("pdf" || "png" || "jpg") && (
+                      <div className="col-md-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-file"
+                        >
+                          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                          <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                      </div>
+                    )}
+                    {get_url_extension(file?.addFileDataLink) ==
+                      ("mp4" || "flv") && (
+                      <div className="col-md-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="feather feather-play-circle"
+                        >
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                        </svg>
+                      </div>
+                    )}
+                    {get_url_extension(file?.addFileDataLink) ==
+                      ("jpg" || "png") && (
+                      <div className="col-md-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="feather feather-file"
+                        >
+                          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                          <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                      </div>
+                    )}
+
+                    <div className="col-md-7 pointer">
                       <div
                         className="text-black"
                         onClick={() => {
-                          setPlayList(file.addFileDataLink);
-                          setPlayListTitle(file.addTitle)
+                          setPlayList({
+                            addFileDataLink: file?.addFileDataLink,
+                          });
+                          setPlayListTitle(file?.addTitle);
                         }}
                       >
                         {file?.addTitle}
                       </div>
                     </div>
-                    <div className="col-md-2">
+                    <div className="col-md-3">
                       <div className="text-black">
-                        {Math.floor(file.duration / 60) +
-                          ":" +
-                          (file.duration % 60 ? file.duration % 60 : "00")}
+                        {get_url_extension(file?.addFileDataLink) ==
+                          ("mp4" || "flv") &&
+                          Math.floor(file.duration / 60) +
+                            ":" +
+                            (file.duration % 60 ? file.duration % 60 : "00")}
+
+                        {get_url_extension(file?.addFileDataLink) ==
+                          ("jpg" || "png") && (
+                          <a
+                            target="_blank"
+                            href={file?.addFileDataLink}
+                            download
+                          >
+                            Download
+                          </a>
+                        )}
+                        {get_url_extension(file?.addFileDataLink) == "pdf" && (
+                          <>
+                            <a
+                              target="_blank"
+                              href={file?.addFileDataLink}
+                              download
+                            >
+                              Download
+                            </a>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>

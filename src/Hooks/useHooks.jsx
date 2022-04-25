@@ -12,6 +12,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import io from "socket.io-client";
+import Swal from "sweetalert2";
 
 initializeAuth();
 const useHooks = () => {
@@ -20,6 +21,7 @@ const useHooks = () => {
   const [password, setPassword] = useState("");
   const [forgetEmail, setForgetEmail] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   const [realTime, setRealTime] = useState(null);
   const [instructor, setInstructor] = useState({});
   const [admin, setAdmin] = useState({});
@@ -35,13 +37,17 @@ const useHooks = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`)
+    fetch(
+      `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setInstructor(data[0]?.isInstructor));
   }, [user.email]);
 
   useEffect(() => {
-    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`)
+    fetch(
+      `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAdmin(data[0]?.isAdmin));
   }, [user.email]);
@@ -99,8 +105,10 @@ const useHooks = () => {
     const unSub = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        setIsLogged(true);
       } else {
         setUser({});
+        setIsLogged(false);
       }
       setIsLoading(false);
     });
@@ -121,7 +129,15 @@ const useHooks = () => {
     const user = auth.currentUser;
     const newPassword = password;
     updatePassword(user, newPassword)
-      .then(() => {})
+      .then(() => {
+        Swal.fire({
+          position: "center-center",
+          icon: "success",
+          title: "Password Updated Successfully",
+          showConfirmButton: false,
+          timer: 2500,
+        });
+      })
       .catch((error) => {
         setError(error.message);
       })
@@ -155,6 +171,7 @@ const useHooks = () => {
     setForgetEmail,
     realTime,
     isLoading,
+    isLogged,
   };
 };
 

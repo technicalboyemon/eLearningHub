@@ -37,7 +37,7 @@ import ConfirmedEmail from "./Pages/ConfirmedEmail";
 import ForgetPassword from "./Pages/ForgetPassword";
 import PrivateOutlet from "./Routes/PrivateOutlet";
 import AddCategory from "./Components/Backend/Admin/AddCategory";
-
+import Logged from "./Routes/Logged";
 function App() {
   return (
     <AuthProvider>
@@ -49,7 +49,14 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="courseList" element={<CourseList />} />
         <Route path="courses/:id" element={<CourseDetails />} />
-        <Route path="login" element={<Login />} />
+        <Route
+          path="login"
+          element={
+            <Logged>
+              <Login />
+            </Logged>
+          }
+        />
         <Route path="register" element={<Register />} />
         <Route path="instructorRegister" element={<InstructorRegister />} />
         <Route path="studentRegister" element={<StudentRegister />} />
@@ -72,18 +79,18 @@ function App() {
             <Route path="addCourse" element={<AddCourse />} />
             <Route path="updateCourse" element={<UpdateCourse />} />
           </Route>
-        </Route>
-        <Route path="adminDashboard" element={<AdminDashboard />}>
-          <Route index element={<AdminWelcome />} />
-          <Route path="addAdmin" element={<AddAdmin />} />
-          <Route path="addCategory" element={<AddCategory />} />
-          <Route path="addInstructor" element={<AddInstructor />} />
-          <Route path="addStudent" element={<AddStudent />} />
-          <Route path="addCourse" element={<AddCourse />} />
-          <Route path="totalCourse" element={<TotalCourse />} />
-          <Route path="totalStudent" element={<TotalStudent />} />
-          <Route path="totalInstructor" element={<TotalInstructor />} />
-          <Route path="account" element={<Account />} />
+          <Route path="adminDashboard" element={<AdminDashboard />}>
+            <Route index element={<AdminWelcome />} />
+            <Route path="addAdmin" element={<AddAdmin />} />
+            <Route path="addCategory" element={<AddCategory />} />
+            <Route path="addInstructor" element={<AddInstructor />} />
+            <Route path="addStudent" element={<AddStudent />} />
+            <Route path="addCourse" element={<AddCourse />} />
+            <Route path="totalCourse" element={<TotalCourse />} />
+            <Route path="totalStudent" element={<TotalStudent />} />
+            <Route path="totalInstructor" element={<TotalInstructor />} />
+            <Route path="account" element={<Account />} />
+          </Route>
         </Route>
       </Routes>
     </AuthProvider>

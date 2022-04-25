@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddInstructor = () => {
   const { AuthEmailSend, error } = useAuth();
@@ -8,7 +10,7 @@ const AddInstructor = () => {
   const [preLoading, setPreLoading] = useState(false);
   const [instructorFile, setInstructorFile] = useState("");
   const [courseCategory, setCourseCategory] = useState("");
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://cryptic-temple-44121.herokuapp.com/category")
       .then((res) => res.json())
@@ -58,6 +60,14 @@ const AddInstructor = () => {
           if (data.insertedId) {
             alert("Added Data");
             setLoginData("");
+            Swal.fire({
+              position: "center-center",
+              icon: "success",
+              title: "Instructor Added Successfully",
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            navigate("/adminDashboard/totalInstructor");
           }
         });
     }
@@ -116,13 +126,19 @@ const AddInstructor = () => {
           </div>
         </div>
         <div className="col-md-3">
-          <button
-            onClick={loginSubmit}
-            type="button"
-            className="btn btn-dark d-inline-block"
-          >
-            Add Instructor
-          </button>
+          {preLoading ? (
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          ) : (
+            <button
+              onClick={loginSubmit}
+              type="button"
+              className="btn btn-dark d-inline-block"
+            >
+              Add Instructor
+            </button>
+          )}
         </div>
       </div>
     </div>

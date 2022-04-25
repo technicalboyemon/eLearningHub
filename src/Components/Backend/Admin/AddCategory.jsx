@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
   const [category, setCategory] = useState("");
   const [catFile, setCatFile] = useState("");
   const [preLoading, setPreLoading] = useState(false);
+  const navigate = useNavigate();
 
   const addCategory = async () => {
     setPreLoading(true);
@@ -33,6 +36,14 @@ const AddCategory = () => {
           if (data.insertedId) {
             alert("Added Data");
             setPreLoading(false);
+            Swal.fire({
+              position: "center-center",
+              icon: "success",
+              title: "Instructor Added Successfully",
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            navigate("/adminDashboard");
           }
         });
     }

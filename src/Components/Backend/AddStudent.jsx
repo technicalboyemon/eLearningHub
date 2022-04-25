@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const AddStudent = () => {
   const { AuthEmailSend, error } = useAuth();
   const [loginData, setLoginData] = useState({});
   const [category, setCategory] = useState([]);
   const [courseCategory, setCourseCategory] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://cryptic-temple-44121.herokuapp.com/category")
@@ -40,6 +43,13 @@ const AddStudent = () => {
         if (data.insertedId) {
           alert("Added Data");
           setLoginData("");
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            title: "Student Added Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
         }
       });
   };

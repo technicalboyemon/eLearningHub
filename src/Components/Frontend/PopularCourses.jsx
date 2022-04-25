@@ -45,7 +45,7 @@ const PopularCourses = () => {
                         }
                         alt="Instructor"
                       />
-                      <span className="ps-1">{i?.instructorProfile?.name}</span>
+                      <span className="ps-1">{i?.instructorName}</span>
                     </div>
                     <span>${i?.price}</span>
                   </div>

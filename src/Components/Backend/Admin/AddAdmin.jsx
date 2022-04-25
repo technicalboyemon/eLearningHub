@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddAdmin = () => {
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleLog = (e) => {
     setEmail(e.target.value);
@@ -22,10 +25,18 @@ const AddAdmin = () => {
         if (data.modifiedCount > 0) {
           setSuccess(true);
           setEmail("");
+          Swal.fire({
+            position: "center-center",
+            icon: "success",
+            title: "Instructor Added Successfully",
+            showConfirmButton: false,
+            timer: 2500,
+          });
+          navigate("/adminDashboard");
         }
       });
   };
-console.log(email);
+  console.log(email);
   return (
     <>
       <div className="bg-white rounded">
