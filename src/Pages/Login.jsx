@@ -60,7 +60,7 @@ const Login = () => {
                     <input
                       onChange={handleLog}
                       name="password"
-                      type="email"
+                      type="password"
                       className="form-control"
                       id="exampleInputEmail1"
                       placeholder="Type Here"

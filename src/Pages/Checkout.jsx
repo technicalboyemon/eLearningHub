@@ -187,20 +187,20 @@ const Checkout = () => {
                           <div className="px-2">
                             <div className="h5">{i?.name}</div>
                             <div className="text-secondary">by {i?.instructorName}</div>
-                            <div>${i.price}</div>
+                            <div>€{i.price}</div>
                           </div>
                         </div>
                       ))}
 
                       <div className="d-flex align-items-center justify-content-between text-secondary pt-5 pb-4">
                         <span>Subtotal</span>
-                        <span>${cartTotal}</span>
+                        <span>€{cartTotal}</span>
                       </div>
                       {/* <hr /> */}
 
                       <div className="d-flex align-items-center justify-content-between fs-5 fw-bold">
                         <span>Total</span>
-                        <span>${cartTotal}</span>
+                        <span>€{cartTotal}</span>
                       </div>
                     </div>
                   </div>

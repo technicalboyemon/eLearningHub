@@ -33,7 +33,7 @@ const Password = () => {
                     </label>
                     <input
                       onBlur={getPassword}
-                      type="text"
+                      type="password"
                       className="form-control"
                       id="exampleInputEmail1"
                       placeholder="Type Here"

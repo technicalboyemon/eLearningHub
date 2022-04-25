@@ -148,7 +148,13 @@ const useHooks = () => {
     setIsLoading(true);
     sendPasswordResetEmail(auth, forgetEmail)
       .then(() => {
-        // Password reset email sent!
+        Swal.fire({
+          position: "center-center",
+          icon: "success",
+          title: "Check Your Email",
+          showConfirmButton: false,
+          timer: 2500,
+        });
       })
       .catch((error) => {
         setError(error.message);

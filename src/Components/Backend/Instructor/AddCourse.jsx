@@ -201,7 +201,7 @@ const AddCourse = () => {
             <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li className="nav-item" role="presentation">
                 <div
-                  className="px-4 py-2 rounded bg-black text-white mx-1 pointer active"
+                  className="px-4 py-2 rounded bg-black text-white mx-1 pointer"
                   id="pills-profile-tab"
                   data-bs-toggle="pill"
                   data-bs-target="#pills-profile"

@@ -56,7 +56,7 @@ const CourseList = () => {
                             {i?.instructorName}
                           </span>
                         </div>
-                        <span>${i?.price}</span>
+                        <span>€{i?.price}</span>
                       </div>
                     </div>
                     <div className="p-3 d-flex justify-content-between align-items-center">

@@ -175,7 +175,7 @@ const CourseDetails = () => {
             <div className="col-md-4">
               <div className="purchaseArea shadow">
                 <div className="bg-white rounded p-4 border-bottom">
-                  <div className="fs-3 ">${CourseDetails.price}</div>
+                  <div className="fs-3 ">€{CourseDetails.price}</div>
                   <div
                     onClick={courseBuy}
                     to="/courseList"

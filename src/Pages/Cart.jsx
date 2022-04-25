@@ -41,7 +41,7 @@ const Cart = () => {
                         <p className="fs-5">{i.name}</p>
                         <p className="text-secondary">By {i?.instructorName}</p>
                         <div className="d-flex justify-content-between">
-                          <p className="fs-5">${i.price}</p>
+                          <p className="fs-5">€{i.price}</p>
                           <span className="fs-5" onClick={() => removeItem(i.id)}>
                             <svg
                               width="18"
@@ -93,13 +93,13 @@ const Cart = () => {
                 <div className="bg-white p-4 my-3 rounded">
                   <div className="d-flex align-items-center justify-content-between text-secondary">
                     <span>Subtotal</span>
-                    <span>${cartTotal}</span>
+                    <span>€{cartTotal}</span>
                   </div>
                   <hr />
 
                   <div className="d-flex align-items-center justify-content-between fs-5 fw-bold">
                     <span>Total</span>
-                    <span>${cartTotal}</span>
+                    <span>€{cartTotal}</span>
                   </div>
                   <Link
                     to="/checkout"
