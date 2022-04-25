@@ -2,8 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Pages/About";
 import Cart from "./Pages/Cart";
-import CategoryList from "./Pages/CategoryList";
-import CategoryDetails from "./Pages/CategoryDetails";
 import Checkout from "./Pages/Checkout";
 import Contact from "./Pages/Contact";
 import CourseDetails from "./Pages/CourseDetails";
@@ -38,19 +36,19 @@ import Password from "./Pages/Password";
 import ConfirmedEmail from "./Pages/ConfirmedEmail";
 import ForgetPassword from "./Pages/ForgetPassword";
 import PrivateOutlet from "./Routes/PrivateOutlet";
+import AddCategory from "./Components/Backend/Admin/AddCategory";
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path="cart" element={<Cart />} />
         <Route path="courseList" element={<CourseList />} />
         <Route path="courses/:id" element={<CourseDetails />} />
-        <Route path="category" element={<CategoryList />} />
-        <Route path="category/:categoryID" element={<CategoryDetails />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="instructorRegister" element={<InstructorRegister />} />
@@ -78,6 +76,7 @@ function App() {
         <Route path="adminDashboard" element={<AdminDashboard />}>
           <Route index element={<AdminWelcome />} />
           <Route path="addAdmin" element={<AddAdmin />} />
+          <Route path="addCategory" element={<AddCategory />} />
           <Route path="addInstructor" element={<AddInstructor />} />
           <Route path="addStudent" element={<AddStudent />} />
           <Route path="addCourse" element={<AddCourse />} />
@@ -86,7 +85,6 @@ function App() {
           <Route path="totalInstructor" element={<TotalInstructor />} />
           <Route path="account" element={<Account />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthProvider>
   );

@@ -15,7 +15,7 @@ const ForgetPassword = () => {
       <NavBar />
       <div className="my-5">
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row py-3 align-items-center">
             <div className="col-md-6">
               <div className="loginFrom">
                 <h1 className="fw-bolder">Forget Password</h1>

@@ -6,7 +6,7 @@ const AuthBanner = () => {
         <img
           className="w-100"
           src="https://eduguard-html.netlify.app/dist/images/signup/Illustration.png"
-          alt="Login Banner"
+          alt="Auth Banner"
         />
       </div>
   );

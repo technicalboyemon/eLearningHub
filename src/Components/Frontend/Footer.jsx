@@ -14,13 +14,13 @@ const Footer = () => {
         <div className="container  py-3">
           <div className="row py-5 ">
             <div className="col-md-6">
-              <img
+              {/* <img
                 src="https://eduguard-html.netlify.app/dist/images/logo/footerlogo.png"
                 alt=""
-              />
+              /> */}
+              <h1 className="fw-bolder text-white display-4">eLearning</h1>
               <p className="w-75 text-secondary py-1">
-                Duis posuere maximus arcu eu tincidunt. Nam rutrum, nibh vitae
-                tempus venenatis, ex tortor ultricies magna.
+              eLearning teachers are icons, experts, and industry rock stars excited to share their experience, wisdom, and trusted tools with you.
               </p>
               <p>
                 <span className="text-white">
@@ -46,7 +46,7 @@ const Footer = () => {
               <span className="d-block py-2 text-white fs-5">Company</span>
               <span className="d-block py-1 text-secondary">About Us</span>
               <span className="d-block py-1 text-secondary">Courses</span>
-              <span className="d-block py-1 text-secondary">career</span>
+              <span className="d-block py-1 text-secondary">Career</span>
               <span className="d-block py-1 text-secondary">Affiliate</span>
             </div>
             <div className="col-md-2">
@@ -55,7 +55,7 @@ const Footer = () => {
                 Help & Supports
               </span>
               <span className="d-block py-1 text-secondary">
-                Pravacy Polocy
+                Privacy Policy
               </span>
               <span className="d-block py-1 text-secondary">FAQs</span>
               <span className="d-block py-1 text-secondary">Contact Us</span>

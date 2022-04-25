@@ -27,7 +27,7 @@ const FAQ = () => {
                   aria-expanded="true"
                   aria-controls="panelsStayOpen-collapseOne"
                 >
-                  Accordion Item #1
+                  Who is this course for?
                 </button>
               </h2>
               <div
@@ -36,15 +36,13 @@ const FAQ = () => {
                 aria-labelledby="panelsStayOpen-headingOne"
               >
                 <div className="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It
-                  is shown by default, until the collapse plugin adds the
-                  appropriate classes that we use to style each element. These
-                  classes control the overall appearance, as well as the showing
-                  and hiding via CSS transitions. You can modify any of this
-                  with custom CSS or overriding our default variables. It's also
-                  worth noting that just about any HTML can go within the{" "}
-                  <code>.accordion-body</code>, though the transition does limit
-                  overflow.
+                  Those who want to be a web developer. For those who learn web
+                  development from scratch and then want to work for a software
+                  company as a web developer. For those who don't know much
+                  about programming or web development. Even those who have not
+                  been able to figure out how to do it even after four years of
+                  CSE, and have not learned much, will also be able to apply for
+                  a job by learning Complete Web Development from this course.
                 </div>
               </div>
             </div>
@@ -58,7 +56,8 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseTwo"
                 >
-                  Accordion Item #2
+                  What prior experience do I need to have before starting this
+                  course?
                 </button>
               </h2>
               <div
@@ -67,15 +66,14 @@ const FAQ = () => {
                 aria-labelledby="panelsStayOpen-headingTwo"
               >
                 <div className="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It
-                  is hidden by default, until the collapse plugin adds the
-                  appropriate classes that we use to style each element. These
-                  classes control the overall appearance, as well as the showing
-                  and hiding via CSS transitions. You can modify any of this
-                  with custom CSS or overriding our default variables. It's also
-                  worth noting that just about any HTML can go within the{" "}
-                  <code>.accordion-body</code>, though the transition does limit
-                  overflow.
+                  Since we are teaching from scratch. So you don't have to know
+                  that much in advance. But if you have time, you can do these
+                  three things. <br /> 1. You just have to be more
+                  discriminating with the help you render toward other people.{" "}
+                  <br /> 2. Joining the course will not make you an auto web
+                  developer. You have to have the mentality to work hard, to
+                  stick. <br /> 3. If you are stuck somewhere, you have to have
+                  the mentality to seek help and the desire to stick.
                 </div>
               </div>
             </div>
@@ -89,7 +87,7 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseThree"
                 >
-                  Accordion Item #3
+                  What's in the course?
                 </button>
               </h2>
               <div
@@ -98,22 +96,113 @@ const FAQ = () => {
                 aria-labelledby="panelsStayOpen-headingThree"
               >
                 <div className="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It
-                  is hidden by default, until the collapse plugin adds the
-                  appropriate classes that we use to style each element. These
-                  classes control the overall appearance, as well as the showing
-                  and hiding via CSS transitions. You can modify any of this
-                  with custom CSS or overriding our default variables. It's also
-                  worth noting that just about any HTML can go within the{" "}
-                  <code>.accordion-body</code>, though the transition does limit
-                  overflow.
+                  You can understand that only by looking at the course
+                  curriculum. But in short, this course has everything you need
+                  to be a serious web developer right now. In short, there is
+                  HTML, CSS, bootstrap, JavaScript, Git, ES6, REST API, server,
+                  JSON. At the same time, there is a system to create a complete
+                  website with the React, advanced React framework that is the
+                  most employed at present. In addition there are many more
+                  things including node, database (mongodb), debug, problem
+                  solving, interview questions. And throughout the course you
+                  will be shown 11 websites. There will be 11 more websites as
+                  your homework. There is no way out without being a good junior
+                  web developer if you can finish this whole thing somehow.
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  How to get course videos?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                className="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree"
+              >
+                <div className="accordion-body">
+                  Course videos will be pre-recorded. You opened an account and
+                  enrolled in this course. The videos will be given one module
+                  per day from the beginning of the course. Each module usually
+                  contains 10 to 12 videos. You must watch and finish these
+                  videos within the day they are released. So you have to have a
+                  dedicated time every day for the course. And in that time, if
+                  you want, you can watch the video lying down, standing,
+                  leaning, shaking your legs, dancing, or hiding under the bed.
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  What is the educational background to do the course?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                className="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree"
+              >
+                <div className="accordion-body">
+                  We have arranged the course in a way that does not matter the
+                  academic background. You can do this course from any academic
+                  background. It has been started from scratch so that varsity
+                  students, college students, employees, unemployed, boyfriends,
+                  runaway boyfriends, even girlfriends who don't pick up the
+                  phone can learn if they want. However, the time must be given
+                  7-8 hours. Minimum 4-5 hours.
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  What things do I need?
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                className="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree"
+              >
+                <div className="accordion-body">
+                  First of all it takes dedicated time. Must 7-8 hours daily. If
+                  possible, 8-10 hours (if you can't afford it. If you don't
+                  want to work hard, enrolling in the course will be of no use.)
+                  Internet of 10 Mbps. It is better to have broadband so that
+                  the video of the course can be seen well. If you want to be a
+                  professional web developer, you have to go through a minimum
+                  of 4 months of serious hard work.
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

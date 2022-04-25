@@ -1,12 +1,12 @@
 import React from "react";
-import AboutImg from "./../Images/aboutUs.jpg";
+import AboutImg from "./../Images/contactUs.jpg";
 import MeetInstructor from "./../Components/Frontend/MeetInstructor";
 import NavBar from "../Components/Frontend/NavBar";
 import Footer from "../Components/Frontend/Footer";
 const About = () => {
   return (
     <>
-    <NavBar />
+      <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
           <span> Home &gt; About </span>
@@ -23,14 +23,14 @@ const About = () => {
             <div className="aboutInfo">
               <h1 className="fw-bolder">A Great Place To Grow.</h1>
               <p>
-                Vestibulum efficitur accumsan sapien ut lacinia. Sed euismod
-                ullamcorper rhoncus. Phasellus interdum rutrum nisi ut lacinia.
-                Nulla et sapien at turpis viverra. Cras odio ex, posuere id est
-                et, viverra condimentum felis
+                Whether we are eLearning or not, our goal is to help those who
+                seriously want to be programming heroes. Making their learning
+                process enjoyable and effective. In this endeavor we are
+                constantly learning new things, trying.
               </p>
               <p>
-                congue quis non odio. Aliquam sem ligula, commodo quis ipsum
-                mattis, lacinia cursus magna.
+                The thing I thought couldn’t be possible a year or two ago, is
+                actually happening.
               </p>
             </div>
           </div>
@@ -40,28 +40,30 @@ const About = () => {
             <div className="aboutBoxBlack bg-dark rounded p-5 border border-3 border-dark">
               <h2 className="text-white">Who We Are</h2>
               <p className="text-secondary">
-                Suspendisse potenti. Pellentesque augue ligula, dictum at
-                pretium eu, fermentum sit amet risus. Maecenas congue feugiat
-                libero, sed euismod urna congue eleifend. Maecenas et gravida
-                felis.
+                At eLearning, we’ve seen again and again how the seemingly
+                simple act of creating can be a force for growth, change, and
+                discovery in people’s lives. We want to inspire and multiply the
+                kind of creative exploration that furthers expression, learning
+                and application.
               </p>
             </div>
           </div>
           <div className="col-md-6">
             <div className="aboutBoxBlack border border-3 border-light rounded p-5">
-              <h2>Who We Are</h2>
+              <h2>What We Are</h2>
               <p className="text-secondary">
-                Suspendisse potenti. Pellentesque augue ligula, dictum at
-                pretium eu, fermentum sit amet risus. Maecenas congue feugiat
-                libero, sed euismod urna congue eleifend. Maecenas et gravida
-                felis.
+                eLearning is an online learning community with thousands of
+                classes for creative and curious people, on topics including
+                illustration, design, photography, video, freelancing, and more.
+                On eLearning, members come together to find inspiration and take
+                the next step in their creative journey.
               </p>
             </div>
           </div>
         </div>
       </div>
       <MeetInstructor />
-      <Footer/>
+      <Footer />
     </>
   );
 };

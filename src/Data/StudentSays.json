@@ -2,36 +2,29 @@
   {
     "title": "Emon",
     "subtitle": "Developer",
-    "image": "https://eduguard-html.netlify.app/dist/images/avatar/avatar-img-01.png",
+    "image": "https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1632030426912.jpg",
     "rating": 5,
-    "description": "Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis."
+    "description": "Once Upon A Time, I Hated JavaScript. BUT Now, I Started To Love JavaScript. Thanks, My Mentor From eLearning, My Brother Shahariar Rahman Sajib."
   },
   {
-    "title": "Emon",
+    "title": "Rakibul Islam",
     "subtitle": "Developer",
-    "image": "https://eduguard-html.netlify.app/dist/images/avatar/avatar-img-01.png",
+    "image": "https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1623253204842.jpg",
     "rating": 5,
-    "description": "Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis."
+    "description": "Joining the eLearning Web Development course was a turning point for me. In the past, I was trying to learn a little bit but it was not possible to move forward"
   },
   {
-    "title": "Emon",
+    "title": "Sulaiman Hosain",
     "subtitle": "Developer",
-    "image": "https://eduguard-html.netlify.app/dist/images/avatar/avatar-img-01.png",
-    "rating": 5,
-    "description": "Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis."
+    "image": "https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1642387589071.jpg",
+    "rating": 4,
+    "description": "After taking the course from Programming Hero, I developed a dedication to my work that I did not have before. Also, I learn more about web application technology"
   },
   {
-    "title": "Emon",
+    "title": "Moeen Uddin Mahmud",
     "subtitle": "Developer",
-    "image": "https://eduguard-html.netlify.app/dist/images/avatar/avatar-img-01.png",
+    "image": "https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1637388001199.jpg",
     "rating": 5,
-    "description": "Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis."
-  },
-  {
-    "title": "Emon",
-    "subtitle": "Developer",
-    "image": "https://eduguard-html.netlify.app/dist/images/avatar/avatar-img-01.png",
-    "rating": 5,
-    "description": "Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis."
+    "description": "This course was a life-changer for me. I learned how to stay consistent, persistent and more importantly, I learned 'how to learn'. The teaching style of eLearning is Great"
   }
 ]

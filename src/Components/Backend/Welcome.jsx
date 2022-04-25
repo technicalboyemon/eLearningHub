@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 
 const Welcome = () => {
-  const {user, logout} = useAuth()
+  const {user} = useAuth()
   const [ userInfo, setUserInfo ] = useState({});
   useEffect(() => {
     const url = `http://localhost:5000/users/account?email=${user.email}`;
@@ -10,7 +10,6 @@ const Welcome = () => {
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, []);
-  console.log(userInfo);
   return (
     <div>
       <div className="row">

@@ -5,7 +5,7 @@ import LOGO from "./../../Images/logo.png";
 import useAuth from "./../../Hooks/useAuth.jsx";
 import { useCart } from "react-use-cart";
 const NavBar = () => {
-  const { user, logout } = useAuth();
+  const { user, admin } = useAuth();
   const { totalItems } = useCart();
   return (
     <div className="container">
@@ -88,23 +88,31 @@ const NavBar = () => {
                     </button>
                   </Link>
                 ) : (
-                  <Link to="/dashboard">
-                    <img
-                      width="45px"
-                      className="rounded-circle"
-                      src="https://eduguard-html.netlify.app/dist/images/user/user-img-01.jpg"
-                      alt=""
-                    />
-                  </Link>
+                  <>
+                    {admin ? (
+                      <Link to="/adminDashboard">
+                        <img
+                          width="45px"
+                          height="45px"
+                          className="profilePic"
+                          src={user.photoURL ? user.photoURL : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg" }
+                          alt="Profile"
+                        />
+                      </Link>
+                    ) : (
+                      <Link to="/dashboard">
+                        <img
+                          width="45px"
+                          height="45px"
+                          className="profilePic"
+                          src={user.photoURL ? user.photoURL : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg" }
+                          alt="Profile"
+                        />
+                      </Link>
+                    )}
+                  </>
                 )}
               </li>
-              {/* <li className="nav-item">
-                <Link className="nav-link" to="/register">
-                  <button type="button" className="btn btn-dark">
-                    Register
-                  </button>
-                </Link>
-              </li> */}
             </ul>
           </div>
         </div>

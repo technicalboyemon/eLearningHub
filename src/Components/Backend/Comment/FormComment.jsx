@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 
-const FormComment = ({ blog_id, blog_user_id, type, reply, setReply }) => {
+const FormComment = ({ blog_id, type, reply, setReply }) => {
   const { realTime, user } = useAuth();
   const [loading, setLoading] = useState(false);
   const [commentData, setCommentData] = useState("");
@@ -22,31 +22,23 @@ const FormComment = ({ blog_id, blog_user_id, type, reply, setReply }) => {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          user: { email: user.email, avatar: siteUser.photo, name: siteUser.name },
+          user: {
+            email: user.email,
+            avatar: siteUser.photo,
+            name: siteUser.name,
+          },
           content: commentData,
           blog_id: blog_id,
-          email: blog_user_id,
         }),
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
         });
       setCommentData("");
       setLoading(false);
     }
     if (type === "Reply") {
-      // const res = await postAPI(
-      //   "replyComment",
-      //   {
-      //     user: reply.user,
-      //     content: commentData,
-      //     blog_id: blog_id,
-      //     blog_user_id: blog_user_id,
-      //     comment_root: reply,
-      //     reply_user: { _id: user._id, avatar: user.avatar, name: user.name },
-      //   },
-      // );
       setCommentData("");
       setReply(null);
       setLoading(false);
@@ -54,41 +46,47 @@ const FormComment = ({ blog_id, blog_user_id, type, reply, setReply }) => {
   };
 
   return (
-    <div className="my-2">
-      <div className="mb-3">
-        <label htmlFor="comment" className="form-label">
-          {type === "Reply" ? "Reply" : "Comment"}
+    <div className="bg-white">
+      <div className="pb-4 px-4">
+        <label htmlFor="comment" className="form-label py-3 h3 fw-bold">
+          {type === "Reply" ? "Reply" : "Discussion"}
         </label>
-        <textarea
-          disabled={realTime.connected !== true}
-          className="form-control"
-          id="comment"
-          rows={4}
-          onChange={(e) => setCommentData(e.target.value)}
-          value={commentData}
-          placeholder={realTime.connected !== true ? "...Connected..." : ""}
-        />
+        <div className="row">
+          <div className="col-md-9">
+            <textarea
+              disabled={realTime.connected !== true}
+              className="form-control"
+              id="comment"
+              rows={4}
+              onChange={(e) => setCommentData(e.target.value)}
+              value={commentData}
+              placeholder={realTime.connected !== true ? "...Connected..." : ""}
+            />
+          </div>
+          <div className="col-md-3">
+            {loading ? (
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            ) : (
+              <button
+                className="border-0 primaryBgColor text-white px-4 py-2"
+                onClick={handleSubmit}
+              >
+                {type}
+              </button>
+            )}
+            {type === "Reply" && (
+              <button
+                className="btn mx-2 btn-sm bg-color rounded-pill px-4"
+                onClick={() => setReply(null)}
+              >
+                Close
+              </button>
+            )}
+          </div>
+        </div>
       </div>
-      {loading ? (
-        <button className="btn btn-sm bg-color rounded-pill px-4">
-          Loading
-        </button>
-      ) : (
-        <button
-          className="btn btn-sm bg-color rounded-pill px-4"
-          onClick={handleSubmit}
-        >
-          {type}
-        </button>
-      )}
-      {type === "Reply" && (
-        <button
-          className="btn mx-2 btn-sm bg-color rounded-pill px-4"
-          onClick={() => setReply(null)}
-        >
-          Close
-        </button>
-      )}
     </div>
   );
 };

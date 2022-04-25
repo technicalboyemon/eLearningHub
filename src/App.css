@@ -131,6 +131,27 @@ a {
   text-decoration: none;
   overflow: hidden;
 }
+.profilePic {
+  display: inline-flex;
+  margin-right: 16px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  text-decoration: none;
+  overflow: hidden;
+}
+.categoryIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  text-decoration: none;
+  overflow: hidden;
+}
 .contactIcon1 {
   background-color: #e7f3ff;
 }
@@ -150,16 +171,16 @@ a {
 .contactIcon3 svg {
   color: #00af91;
 }
-.secondaryBgColor{
-  background-color: #EBEBF2;
+.secondaryBgColor {
+  background-color: #ebebf2;
 }
-.pointer{
+.pointer {
   cursor: pointer;
 }
 /* button  */
 
 /* From cssbuttons.io by @rhino-corey */
-.cssButton{
+.cssButton {
   display: inline-block;
   position: relative;
   color: #fff;
@@ -172,22 +193,28 @@ a {
   border: none;
   clip-path: polygon(7% 0, 93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%);
   background-color: #000000;
-  background-image: radial-gradient(200% 70% at center 20%, rgba(48,44,45,1) -30%, rgba(50,46,47,1) 49%, rgba(22,18,19,1) 50%, rgba(22,18,19,1) 150%);
+  background-image: radial-gradient(
+    200% 70% at center 20%,
+    rgba(48, 44, 45, 1) -30%,
+    rgba(50, 46, 47, 1) 49%,
+    rgba(22, 18, 19, 1) 50%,
+    rgba(22, 18, 19, 1) 150%
+  );
   background-repeat: no-repeat;
   transition: background-position-y ease-in-out 250ms;
- }
- 
- button:hover {
+}
+
+button:hover {
   background-position-y: -50px;
- }
- 
- button:active {
+}
+
+button:active {
   transform: scale(0.99);
- }
+}
 
- /* End Button  */
+/* End Button  */
 
- /* From cssbuttons.io by @adamgiebl */
+/* From cssbuttons.io by @adamgiebl */
 /* Hide the default checkbox */
 .containerCheck input {
   position: absolute;
@@ -195,18 +222,18 @@ a {
   cursor: pointer;
   height: 0;
   width: 0;
- }
- 
- .containerCheck {
+}
+
+.containerCheck {
   display: block;
   position: relative;
   cursor: pointer;
   font-size: 20px;
   user-select: none;
- }
- 
- /* Create a custom checkbox */
- .checkmark {
+}
+
+/* Create a custom checkbox */
+.checkmark {
   position: relative;
   top: 0;
   left: 0;
@@ -215,29 +242,29 @@ a {
   background-color: #ccc;
   transition: all 0.3s;
   border-radius: 5px;
- }
- 
- /* When the checkbox is checked, add a blue background */
- .containerCheck input:checked ~ .checkmark {
+}
+
+/* When the checkbox is checked, add a blue background */
+.containerCheck input:checked ~ .checkmark {
   background-color: #47da99;
   animation: pop 0.5s;
   animation-direction: alternate;
- }
- 
- /* Create the checkmark/indicator (hidden when not checked) */
- .checkmark:after {
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
   content: "";
   position: absolute;
   display: none;
- }
- 
- /* Show the checkmark when checked */
- .containerCheck input:checked ~ .checkmark:after {
+}
+
+/* Show the checkmark when checked */
+.containerCheck input:checked ~ .checkmark:after {
   display: block;
- }
- 
- /* Style the checkmark/indicator */
- .containerCheck .checkmark:after {
+}
+
+/* Style the checkmark/indicator */
+.containerCheck .checkmark:after {
   left: 0.45em;
   top: 0.25em;
   width: 0.25em;
@@ -245,21 +272,21 @@ a {
   border: solid white;
   border-width: 0 0.15em 0.15em 0;
   transform: rotate(45deg);
- }
- 
- @keyframes pop {
+}
+
+@keyframes pop {
   0% {
-   transform: scale(1);
+    transform: scale(1);
   }
- 
+
   50% {
-   transform: scale(0.9);
+    transform: scale(0.9);
   }
- 
+
   100% {
-   transform: scale(1);
+    transform: scale(1);
   }
- }
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -268,17 +295,17 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #96cbff; 
+  background: #96cbff;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #3499fd; 
+  background: #3499fd;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #0080ff; 
+  background: #0080ff;
 }
 
 .text-small {
@@ -303,32 +330,32 @@ input::placeholder {
   color: #999;
 }
 
-.purchaseArea{
-  margin-top: -120px !important;
+.purchaseArea {
+  margin-top: -175px !important;
 }
-.dashboardBg{
-  background-color: #E7ECF8 !important;
+.dashboardBg {
+  background-color: #e7ecf8 !important;
 }
-.dProfile{
-  background-color: #F5F7FA;
+.dProfile {
+  background-color: #f5f7fa;
 }
-.mobile-dashboard{
+.mobile-dashboard {
   display: none !important;
 }
-@media (max-width: 767.98px) { 
-  .mobile-dashboard{
+@media (max-width: 767.98px) {
+  .mobile-dashboard {
     display: block !important;
     /* overflow-x: scroll; */
   }
-  .desktop-dashboard{
+  .desktop-dashboard {
     display: none !important;
   }
-  .loginFrom .w-75{
+  .loginFrom .w-75 {
     width: 100% !important;
   }
-  .dashboardProfile{
+  .dashboardProfile {
     flex-direction: column;
     text-align: center;
     /* padding-top: 20px; */
-  } 
- }
+  }
+}

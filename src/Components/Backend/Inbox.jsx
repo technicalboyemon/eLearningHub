@@ -9,7 +9,7 @@ const Inbox = () => {
           <div className="bg-gray px-4 py-3 bg-light">
             <p className="h5 mb-0 py-1">Recent</p>
           </div>
-
+ 
           <div className="messages-box">
             <div className="list-group rounded-0">
               <a className="list-group-item list-group-item-action active text-white rounded-0">

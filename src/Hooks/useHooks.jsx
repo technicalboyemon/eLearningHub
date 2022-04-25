@@ -19,10 +19,12 @@ const useHooks = () => {
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [forgetEmail, setForgetEmail] = useState("");
-  const [loading, setLoading] = useState(true);
-  const auth = getAuth();
-
+  const [isLoading, setIsLoading] = useState(true);
   const [realTime, setRealTime] = useState(null);
+  const [instructor, setInstructor] = useState({});
+  const [admin, setAdmin] = useState({});
+
+  const auth = getAuth();
 
   useEffect(() => {
     const socket = io("http://localhost:5000/");
@@ -32,7 +34,20 @@ const useHooks = () => {
     };
   }, []);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/account?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setInstructor(data[0]?.isInstructor));
+  }, [user.email]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/account?email=${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data[0]?.isAdmin));
+  }, [user.email]);
+
   const loginUser = (email, password) => {
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
         const user = result.user;
@@ -40,7 +55,8 @@ const useHooks = () => {
       })
       .catch((error) => {
         console.log(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const actionCodeSettings = {
@@ -49,16 +65,19 @@ const useHooks = () => {
   };
 
   const AuthEmailSend = (email) => {
+    setIsLoading(true);
     sendSignInLinkToEmail(auth, email, actionCodeSettings)
       .then(() => {
         window.localStorage.setItem("emailForSignIn", email);
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const AuthEmailLogin = () => {
+    setIsLoading(true);
     if (isSignInWithEmailLink(auth, window.location.href)) {
       let email = window.localStorage.getItem("emailForSignIn");
       if (!email) {
@@ -71,7 +90,8 @@ const useHooks = () => {
         })
         .catch((error) => {
           setError(error.message);
-        });
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 
@@ -82,39 +102,48 @@ const useHooks = () => {
       } else {
         setUser({});
       }
+      setIsLoading(false);
     });
     return () => unSub;
   }, []);
 
   const logout = () => {
+    setIsLoading(true);
     signOut(auth)
       .then(() => {
         setUser({});
       })
-      .catch((error) => {});
+      .catch((error) => {})
+      .finally(() => setIsLoading(false));
   };
   const UpdatePass = () => {
+    setIsLoading(true);
     const user = auth.currentUser;
     const newPassword = password;
     updatePassword(user, newPassword)
       .then(() => {})
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const ForgetPassword = () => {
+    setIsLoading(true);
     sendPasswordResetEmail(auth, forgetEmail)
       .then(() => {
         // Password reset email sent!
-        // ..
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
+
   return {
     user,
+    admin,
+    instructor,
     logout,
     error,
     AuthEmailSend,
@@ -124,7 +153,8 @@ const useHooks = () => {
     loginUser,
     ForgetPassword,
     setForgetEmail,
-    realTime
+    realTime,
+    isLoading,
   };
 };
 

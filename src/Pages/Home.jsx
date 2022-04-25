@@ -9,12 +9,8 @@ import MeetInstructor from "../Components/Frontend/MeetInstructor";
 import NavBar from "../Components/Frontend/NavBar";
 import PopularCourses from "../Components/Frontend/PopularCourses";
 import StudentsSays from "../Components/Frontend/StudentsSays";
-import useAuth from "../Hooks/useAuth";
 
 const Home = () => {
-  const { user } = useAuth();
-  console.log(user);
-
   return (
     <>
       <NavBar />

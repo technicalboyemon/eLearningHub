@@ -1,20 +1,42 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
+import { getAuth, updateProfile } from "firebase/auth";
+const auth = getAuth();
 
 const Account = () => {
   const { user, setPassword, UpdatePass } = useAuth();
   const [updateUser, setUpdateUser] = useState({});
-  const [accountInfo, setAccountInfo] = useState({});
+  // const [accountInfo, setAccountInfo] = useState({});
+  const [profilePic, setProfilePic] = useState("");
+  const [preLoading, setPreLoading] = useState(false);
+  const [name, setName] = useState(updateUser?.name);
+  const [profession, setProfession] = useState("");
+  const [about, setAbout] = useState("");
+  const [phone, setPhone] = useState("");
+  const [national, setNational] = useState("");
+  console.log(updateUser[0]?.name);
+
+  useEffect(() => {
+    setName(updateUser?.name);
+  }, [updateUser?.name]);
 
   const getPassword = (e) => {
     setPassword(e.target.value);
   };
 
-  const handleInput = (e) => {
-    let input = { [e.target.name]: e.target.value };
-    setAccountInfo({ ...accountInfo, ...input });
-  };
+  // const handleInput = (e) => {
+  //   let input = { [e.target.name]: e.target.value };
+  //   setAccountInfo({ ...accountInfo, ...input });
+  // };
 
+  const accountInfo = {
+    name: name,
+    profession,
+    about,
+    phone,
+    national,
+  };
+  console.log(accountInfo);
   useEffect(() => {
     const url = `http://localhost:5000/users/account?email=${user.email}`;
     fetch(url)
@@ -38,6 +60,32 @@ const Account = () => {
       });
   };
 
+  const profileImage = async () => {
+    setPreLoading(true);
+    const formData = new FormData();
+    formData.append("file", profilePic);
+    formData.append("upload_preset", "elearning");
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/elearning-hub/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const file = await res.json();
+    if (file.asset_id) {
+      updateProfile(auth.currentUser, {
+        photoURL: file.url,
+      })
+        .then(() => {
+          // Profile updated!
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      setPreLoading(false);
+    }
+  };
   return (
     <div>
       <div className="row">
@@ -47,24 +95,24 @@ const Account = () => {
             <div className="w-100">
               <div className="my-4">
                 <label
-                  htmlFor="exampleInputEmail1"
+                  htmlFor="name"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>Full Name</span>
                 </label>
                 <input
-                  onBlur={(e) => handleInput(e)}
+                  onBlur={(e) => setName(e.target.value)}
                   defaultValue={updateUser[0]?.name}
                   name="name"
                   type="text"
                   className="form-control"
-                  id="exampleInputEmail1"
+                  id="name"
                   placeholder="Type Here"
                 />
               </div>
               <div className="my-4">
                 <label
-                  htmlFor="exampleInputEmail1"
+                  htmlFor="email"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>Email</span>
@@ -74,40 +122,41 @@ const Account = () => {
                   defaultValue={user.email}
                   type="email"
                   className="form-control"
-                  id="exampleInputEmail1"
+                  id="email"
                   placeholder="example@mail.com"
                 />
               </div>
-              {/* <div className="my-4">
+              <div className="my-4">
                 <label
-                  htmlFor="exampleInputEmail1"
+                  htmlFor="profession"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>What Do You Do</span>
                 </label>
                 <input
-                  onBlur={(e) => handleInput(e)}
+                  onBlur={(e) => setProfession(e.target.value)}
+                  name="profession"
                   type="text"
                   className="form-control"
-                  id="exampleInputEmail1"
+                  id="profession"
                   placeholder="Developer"
-                  // defaultValue={updateUser[0]?.profession}
+                  defaultValue={updateUser[0]?.profession}
                 />
-              </div> */}
+              </div>
               <div className="my-4">
                 <label
-                  htmlFor="exampleInputEmail1"
+                  htmlFor="about"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>About Yourself</span>
                 </label>
                 <textarea
-                  onBlur={(e) => handleInput(e)}
+                  onBlur={(e) => setAbout(e.target.value)}
                   rows="3"
                   name="about"
                   type="text"
                   className="form-control"
-                  id="exampleInputEmail1"
+                  id="about"
                   placeholder="Type Here"
                   defaultValue={updateUser[0]?.about}
                 />
@@ -116,17 +165,17 @@ const Account = () => {
                 <div className="col-md-6">
                   <div className="my-4">
                     <label
-                      htmlFor="exampleInputEmail1"
+                      htmlFor="number"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>Phone Number</span>
                     </label>
                     <input
-                      onBlur={(e) => handleInput(e)}
+                      onBlur={(e) => setPhone(e.target.value)}
                       name="phone"
                       type="text"
                       className="form-control"
-                      id="exampleInputEmail1"
+                      id="number"
                       placeholder="+880 1921412932"
                       defaultValue={updateUser[0]?.phone}
                     />
@@ -141,7 +190,7 @@ const Account = () => {
                       <span>Nationality</span>
                     </label>
                     <input
-                      onBlur={(e) => handleInput(e)}
+                      onBlur={(e) => setNational(e.target.value)}
                       type="text"
                       name="national"
                       className="form-control"
@@ -167,13 +216,37 @@ const Account = () => {
         <div className="col-md-3">
           <div className="text-center bg-white rounded p-4 mb-3">
             <img
-              className="rounded-circle w-100"
-              src="https://eduguard-html.netlify.app/dist/images/user/user-img-01.jpg"
+              width="150px"
+              height="150px"
+              className="profilePic"
+              src={
+                user.photoURL
+                  ? user.photoURL
+                  : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg"
+              }
               alt="Profile"
             />
-            <button type="button" className="btn btn-outline-primary my-3">
-              Change Image
-            </button>
+            <input
+              className="py-2"
+              style={{ width: "110px" }}
+              onChange={(e) => setProfilePic(e.target.files[0])}
+              type="file"
+              name="photo"
+              id="profile"
+            />
+            {preLoading ? (
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            ) : (
+              <button
+                onClick={profileImage}
+                type="button"
+                className="btn btn-outline-primary my-3"
+              >
+                Change Image
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -184,7 +257,7 @@ const Account = () => {
             <div className="w-100">
               <div className="my-4">
                 <label
-                  htmlFor="exampleInputEmail1"
+                  htmlFor="password"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
                   <span>New Password</span>
@@ -193,12 +266,13 @@ const Account = () => {
                   onBlur={getPassword}
                   type="password"
                   className="form-control"
-                  id="exampleInputEmail1"
+                  id="password"
                   aria-describedby="emailHelp"
                   placeholder="Type Here"
                 />
               </div>
             </div>
+
             <div className="py-3 text-end">
               <div
                 onClick={UpdatePass}

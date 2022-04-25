@@ -4,7 +4,7 @@ const TotalInstructor = () => {
   const [totalUsers, setTotalUser] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("http://localhost:5000/users/instructor")
       .then((res) => res.json())
       .then((data) => setTotalUser(data));
   }, []);
@@ -32,19 +32,18 @@ const TotalInstructor = () => {
           <table className="table text-center">
             <thead>
               <tr>
-                {/* <th scope="col">#</th> */}
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Category</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               {totalUsers.map((user) => (
                 <tr>
-                  {/* <th>1</th> */}
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  {/* <td>Course Name</td> */}
+                  <td>{user.category}</td>
                   <td>
                     <div className="NavText">
                       <button

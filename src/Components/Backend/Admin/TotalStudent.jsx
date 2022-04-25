@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 const TotalStudent = () => {
   const [totalUsers, setTotalUser] = useState([]);
-  
+
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("http://localhost:5000/users/student")
       .then((res) => res.json())
       .then((data) => setTotalUser(data));
   }, []);
@@ -32,24 +32,22 @@ const TotalStudent = () => {
           <table className="table text-center">
             <thead>
               <tr>
-                {/* <th scope="col">#</th> */}
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
-                {/* <th scope="col">Course</th> */}
+                <th scope="col">Category</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               {totalUsers.map((user) => (
                 <tr>
-                  {/* <th>1</th> */}
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  {/* <td>Course Name</td> */}
+                  <td>{user?.name}</td>
+                  <td>{user?.email}</td>
+                  <td>{user?.category}</td>
                   <td>
                     <div className="NavText">
                       <button
-                        onClick={()=> DeleteUser(user._id)}
+                        onClick={() => DeleteUser(user?._id)}
                         type="button"
                         className="btn btn-dark"
                       >
@@ -59,19 +57,6 @@ const TotalStudent = () => {
                   </td>
                 </tr>
               ))}
-              {/* <tr>
-                <th>1</th>
-                <td>Emon Ahmed</td>
-                <td>Development</td>
-                <td>Web Course</td>
-                <td>
-                  <div className="NavText">
-                    <button type="button" className="btn btn-dark">
-                      Remove
-                    </button>
-                  </div>
-                </td>
-              </tr> */}
             </tbody>
           </table>
         </div>

@@ -28,7 +28,7 @@ const Login = () => {
       <NavBar />
       <div className="my-5">
         <div className="container">
-          <div className="row">
+          <div className="row py-3">
             <div className="col-md-6">
               <div className="loginFrom">
                 <h1 className="fw-bolder">Login</h1>

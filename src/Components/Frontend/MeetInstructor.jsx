@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import useAuth from "../../Hooks/useAuth";
 
 const MeetInstructor = () => {
+  const {user} = useAuth()
   const [instructorData, setInstructorData] = useState([]);
 
   useEffect(() => {
@@ -23,31 +25,28 @@ const MeetInstructor = () => {
               breakpoints={{
                 640: {
                   slidesPerView: 2,
-                  // spaceBetween: 20,
                 },
                 768: {
                   slidesPerView: 3,
-                  // spaceBetween: 40,
                 },
                 1024: {
                   slidesPerView: 5,
-                  // spaceBetween: 50,
                 },
               }}
               className="mySwiper"
             >
-              {instructorData.map((i) => (
-                <SwiperSlide className="mx-2 my-5">
+              {instructorData.map((i,index) => (
+                <SwiperSlide key={index} className="mx-2 my-5">
                   <div>
                     <img
                       className="w-100 h-100 position-relative"
-                      src={i.image}
+                      src={i.preview ? i.preview : "https://png.pngtree.com/png-vector/20190118/ourlarge/pngtree-businessman-vector-icon-png-image_328701.jpg"}
                       alt="Instructor"
                     />
                     <div className="instructorInfo p-3 border border-top-0">
-                      <span className="fw-bold fs-5">{i.title}</span> <br />
+                      <span className="fw-bold fs-5">{i.name}</span> <br />
                       <span className="d-inline-block text-secondary">
-                        {i.subtitle}
+                        {i.category}
                       </span>
                     </div>
                   </div>

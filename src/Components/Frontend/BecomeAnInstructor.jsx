@@ -32,7 +32,7 @@ const BecomeAnInstructor = () => {
             <div className="InstructorBox text-center">
               <img
                 src="https://eduguard-html.netlify.app/dist/images/event/image01.png"
-                alt="Instructor Apply"
+                alt="Student Apply"
               />
               <div className="p-5">
                 <p className="fw-bolder fs-2">Become An Instructor</p>

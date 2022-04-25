@@ -4,6 +4,7 @@ import { useCart } from "react-use-cart";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
   const { user } = useAuth();
@@ -29,7 +30,12 @@ const Checkout = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("Successfully Purchased ");
+          Swal.fire({
+            icon: 'success',
+            title: 'Purchased',
+            text: 'Course Added!',
+            // footer: '<a href="">Why do I have this issue?</a>'
+          })
           emptyCart();
           navigate("/dashboard/enrolledCourse");
         }
@@ -67,16 +73,16 @@ const Checkout = () => {
                             <path
                               d="M39.5 2H5.75C3.67893 2 2 3.67893 2 5.75V28.25C2 30.3211 3.67893 32 5.75 32H39.5C41.5711 32 43.25 30.3211 43.25 28.25V5.75C43.25 3.67893 41.5711 2 39.5 2Z"
                               stroke="#25252E"
-                              stroke-width="3"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             ></path>
                             <path
                               d="M2 13.25H43.25"
                               stroke="#25252E"
-                              stroke-width="3"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
                             ></path>
                           </svg>
                           <div className="h6 py-2">Debit Card</div>
@@ -175,12 +181,12 @@ const Checkout = () => {
                   <div className="h5 fw-bold py-2">Summary</div>
                   <div className="bg-white p-4 rounded">
                     <div>
-                      {items.map((i) => (
-                        <div className="d-flex py-2">
-                          <img src={i?.preview?.url} alt="" className="w-25" />
+                      {items.map((i, index) => (
+                        <div key={index} className="d-flex py-2">
+                          <img src={i?.preview} alt="" className="w-25" />
                           <div className="px-2">
                             <div className="h5">{i?.name}</div>
-                            <div className="text-secondary">by {i.user}</div>
+                            <div className="text-secondary">by {i?.instructorName}</div>
                             <div>${i.price}</div>
                           </div>
                         </div>

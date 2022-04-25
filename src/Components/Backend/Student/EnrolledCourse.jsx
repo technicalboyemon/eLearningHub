@@ -9,16 +9,16 @@ const EnrolledCourse = () => {
       .then((res) => res.json())
       .then((data) => setEnrollCourse(data));
   }, []);
-
+console.log(enrollCourse);
   return (
     <div>
       <div className="row">
-        {enrollCourse.map((i) =>
-          i.purchasedItems.items.map((item) => (
-            <>
-              <div className="col-md-4 my-2">
+        {enrollCourse.map((i, index) => (
+          <div key={index} className="col-md-4 my-2">
+            {i.purchasedItems.items.map((item, index) => (
+              <div key={index}>
                 <div className="courseCard m-1 rounded">
-                  <img src={i.thumbnail} alt="Thumbnail" />
+                  <img  style={{ height: "240px" }} src={item.preview} alt="Thumbnail" />
                   <div className="p-3">
                     <span className="py-2 d-inline-block fs-5">
                       {item.name}
@@ -28,10 +28,14 @@ const EnrolledCourse = () => {
                         <img
                           className="rounded-pill"
                           style={{ width: "40px", height: "40px" }}
-                          src={i.thumbnail}
-                          alt=""
+                          src={
+                            item?.instructorPic
+                              ? item?.instructorPic
+                              : "https://png.pngtree.com/png-vector/20190118/ourlarge/pngtree-businessman-vector-icon-png-image_328701.jpg"
+                          }
+                          alt="Thumbnail"
                         />
-                        <span className="ps-1">{i.instructor}</span>
+                        <span className="ps-1">{item?.instructorProfile?.name}</span>
                       </div>
                       <span className="text-secondary">Developer</span>
                     </div>
@@ -43,9 +47,9 @@ const EnrolledCourse = () => {
                   </Link>
                 </div>
               </div>
-            </>
-          ))
-        )}
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );

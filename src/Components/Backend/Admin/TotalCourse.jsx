@@ -31,7 +31,6 @@ const TotalCourse = () => {
         <table className="table text-center">
           <thead>
             <tr>
-              {/* <th scope="col">#</th> */}
               <th scope="col">Title</th>
               <th scope="col">By</th>
               <th scope="col">Price</th>
@@ -39,12 +38,11 @@ const TotalCourse = () => {
             </tr>
           </thead>
           <tbody>
-            {totalCourse.map((course) => (
-              <tr>
-                {/* <th>1</th> */}
+            {totalCourse.map((course,index) => (
+              <tr key={index}>
                 <td>{course.name}</td>
-                <td>{course.email}</td>
-                <td>{course.price}</td>
+                <td>{course.instructorName}</td>
+                <td>${course.price}</td>
                 <td>
                   <div className="NavText">
                     <button
@@ -58,19 +56,6 @@ const TotalCourse = () => {
                 </td>
               </tr>
             ))}
-            {/* <tr>
-              <th scope="row">2</th>
-              <td>Design</td>
-              <td>Emon Ahmed</td>
-              <td>$50</td>
-              <td>
-                <div className="NavText">
-                  <button type="button" className="btn btn-dark">
-                    Delete
-                  </button>
-                </div>
-              </td>
-            </tr> */}
           </tbody>
         </table>
       </div>

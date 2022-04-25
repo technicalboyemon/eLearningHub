@@ -5,6 +5,9 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper";
 import StudentData from "./../../Data/StudentSays.json";
+import ReactStars from "react-rating-stars-component";
+
+import { BsStarFill } from "react-icons/bs";
 
 const StudentsSays = () => {
   return (
@@ -19,25 +22,24 @@ const StudentsSays = () => {
             breakpoints={{
               640: {
                 slidesPerView: 2,
-                // spaceBetween: 20,
-              }
+              },
             }}
             spaceBetween={30}
             freeMode={true}
-            // pagination={{
-            //   clickable: true,
-            // }}
             modules={[FreeMode, Pagination]}
             className="mySwiper"
           >
-            {StudentData.map((i) => (
-              <SwiperSlide className="StudentSaysData bg-white rounded px-4 pt-4">
+            {StudentData.map((i, index) => (
+              <SwiperSlide
+                key={index}
+                className="StudentSaysData bg-white rounded px-4 pt-4"
+              >
                 <div>
                   <p className="fs-5 text-secondary">{i.description}</p>
                   <div className="d-flex py-4 align-items-center justify-content-between">
                     <div className="d-flex">
                       <div>
-                        <img className="rounded-circle" src={i.image} alt="" />
+                        <img width='45px' className="rounded-circle" src={i.image} alt="Review" />
                       </div>
                       <div className="px-2">
                         <span className="fw-bold d-inline-block">
@@ -47,7 +49,17 @@ const StudentsSays = () => {
                         <span>{i.subtitle}</span>
                       </div>
                     </div>
-                    <div>{i.rating}</div>
+                    <div>
+                      <ReactStars
+                        count={i.rating}
+                        size={24}
+                        fullIcon={<BsStarFill />}
+                        // activeColor="#ffd700"
+                        // style={{'color':'#ffd700'}}
+                        color='#ffd700'
+                        edit={false}
+                      />
+                    </div>
                   </div>
                 </div>
               </SwiperSlide>

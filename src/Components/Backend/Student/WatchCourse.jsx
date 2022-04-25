@@ -3,16 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../../Frontend/Footer";
 import NavBar from "../../Frontend/NavBar";
 import Comment from "../Comment/Comment";
+import ReactPlayer from "react-player";
 
 const WatchCourse = () => {
   const [courseWatch, setCourseWatch] = useState([]);
   const { id } = useParams();
+  const [playList, setPlayList] = useState({});
+  const [playListTitle, setPlayListTitle] = useState({});
+
   useEffect(() => {
     fetch(`http://localhost:5000/courses/${id}`)
       .then((res) => res.json())
       .then((data) => setCourseWatch(data));
   }, []);
-  console.log(courseWatch);
+  console.log(playList);
   return (
     <>
       <NavBar />
@@ -32,41 +36,55 @@ const WatchCourse = () => {
                     <path
                       d="M15.5 19.5L8.5 12.5L15.5 5.5"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></path>
                   </svg>
                 </Link>
               </div>
-              <div className="">
+              {/* <div className="">
                 <Link
                   to="/dashboard/myCourse"
                   className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded text-uppercase"
                 >
                   Next Lesson
                 </Link>
-              </div>
+              </div> */}
             </div>
             <div className="row my-5">
               <div className="col-md-8">
-                <div className="courseVide rounded bg-white">
-                  <img
+                <div className="courseVide  rounded  bg-white">
+                  {/* <img
                     className="rounded w-100"
                     src="https://eduguard-html.netlify.app/dist/images/courses/thumb.jpg"
                     alt=""
-                  />
-                  <div className="h3 p-4">{courseWatch?.name}</div>
-                  <div>
-                  <Comment blog_id={courseWatch?._id} blog_user_id={courseWatch?.user}/>
+                  /> */}
+                  <div className="player-wrapper">
+                    <ReactPlayer
+                      width="100%"
+                      height="100%"
+                      url={playList}
+                      playing
+                      controls
+                    />
                   </div>
+
+                  {/* <div className="h3 p-4">{courseWatch?.name}</div> */}
+                  <div className="h5 fw-bold px-4 py-3">{playListTitle}</div>
+                </div>
+                <div>
+                  <Comment
+                    blog_id={courseWatch?._id}
+                    blog_user_id={courseWatch?.user}
+                  />
                 </div>
               </div>
               <div className="col-md-4 bg-white p-4 rounded h-100">
                 <div className="h5">Course Contents</div>
                 <hr />
-                {courseWatch?.files?.map((file) => (
-                  <div className="row align-items-center py-2 my-2">
+                {courseWatch?.files?.map((file, index) => (
+                  <div key={index} className="row align-items-center py-2 my-2">
                     <div className="col-md-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -75,50 +93,35 @@ const WatchCourse = () => {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         className="feather feather-play-circle"
                       >
                         <circle cx="12" cy="12" r="10"></circle>
                         <polygon points="10 8 16 12 10 16 10 8"></polygon>
                       </svg>
                     </div>
-                    <div className="col-md-9">
-                      <div className="text-black">{file?.addTitle}</div>
+                    <div className="col-md-9 pointer">
+                      <div
+                        className="text-black"
+                        onClick={() => {
+                          setPlayList(file.addFileDataLink);
+                          setPlayListTitle(file.addTitle)
+                        }}
+                      >
+                        {file?.addTitle}
+                      </div>
                     </div>
                     <div className="col-md-2">
-                      <div className="text-black">12.29</div>
+                      <div className="text-black">
+                        {Math.floor(file.duration / 60) +
+                          ":" +
+                          (file.duration % 60 ? file.duration % 60 : "00")}
+                      </div>
                     </div>
                   </div>
                 ))}
-                {/* <div className="row align-items-center py-2 my-2">
-                  <div className="col-md-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      className="feather feather-file"
-                    >
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                      <polyline points="13 2 13 9 20 9"></polyline>
-                    </svg>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="text-black">
-                      2. Introduction to Adobe XD
-                    </div>
-                  </div>
-                  <div className="col-md-2">
-                    <div className="text-black">12.29</div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>

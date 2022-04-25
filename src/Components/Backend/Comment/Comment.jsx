@@ -5,9 +5,8 @@ import FormComment from "./FormComment";
 
 const Comment = ({ blog_id, blog_user_id }) => {
   const { user } = useAuth();
-  console.log(user);
   return (
-    <div className="comment my-5">
+    <div className="my-5 bg-white">
       {user.email && (
         <FormComment
           blog_id={blog_id}

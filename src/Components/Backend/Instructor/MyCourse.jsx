@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 const MyCourse = () => {
   const { user } = useAuth();
@@ -24,30 +25,28 @@ const MyCourse = () => {
         }
       });
   };
+  console.log(myCourse);
   return (
     <div>
       <div className="row">
-        {myCourse.map((i) => (
-          <div className="col-md-4 my-2">
+        {myCourse.map((i, index) => (
+          <div key={index} className="col-md-4 my-2">
             <div className="courseCard m-1 rounded">
-              <img src={i?.thumbnail} alt="Thumbnail" />
+              <img
+                style={{ height: "240px" }}
+                className="w-100"
+                src={i?.preview}
+                alt="Thumbnail"
+              />
               <div className="p-3">
-                <span className="py-2 d-inline-block fs-5">{i.name}</span>
-                <div className="d-flex justify-content-between align-items-center py-1">
-                  <div className="d-flex justify-content-between align-items-center">
-                    <img
-                      className="rounded-pill"
-                      style={{ width: "40px", height: "40px" }}
-                      src={i?.thumbnail}
-                      alt=""
-                    />
-                    <span className="ps-1">{i?.instructor}</span>
-                  </div>
-                  <span className="text-secondary">Developer</span>
-                </div>
+                <span className="py-2 d-inline-block fs-5">{i?.name}</span>
               </div>
               <div className="w-100 text-white text-center text-uppercase fw-bold pointer d-flex">
-                <span className="w-50 primaryBgColor p-3 ">Watch Course</span>
+                <Link className="w-50" to={`/watch/${i._id}`}>
+                  <div className="p-3 primaryBgColor text-white text-center text-uppercase fw-bold pointer">
+                    <span>Watch Course</span>
+                  </div>
+                </Link>
                 <span
                   onClick={() => DeleteUser(i._id)}
                   className="w-50 bg-danger p-3 "

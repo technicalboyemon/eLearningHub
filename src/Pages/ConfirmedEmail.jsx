@@ -19,13 +19,13 @@ const ConfirmedEmail = () => {
       <NavBar />
       <div className="my-5">
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row py-3 align-items-center">
             <div className="col-md-6">
               <div className="loginFrom">
                 <h1 className="fw-bolder">Confirm Your Email</h1>
                 <p className="text-danger">{error}</p>
                 <div className="my-5 w-75">
-                  <div className="my-4 input-group-lg">
+                  <div className="my-5 input-group-lg">
                     <label
                       htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"

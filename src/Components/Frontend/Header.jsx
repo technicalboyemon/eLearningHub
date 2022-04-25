@@ -11,8 +11,8 @@ const Header = () => {
               Learn With Expert Anytime Anywhere.
             </h1>
             <p className="fs-5 py-2 text-secondary">
-              Our mision is to help people to find the best course online and
-              learn with expert anytime, anywhere.
+              Our Mission Is To Help People To Find The Best Course Online And
+              Learn With Expert Anytime, Anywhere.
             </p>
             <Link to="/courseList" className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded">
               Start Your Learning

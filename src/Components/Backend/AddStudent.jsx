@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 
 const AddStudent = () => {
   const { AuthEmailSend, error } = useAuth();
   const [loginData, setLoginData] = useState({});
+  const [category, setCategory] = useState([]);
+  const [courseCategory, setCourseCategory] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/category")
+      .then((res) => res.json())
+      .then((data) => setCategory(data));
+  }, []);
 
   const handleLog = (e) => {
     setLoginData(e.target.value);
@@ -23,9 +31,8 @@ const AddStudent = () => {
         about: "",
         phone: "",
         national: "",
-        photo: "",
-        profession: ""
-
+        profession: "",
+        category: courseCategory,
       }),
     })
       .then((res) => res.json())
@@ -40,16 +47,16 @@ const AddStudent = () => {
   return (
     <div className="bg-white rounded">
       <div className="row align-items-center py-4 px-5">
-        <div className="col-md-3">
+        <div className="col-md-2">
           <label
             htmlFor="addStudent"
             className="form-label d-flex justify-content-between align-items-center"
           >
-            <span className="fs-5">Student Email </span>
+            <span className="fs-5">Student</span>
           </label>
           <p className="text-danger">{error}</p>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4">
           <div className="my-4">
             <input
               onBlur={handleLog}
@@ -60,6 +67,22 @@ const AddStudent = () => {
               aria-describedby="emailHelp"
               placeholder="example@mail.com"
             />
+          </div>
+        </div>
+        <div className="col-md-3">
+          <div className="my-4">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              onChange={(event) => setCourseCategory(event.target.value)}
+            >
+              <option selected>Select Category</option>
+              {category.map((i, index) => (
+                <option key={index} value={i.category}>
+                  {i.category}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="col-md-3">

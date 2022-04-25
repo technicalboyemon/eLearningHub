@@ -1,67 +1,84 @@
 import React, { useState } from "react";
-import useAuth from "./../../../Hooks/useAuth";
 
 const AddAdmin = () => {
-  const { AuthEmailSend, error } = useAuth();
-  const [loginData, setLoginData] = useState({});
+  const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleLog = (e) => {
-    setLoginData(e.target.value);
+    setEmail(e.target.value);
   };
 
-  const loginSubmit = () => {
-    AuthEmailSend(loginData);
+  const adminSubmit = () => {
+    const user = { email };
     fetch("http://localhost:5000/users", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ email: loginData, isAdmin: true }),
+      body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          alert("Added Data");
-          setLoginData("");
+        if (data.modifiedCount > 0) {
+          setSuccess(true);
+          setEmail("");
         }
       });
   };
-
+console.log(email);
   return (
-    <div className="bg-white rounded">
-      <div className="row align-items-center py-4 px-5">
-        <div className="col-md-3">
-          <label
-            htmlFor="addStudent"
-            className="form-label d-flex justify-content-between align-items-center"
-          >
-            <span className="fs-5">Admin Email</span>
-          </label>
-        </div>
-        <div className="col-md-6">
-          <div className="my-4">
-            <input
-              onBlur={handleLog}
-              name="email"
-              type="email"
-              className="form-control"
-              id="addStudent"
-              aria-describedby="emailHelp"
-              placeholder="example@mail.com"
-            />
+    <>
+      <div className="bg-white rounded">
+        <div className="row align-items-center py-4 px-5">
+          <div className="col-md-2">
+            <label
+              htmlFor="addStudent"
+              className="form-label d-flex justify-content-between align-items-center"
+            >
+              <span className="fs-5">Admin</span>
+            </label>
+          </div>
+          <div className="col-md-7">
+            <div className="my-4">
+              <input
+                defaultValue={email}
+                onBlur={handleLog}
+                name="email"
+                type="text"
+                className="form-control"
+                id="addStudent"
+                placeholder="example@mail.com"
+              />
+            </div>
+          </div>
+          <div className="col-md-3">
+            <button
+              onClick={adminSubmit}
+              type="button"
+              className="btn btn-dark d-inline-block"
+            >
+              Add Admin
+            </button>
           </div>
         </div>
-        <div className="col-md-3">
-          <button
-            onClick={loginSubmit}
-            type="button"
-            className="btn btn-dark d-inline-block"
-          >
-            Add Student
-          </button>
-        </div>
       </div>
-    </div>
+      <div className="my-4">
+        {success && (
+          <div
+            className="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>Successfully </strong> Admin Added
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
