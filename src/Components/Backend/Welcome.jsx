@@ -5,7 +5,7 @@ const Welcome = () => {
   const {user} = useAuth()
   const [ userInfo, setUserInfo ] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/users/account?email=${user.email}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));

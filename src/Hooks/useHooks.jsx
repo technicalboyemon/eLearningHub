@@ -27,7 +27,7 @@ const useHooks = () => {
   const auth = getAuth();
 
   useEffect(() => {
-    const socket = io("http://localhost:5000/");
+    const socket = io("https://cryptic-temple-44121.herokuapp.com/");
     setRealTime(socket);
     return () => {
       socket.close();
@@ -35,13 +35,13 @@ const useHooks = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/account?email=${user.email}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setInstructor(data[0]?.isInstructor));
   }, [user.email]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/account?email=${user.email}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data[0]?.isAdmin));
   }, [user.email]);

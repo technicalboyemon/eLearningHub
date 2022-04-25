@@ -4,13 +4,13 @@ const TotalCourse = () => {
   const [totalCourse, setTotalCourse] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://cryptic-temple-44121.herokuapp.com/courses")
       .then((res) => res.json())
       .then((data) => setTotalCourse(data));
   }, []);
 
   const DeleteCourse = (id) => {
-    const url = `http://localhost:5000/courses/${id}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/courses/${id}`;
     fetch(url, {
       method: "DELETE",
     })

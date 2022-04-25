@@ -12,7 +12,7 @@ const WatchCourse = () => {
   const [playListTitle, setPlayListTitle] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/courses/${id}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/courses/${id}`)
       .then((res) => res.json())
       .then((data) => setCourseWatch(data));
   }, []);

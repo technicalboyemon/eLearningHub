@@ -38,14 +38,14 @@ const Account = () => {
   };
   console.log(accountInfo);
   useEffect(() => {
-    const url = `http://localhost:5000/users/account?email=${user.email}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUpdateUser(data));
   }, [user.email]);
 
   const UpdateUserInfo = (e) => {
-    fetch(`http://localhost:5000/users/account/${user.email}`, {
+    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account/${user.email}`, {
       method: "PUT",
       headers: {
         "content-type": " application/json",

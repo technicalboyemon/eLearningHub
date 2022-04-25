@@ -10,7 +10,7 @@ const AddInstructor = () => {
   const [courseCategory, setCourseCategory] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/category")
+    fetch("https://cryptic-temple-44121.herokuapp.com/category")
       .then((res) => res.json())
       .then((data) => setCategory(data));
   }, []);
@@ -46,7 +46,7 @@ const AddInstructor = () => {
     };
 
     if (file.asset_id) {
-      fetch("http://localhost:5000/users", {
+      fetch("https://cryptic-temple-44121.herokuapp.com/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

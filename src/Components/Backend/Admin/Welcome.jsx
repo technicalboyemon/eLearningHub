@@ -5,21 +5,21 @@ const Welcome = () => {
   const [totalStudent, setTotalStudent] = useState([]);
   const [totalCourse, setTotalCourse] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users/instructor")
+    fetch("https://cryptic-temple-44121.herokuapp.com/users/instructor")
       .then((res) => res.json())
       .then((data) => {
         setTotalInstructor(data);
       });
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/users/student")
+    fetch("https://cryptic-temple-44121.herokuapp.com/users/student")
       .then((res) => res.json())
       .then((data) => {
         setTotalStudent(data);
       });
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://cryptic-temple-44121.herokuapp.com/courses")
       .then((res) => res.json())
       .then((data) => {
         setTotalCourse(data);

@@ -21,7 +21,7 @@ const AddCategory = () => {
     const catUp = { preview: file.url, category };
     console.log(file);
     if (file.asset_id) {
-      fetch("http://localhost:5000/category", {
+      fetch("https://cryptic-temple-44121.herokuapp.com/category", {
         method: "POST",
         headers: {
           "content-type": "application/json",

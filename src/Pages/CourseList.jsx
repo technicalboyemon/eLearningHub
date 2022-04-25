@@ -7,7 +7,7 @@ const CourseList = () => {
   const [CourseData, setCourseData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/courses")
+    fetch("https://cryptic-temple-44121.herokuapp.com/courses")
       .then((res) => res.json())
       .then((data) => setCourseData(data));
   }, []);

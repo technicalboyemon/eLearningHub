@@ -5,14 +5,14 @@ const MyCourse = () => {
   const { user } = useAuth();
   const [myCourse, setMyCourse] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/course/account?email=${user.email}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/course/account?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyCourse(data);
       });
   }, []);
   const DeleteUser = (id) => {
-    const url = `http://localhost:5000/courses/${id}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/courses/${id}`;
     fetch(url, {
       method: "DELETE",
     })

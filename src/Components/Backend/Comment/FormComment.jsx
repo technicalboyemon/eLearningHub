@@ -7,7 +7,7 @@ const FormComment = ({ blog_id, type, reply, setReply }) => {
   const [commentData, setCommentData] = useState("");
   const [siteUser, setSiteUser] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/users/account/${user.email}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setSiteUser(data);
@@ -16,7 +16,7 @@ const FormComment = ({ blog_id, type, reply, setReply }) => {
   const handleSubmit = async () => {
     setLoading(true);
     if (type === "Submit") {
-      fetch("http://localhost:5000/watch/comment", {
+      fetch("https://cryptic-temple-44121.herokuapp.com/watch/comment", {
         method: "POST",
         headers: {
           "content-type": "application/json",

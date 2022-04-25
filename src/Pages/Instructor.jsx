@@ -5,7 +5,7 @@ const Instructor = () => {
   const [instructorData, setInstructorData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users/instructor")
+    fetch("https://cryptic-temple-44121.herokuapp.com/users/instructor")
       .then((res) => res.json())
       .then((data) => setInstructorData(data));
   }, []);

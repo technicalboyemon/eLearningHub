@@ -19,7 +19,7 @@ const CommentList = ({ blog_id, blog_user_id }) => {
 
   const get = useCallback(async () => {
     setLoading(true);
-    fetch(`http://localhost:5000/watch/comment/${blog_id}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/watch/comment/${blog_id}`)
       .then((res) => res.json())
       .then((data) => {
         setComments(data);

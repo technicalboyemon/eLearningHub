@@ -4,13 +4,13 @@ const TotalInstructor = () => {
   const [totalUsers, setTotalUser] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users/instructor")
+    fetch("https://cryptic-temple-44121.herokuapp.com/users/instructor")
       .then((res) => res.json())
       .then((data) => setTotalUser(data));
   }, []);
 
   const DeleteUser = (id) => {
-    const url = `http://localhost:5000/users/${id}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/users/${id}`;
     fetch(url, {
       method: "DELETE",
     })

@@ -17,7 +17,7 @@ const Dashboard = () => {
   const { user, logout, instructor } = useAuth();
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/users/account?email=${user.email}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const [enrollCourse, setEnrollCourse] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/order/account?email=${user.email}`)
+    fetch(`https://cryptic-temple-44121.herokuapp.com/order/account?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setEnrollCourse(data));
   }, []);

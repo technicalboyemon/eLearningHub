@@ -20,7 +20,7 @@ const Checkout = () => {
   );
   const allData = { accountInfo, purchasedItems, email: user.email };
   const OrderPlace = () => {
-    fetch("http://localhost:5000/order", {
+    fetch("https://cryptic-temple-44121.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
