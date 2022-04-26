@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
   const [category, setCategory] = useState("");
   const [catFile, setCatFile] = useState("");
   const [preLoading, setPreLoading] = useState(false);
-  const navigate = useNavigate();
 
-  const addCategory = async () => {
+  const addCategory = async (e) => {
     setPreLoading(true);
     const formData = new FormData();
     formData.append("file", catFile);
@@ -34,7 +32,6 @@ const AddCategory = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            alert("Added Data");
             setPreLoading(false);
             Swal.fire({
               position: "center-center",
@@ -43,7 +40,7 @@ const AddCategory = () => {
               showConfirmButton: false,
               timer: 2500,
             });
-            navigate("/adminDashboard");
+            setCategory('')
           }
         });
     }
@@ -63,6 +60,7 @@ const AddCategory = () => {
           <div className="my-4">
             <input
               onChange={(e) => setCategory(e.target.value)}
+              defaultValue={category}
               name="category"
               type="text"
               className="form-control"

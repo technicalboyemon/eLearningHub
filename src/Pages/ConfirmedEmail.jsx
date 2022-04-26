@@ -7,20 +7,13 @@ import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 
 const ConfirmedEmail = () => {
-  const { AuthEmailLogin,error } = useAuth();
-  const [ passwordData, setPasswordData ] = useState("");
+  const { AuthEmailLogin, error } = useAuth();
+  const [passwordData, setPasswordData] = useState("");
   const getPassword = (e) => {
     setPasswordData(e.target.value);
   };
   const sendPassword = () => {
     AuthEmailLogin(passwordData);
-    Swal.fire({
-      position: "center-center",
-      icon: "success",
-      title: "Check Your Email",
-      showConfirmButton: false,
-      timer: 2500,
-    });
   };
   return (
     <>

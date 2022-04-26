@@ -4,7 +4,7 @@ import "swiper/css";
 import useAuth from "../../Hooks/useAuth";
 
 const MeetInstructor = () => {
-  const {user} = useAuth()
+  const { user } = useAuth();
   const [instructorData, setInstructorData] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const MeetInstructor = () => {
       .then((res) => res.json())
       .then((data) => setInstructorData(data));
   }, []);
-  
+
   return (
     <div className="py-5">
       <div className="container py-3">
@@ -35,12 +35,17 @@ const MeetInstructor = () => {
               }}
               className="mySwiper"
             >
-              {instructorData.map((i,index) => (
+              {instructorData.map((i, index) => (
                 <SwiperSlide key={index} className="mx-2 my-5">
                   <div>
                     <img
-                      className="w-100 h-100 position-relative"
-                      src={i.preview ? i.preview : "https://png.pngtree.com/png-vector/20190118/ourlarge/pngtree-businessman-vector-icon-png-image_328701.jpg"}
+                      height="260px"
+                      className="w-100 position-relative"
+                      src={
+                        i.preview
+                          ? i.preview
+                          : "https://png.pngtree.com/png-vector/20190118/ourlarge/pngtree-businessman-vector-icon-png-image_328701.jpg"
+                      }
                       alt="Instructor"
                     />
                     <div className="instructorInfo p-3 border border-top-0">

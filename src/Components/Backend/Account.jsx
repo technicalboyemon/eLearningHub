@@ -22,7 +22,7 @@ const Account = () => {
 
   useEffect(() => {
     setLoading(true);
-    const url = `http://localhost:5000/users/account?email=${user.email}`;
+    const url = `https://cryptic-temple-44121.herokuapp.com/users/account?email=${user.email}`;
     const get = async () => {
       await fetch(url)
         .then((res) => res.json())
@@ -35,7 +35,7 @@ const Account = () => {
   }, [user.email]);
 
   const UpdateUserInfo = (e) => {
-    fetch(`http://localhost:5000/users/account/${user.email}`, {
+    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account/${user.email}`, {
       method: "PUT",
       headers: {
         "content-type": " application/json",
@@ -190,7 +190,7 @@ const Account = () => {
                       type="text"
                       className="form-control"
                       id="exampleInputEmail1"
-                      placeholder="+880 1921412932"
+                      placeholder="+39 0000000000"
                       value={accountInfo?.phone}
                     />
                   </div>
@@ -209,7 +209,7 @@ const Account = () => {
                       name="national"
                       className="form-control"
                       id="national"
-                      placeholder="Bangladesh"
+                      placeholder="Italy"
                       value={accountInfo?.national}
                     />
                   </div>

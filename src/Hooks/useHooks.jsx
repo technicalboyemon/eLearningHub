@@ -66,7 +66,7 @@ const useHooks = () => {
   };
 
   const actionCodeSettings = {
-    url: "http://localhost:3000/confirmed-email",
+    url: "https://elearning-hub-lon1995.web.app/confirmed-email",
     handleCodeInApp: true,
   };
 

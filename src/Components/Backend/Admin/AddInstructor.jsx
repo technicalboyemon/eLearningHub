@@ -58,7 +58,6 @@ const AddInstructor = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            alert("Added Data");
             setLoginData("");
             Swal.fire({
               position: "center-center",

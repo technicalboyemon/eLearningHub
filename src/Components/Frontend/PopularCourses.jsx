@@ -104,7 +104,7 @@ const PopularCourses = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )).splice(0,6)}
         </div>
         <div className="text-center py-5">
           <Link

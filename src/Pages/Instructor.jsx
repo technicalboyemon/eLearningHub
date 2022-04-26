@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 const Instructor = () => {
   const [instructorData, setInstructorData] = useState([]);
 
@@ -21,13 +23,33 @@ const Instructor = () => {
       <div className="container pt-4 pb-5 mt-2 mb-5">
         <h1 className="text-center fw-bolder my-5">Meet Our Best Instructor</h1>
         <div>
-          <div className="row">
-            {instructorData.map((i,index) => (
-              <div key={index} className="col-md-3 py-3">
-                <div>
+            <Swiper
+              watchSlidesProgress={true}
+              slidesPerView={2}
+              breakpoints={{
+                640: {
+                  slidesPerView: 2,
+                },
+                768: {
+                  slidesPerView: 3,
+                },
+                1024: {
+                  slidesPerView: 5,
+                },
+              }}
+              className="mySwiper"
+            >
+              {instructorData.map((i, index) => (
+                <SwiperSlide key={index} className="mx-2 my-5">
+                  <div>
                     <img
-                      className="w-100 h-100 position-relative"
-                      src={i.preview ? i.preview : "https://png.pngtree.com/png-vector/20190118/ourlarge/pngtree-businessman-vector-icon-png-image_328701.jpg"}
+                      height="260px"
+                      className="w-100 position-relative"
+                      src={
+                        i.preview
+                          ? i.preview
+                          : "https://png.pngtree.com/png-vector/20190118/ourlarge/pngtree-businessman-vector-icon-png-image_328701.jpg"
+                      }
                       alt="Instructor"
                     />
                     <div className="instructorInfo p-3 border border-top-0">
@@ -37,10 +59,10 @@ const Instructor = () => {
                       </span>
                     </div>
                   </div>
-              </div>
-            ))}
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-        </div>
       </div>
       <Footer />
     </div>

@@ -17,6 +17,7 @@ const AddCourse = () => {
   const [category, setCategory] = useState([]);
   const [courseCategory, setCourseCategory] = useState("");
   const [instructorProfile, setInstructorProfile] = useState("");
+  const [clear, setClear] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://cryptic-temple-44121.herokuapp.com/category")
@@ -53,6 +54,9 @@ const AddCourse = () => {
         duration: Math.floor(file.duration),
       };
       setAddAllFiles([...addAllFiles, courseDetails]);
+
+      setAddTitle("");
+      setAddFileData("");
       setLoading(false);
     }
   };
@@ -102,7 +106,8 @@ const AddCourse = () => {
               showConfirmButton: false,
               timer: 2500,
             });
-            navigate("/");
+
+            navigate("/courseList");
           }
         });
     }
@@ -224,6 +229,7 @@ const AddCourse = () => {
                   <div className="col-md-3 text-black-50 fw-bold">Title</div>
                   <div className="col-md-9">
                     <input
+                    defaultValue={clear}
                       onChange={(e) => setAddTitle(e.target.value)}
                       type="text"
                       className="border-0 px-2 rounded border-dark w-100 py-2 bg-light"
@@ -243,6 +249,7 @@ const AddCourse = () => {
                   <div className="col-md-9">
                     <div className="mb-3">
                       <input
+                        defaultValue={clear}
                         onChange={(e) => setAddFileData(e.target.files[0])}
                         name="file"
                         className="form-control mb-3"
@@ -290,13 +297,13 @@ const AddCourse = () => {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="feather feather-play-circle"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="feather feather-file"
                     >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                      <polyline points="13 2 13 9 20 9"></polyline>
                     </svg>
                   </div>
                   <div className="col-md-11">

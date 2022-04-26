@@ -68,7 +68,7 @@ const WatchCourse = () => {
                     </div>
                   )}
                   {get_url_extension(playList?.addFileDataLink) ==
-                    ("jpg" || "flv") && (
+                    ("jpg" || "png") && (
                     <img
                       className="rounded w-100"
                       src={playList?.addFileDataLink}
