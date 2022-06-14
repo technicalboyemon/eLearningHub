@@ -63,6 +63,27 @@ const NavBar = () => {
               </li>
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  English
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li>
+                    <a class="dropdown-item">Romanian</a>
+                  </li>
+                </ul>
+              </li>
+
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/cart">
                   <span className="position-relative mx-2">
@@ -95,7 +116,11 @@ const NavBar = () => {
                           width="45px"
                           height="45px"
                           className="profilePic"
-                          src={user.photoURL ? user.photoURL : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg" }
+                          src={
+                            user.photoURL
+                              ? user.photoURL
+                              : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg"
+                          }
                           alt="Profile"
                         />
                       </Link>
@@ -105,7 +130,11 @@ const NavBar = () => {
                           width="45px"
                           height="45px"
                           className="profilePic"
-                          src={user.photoURL ? user.photoURL : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg" }
+                          src={
+                            user.photoURL
+                              ? user.photoURL
+                              : "https://idronline.org/wp-content/uploads/2021/01/Screen-Shot-2019-02-19-at-1.23.40-PM-300x300-3.jpg"
+                          }
                           alt="Profile"
                         />
                       </Link>

@@ -28,7 +28,7 @@ const AddAdmin = () => {
           Swal.fire({
             position: "center-center",
             icon: "success",
-            title: "Instructor Added Successfully",
+            title: "Admin Added Successfully",
             showConfirmButton: false,
             timer: 2500,
           });
