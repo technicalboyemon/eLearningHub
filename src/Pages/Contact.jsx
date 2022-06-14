@@ -88,7 +88,7 @@ const Contact = () => {
                     ></path>
                   </svg>
                 </div>
-                <span className="text-secondary fs-5">Italy</span>
+                <span className="text-secondary fs-5">Romania</span>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ const Contact = () => {
                     <span className="d-block fs-6 text-secondary fw-bold">
                       ADDRESS
                     </span>
-                    <span className="d-block fs-5">Italy</span>
+                    <span className="d-block fs-5">Romania</span>
                   </div>
                 </div>
               </div>
@@ -177,8 +177,8 @@ const Contact = () => {
                     <span className="d-block fs-6 text-secondary fw-bold">
                       EMAIL
                     </span>
-                    <span className="d-block fs-5">
-                      lon1995.freelancer@gmail.com
+                    <span className="d-block fs-6">
+                    elearning-hub-boboc1998@gmail.com
                     </span>
                   </div>
                 </div>
