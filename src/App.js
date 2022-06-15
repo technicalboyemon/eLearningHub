@@ -38,6 +38,7 @@ import ForgetPassword from "./Pages/ForgetPassword";
 import PrivateOutlet from "./Routes/PrivateOutlet";
 import AddCategory from "./Components/Backend/Admin/AddCategory";
 import Logged from "./Routes/Logged";
+import Quiz from "./Components/Backend/Quiz";
 function App() {
   return (
     <AuthProvider>
@@ -90,6 +91,7 @@ function App() {
             <Route path="totalStudent" element={<TotalStudent />} />
             <Route path="totalInstructor" element={<TotalInstructor />} />
             <Route path="account" element={<Account />} />
+            <Route path="addQuiz" element={<Quiz />} />
           </Route>
         </Route>
       </Routes>
