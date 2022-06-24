@@ -63,9 +63,9 @@ const NavBar = () => {
               </li>
             </ul>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#"
                   id="navbarDropdownMenuLink"
                   role="button"
@@ -75,11 +75,11 @@ const NavBar = () => {
                   English
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <a class="dropdown-item">Romanian</a>
+                    <a className="dropdown-item">Romanian</a>
                   </li>
                 </ul>
               </li>

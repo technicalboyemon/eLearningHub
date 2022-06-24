@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { Translator, Translate } from "react-auto-translate";
 import About from "./Pages/About";
 import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
@@ -39,63 +40,77 @@ import PrivateOutlet from "./Routes/PrivateOutlet";
 import AddCategory from "./Components/Backend/Admin/AddCategory";
 import Logged from "./Routes/Logged";
 import Quiz from "./Components/Backend/Quiz";
+import { cacheProvider } from "./Hooks/cacheprovider";
+import AllQuiz from "./Components/Backend/AllQuiz";
+import InstructorQuiz from "./Components/Backend/Instructor/InstructorQuiz";
+import AttendQuiz from "./Components/Backend/Student/AttendQuiz";
 function App() {
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="courseList" element={<CourseList />} />
-        <Route path="courses/:id" element={<CourseDetails />} />
-        <Route
-          path="login"
-          element={
-            <Logged>
-              <Login />
-            </Logged>
-          }
-        />
-        <Route path="register" element={<Register />} />
-        <Route path="instructorRegister" element={<InstructorRegister />} />
-        <Route path="studentRegister" element={<StudentRegister />} />
-        <Route path="faq" element={<Faq />} />
-        <Route path="instructor" element={<Instructor />} />
-        <Route path="forget-password" element={<ForgetPassword />} />
-        <Route path="password" element={<Password />} />
-        <Route path="confirmed-email" element={<ConfirmedEmail />} />
-        <Route path="/*" element={<PrivateOutlet />}>
-          <Route path="watch/:id" element={<WatchCourse />} />
-          <Route path="checkout" element={<Checkout />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route index element={<Welcome />} />
-            <Route path="addStudent" element={<AddStudent />} />
-            <Route path="addInstructor" element={<AddInstructor />} />
-            <Route path="account" element={<Account />} />
-            <Route path="enrolledCourse" element={<EnrolledCourse />} />
-            <Route path="myCourse" element={<MyCourse />} />
-            <Route path="inbox" element={<Inbox />} />
-            <Route path="addCourse" element={<AddCourse />} />
-            <Route path="updateCourse" element={<UpdateCourse />} />
+    <Translator
+      cacheProvider={cacheProvider}
+      from="en"
+      to="ro"
+      googleApiKey="AIzaSyDWROqcQfqgbH3AkukNT06g361iEWElRFM"
+    >
+      <AuthProvider>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="courseList" element={<CourseList />} />
+          <Route path="courses/:id" element={<CourseDetails />} />
+          <Route
+            path="login"
+            element={
+              <Logged>
+                <Login />
+              </Logged>
+            }
+          />
+          <Route path="register" element={<Register />} />
+          <Route path="instructorRegister" element={<InstructorRegister />} />
+          <Route path="studentRegister" element={<StudentRegister />} />
+          <Route path="faq" element={<Faq />} />
+          <Route path="instructor" element={<Instructor />} />
+          <Route path="forget-password" element={<ForgetPassword />} />
+          <Route path="password" element={<Password />} />
+          <Route path="confirmed-email" element={<ConfirmedEmail />} />
+          <Route path="/*" element={<PrivateOutlet />}>
+            <Route path="watch/:id" element={<WatchCourse />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="dashboard" element={<Dashboard />}>
+              <Route index element={<Welcome />} />
+              <Route path="addStudent" element={<AddStudent />} />
+              <Route path="addInstructor" element={<AddInstructor />} />
+              <Route path="account" element={<Account />} />
+              <Route path="enrolledCourse" element={<EnrolledCourse />} />
+              <Route path="myCourse" element={<MyCourse />} />
+              <Route path="inbox" element={<Inbox />} />
+              <Route path="addCourse" element={<AddCourse />} />
+              <Route path="updateCourse" element={<UpdateCourse />} />
+              <Route path="quiz" element={<InstructorQuiz />} />
+              <Route path="attendQuiz" element={<AttendQuiz />} />
+            </Route>
+            <Route path="adminDashboard" element={<AdminDashboard />}>
+              <Route index element={<AdminWelcome />} />
+              <Route path="addAdmin" element={<AddAdmin />} />
+              <Route path="addCategory" element={<AddCategory />} />
+              <Route path="addInstructor" element={<AddInstructor />} />
+              <Route path="addStudent" element={<AddStudent />} />
+              <Route path="addCourse" element={<AddCourse />} />
+              <Route path="totalCourse" element={<TotalCourse />} />
+              <Route path="totalStudent" element={<TotalStudent />} />
+              <Route path="totalInstructor" element={<TotalInstructor />} />
+              <Route path="account" element={<Account />} />
+              <Route path="addQuiz" element={<Quiz />} />
+              <Route path="allQuiz" element={<AllQuiz />} />
+            </Route>
           </Route>
-          <Route path="adminDashboard" element={<AdminDashboard />}>
-            <Route index element={<AdminWelcome />} />
-            <Route path="addAdmin" element={<AddAdmin />} />
-            <Route path="addCategory" element={<AddCategory />} />
-            <Route path="addInstructor" element={<AddInstructor />} />
-            <Route path="addStudent" element={<AddStudent />} />
-            <Route path="addCourse" element={<AddCourse />} />
-            <Route path="totalCourse" element={<TotalCourse />} />
-            <Route path="totalStudent" element={<TotalStudent />} />
-            <Route path="totalInstructor" element={<TotalInstructor />} />
-            <Route path="account" element={<Account />} />
-            <Route path="addQuiz" element={<Quiz />} />
-          </Route>
-        </Route>
-      </Routes>
-    </AuthProvider>
+        </Routes>
+      </AuthProvider>
+    </Translator>
   );
 }
 

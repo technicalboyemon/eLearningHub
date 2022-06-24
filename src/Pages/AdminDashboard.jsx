@@ -59,6 +59,13 @@ const AdminDashboard = () => {
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
+                  to="/adminDashboard/allQuiz"
+                >
+                  <BsPlusCircleFill />
+                  <span className="NavText"> All Quiz</span>
+                </Link>
+                <Link
+                  className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addCategory"
                 >
                   <BsPlusCircleFill />

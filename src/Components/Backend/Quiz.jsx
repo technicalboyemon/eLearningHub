@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import { getAll } from "../../api/api";
+import { getAll, postData } from "../../api/api";
+import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const arr = ["answer1", "answer2", "answer3", "answer4"];
 
 const Quiz = () => {
+  let navigate = useNavigate();
+  const { user } = useAuth();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -44,7 +48,7 @@ const Quiz = () => {
       !quiz.answer4 ||
       !quiz.ans
     )
-      return;
+    return alert("please fill all the fields.");
     setQuestions([...questions, quiz]);
     setQuiz(initialState);
   };
@@ -77,7 +81,7 @@ const Quiz = () => {
       !quiz.answer4 ||
       !quiz.ans
     )
-      return;
+      return alert("please fill all the fields.");
     const quizes = questions.filter((i, ix) => ix != edit);
     quizes.splice(edit, 0, quiz);
     console.log(quizes);
@@ -88,22 +92,45 @@ const Quiz = () => {
 
   console.log(students);
 
+  const save = async () => {
+    
+    if(students.length == 0) return alert("No student assigned");
+    if(questions.length == 0) return alert("Add at least one question");
+    if(!subject) return alert("Add a subject");
+
+    const post = {
+      showUsers: students,
+      questions: questions,
+      instructorUid: user.email,
+      subject: subject,
+    };
+
+    const data = await postData("quiz/add", post);
+    if (data.insertedId) {
+      navigate("/adminDashboard/allQuiz");
+    }
+    console.log(data);
+  };
+
   return (
     <div>
       <div className="my-2">
         <label className="form-label fw-bold">Select Users</label>
         <select
           className="form-select"
-          onChange={(e) =>
+          onChange={(e) => {
             setStudents([
               ...students,
-              users.find((i) => i._id == e.target.value),
-            ])
-          }
+              {
+                ...users.find((i) => i._id == e.target.value),
+                isSubmitted: false,
+              },
+            ]);
+          }}
         >
+          <option selected>Add Students</option>
           {users?.map((i) => (
             <>
-              <option selected>Add Students</option>
               <option value={i?._id}>{i?.name}</option>
             </>
           ))}
@@ -111,7 +138,18 @@ const Quiz = () => {
       </div>
       <div className="d-flex">
         {students.map((i) => (
-          <p className="p-2 bg-secondary m-2 text-white">{i?.name}</p>
+          <p className="p-2 bg-secondary m-2 text-white">
+            {i?.name}{" "}
+            <span
+              className="ms-2"
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                setStudents(students.filter((t) => t?._id != i._id))
+              }
+            >
+              X
+            </span>
+          </p>
         ))}
       </div>
       <div className="my-2">
@@ -122,6 +160,7 @@ const Quiz = () => {
           className="form-control"
         />
       </div>
+
       <h1 className="mt-5">{subject}</h1>
       {questions.map((i, idx) => (
         <div>
@@ -186,6 +225,12 @@ const Quiz = () => {
           </div>
         </div>
       ))}
+
+      {questions.length > 0 && (
+        <button onClick={save} className="btn btn-warning text-white">
+          Save Quiz
+        </button>
+      )}
 
       <div className="my-5">
         <label className="form-label fw-bold">Question</label>
