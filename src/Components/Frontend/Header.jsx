@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { useTranslate } from "../useTranslate";
 import BannerPerson from "./../../Images/banner-person.png";
 const Header = () => {
+  const { trans } = useAuth();
   return (
     <div className="Header">
       <div className="container">
@@ -11,15 +14,24 @@ const Header = () => {
               Learn With Expert Anytime Anywhere.
             </h1>
             <p className="fs-5 py-2 text-secondary">
-              Our Mission Is To Help People To Find The Best Course Online And
-              Learn With Expert Anytime, Anywhere.
+              {useTranslate(
+                "Our Mission Is To Help People To Find The Best Course Online AndLearn With Expert Anytime, Anywhere.",
+                trans
+              )}
             </p>
-            <Link to="/courseList" className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded">
+            <Link
+              to="/courseList"
+              className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded"
+            >
               Start Your Learning
             </Link>
           </div>
           <div className="col-md-6">
-            <img className="bannerImg w-100" src={BannerPerson} alt="Banner Image" />
+            <img
+              className="bannerImg w-100"
+              src={BannerPerson}
+              alt="Banner Image"
+            />
           </div>
         </div>
       </div>

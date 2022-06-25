@@ -5,7 +5,7 @@ import LOGO from "./../../Images/logo.png";
 import useAuth from "./../../Hooks/useAuth.jsx";
 import { useCart } from "react-use-cart";
 const NavBar = () => {
-  const { user, admin } = useAuth();
+  const { user, admin, handleTransLate } = useAuth();
   const { totalItems } = useCart();
   return (
     <div className="container">
@@ -72,14 +72,27 @@ const NavBar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  English
+                  Translate
                 </a>
                 <ul
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <li>
-                    <a className="dropdown-item">Romanian</a>
+                    <a
+                      className="dropdown-item"
+                      onClick={() => handleTransLate("en")}
+                    >
+                      English
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="dropdown-item"
+                      onClick={() => handleTransLate("ro")}
+                    >
+                      Romanian
+                    </a>
                   </li>
                 </ul>
               </li>

@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Translator, Translate } from "react-auto-translate";
 import About from "./Pages/About";
 import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
@@ -40,18 +39,15 @@ import PrivateOutlet from "./Routes/PrivateOutlet";
 import AddCategory from "./Components/Backend/Admin/AddCategory";
 import Logged from "./Routes/Logged";
 import Quiz from "./Components/Backend/Quiz";
-import { cacheProvider } from "./Hooks/cacheprovider";
 import AllQuiz from "./Components/Backend/AllQuiz";
 import InstructorQuiz from "./Components/Backend/Instructor/InstructorQuiz";
 import AttendQuiz from "./Components/Backend/Student/AttendQuiz";
+import { useEffect, useState } from "react";
+import { postData } from "./api/api";
+
 function App() {
   return (
-    <Translator
-      cacheProvider={cacheProvider}
-      from="en"
-      to="ro"
-      googleApiKey="AIzaSyDWROqcQfqgbH3AkukNT06g361iEWElRFM"
-    >
+    <>
       <AuthProvider>
         <Routes>
           <Route path="*" element={<NotFound />} />
@@ -110,7 +106,7 @@ function App() {
           </Route>
         </Routes>
       </AuthProvider>
-    </Translator>
+    </>
   );
 }
 

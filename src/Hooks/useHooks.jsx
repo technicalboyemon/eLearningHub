@@ -16,6 +16,21 @@ import Swal from "sweetalert2";
 
 initializeAuth();
 const useHooks = () => {
+  const [trans, setTrans] = useState("en");
+  const [load, setLoad] = useState(true)
+  const handleTransLate = (data) => {
+    localStorage.setItem("translation", JSON.stringify(data));
+    setTrans(data);
+    window.location = "/";
+  };
+
+  useEffect(() => {
+    const lang = JSON.parse(localStorage.getItem("translation"))
+    if (lang) {
+      setTrans(lang);
+    }
+  }, []);
+
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
@@ -178,6 +193,11 @@ const useHooks = () => {
     realTime,
     isLoading,
     isLogged,
+    handleTransLate,
+    setTrans,
+    trans,
+    setLoad,
+    load
   };
 };
 
