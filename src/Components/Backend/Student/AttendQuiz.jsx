@@ -141,7 +141,7 @@ const AttendQuiz = () => {
 
           {subIndex.length > 0 && (
             <div>
-              <div className="my-2">
+              {/* <div className="my-2">
                 {subIndex.map((i, idx) => (
                   <button
                     className="btn btn-warning my-2 m-2"
@@ -150,7 +150,7 @@ const AttendQuiz = () => {
                     No {idx + 1}
                   </button>
                 ))}
-              </div>
+              </div> */}
 
               <div className="my-2">
                 <h4>Subject: {subIndex[subQuiz]?.subject}</h4>
@@ -247,7 +247,7 @@ const AttendQuiz = () => {
               {i}
             </button>
           ))}
-          <div className="my-2">
+          {/* <div className="my-2">
             {subIndex.map((i, idx) => (
               <button
                 className="btn btn-warning my-2 m-2"
@@ -256,7 +256,7 @@ const AttendQuiz = () => {
                 No {idx + 1}
               </button>
             ))}
-          </div>
+          </div> */}
 
           {subIndex.length > 0 && (
             <>

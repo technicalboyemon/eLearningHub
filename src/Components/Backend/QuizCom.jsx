@@ -54,7 +54,7 @@ const QuizCom = ({ quiz, submitted }) => {
 
       {subIndex.length > 0 && (
         <div>
-          <div className="my-2">
+          {/* <div className="my-2">
             {subIndex.map((i, idx) => (
               <button
                 className="btn btn-warning my-2 m-2"
@@ -63,7 +63,7 @@ const QuizCom = ({ quiz, submitted }) => {
                 No {idx + 1}
               </button>
             ))}
-          </div>
+          </div> */}
           <div className="my-2">
             <h1>Assigned Users:</h1>
             {submitted ? (
