@@ -4,6 +4,8 @@ import useAuth from "../../Hooks/useAuth";
 
 const QuizCom = ({ quiz, submitted }) => {
   const [users, setUsers] = useState([]);
+  const [subQuiz, setsubIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState([]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -17,13 +19,13 @@ const QuizCom = ({ quiz, submitted }) => {
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
+    setSubIndex([])
+    setsubIndex(0)
     const chars = quiz?.map((i) => i.subject);
     const uniqueChars = [...new Set(chars)];
     setSubjects(uniqueChars);
   }, [quiz]);
 
-  const [subQuiz, setsubIndex] = useState(0);
-  const [subIndex, setSubIndex] = useState([]);
 
   const handlesubIndex = (data) => {
     const value = quiz.filter((i) => i.subject == data);
@@ -52,16 +54,16 @@ const QuizCom = ({ quiz, submitted }) => {
 
       {subIndex.length > 0 && (
         <div>
-          <div className="my-2">
+          {/* <div className="my-2">
             {subIndex.map((i, idx) => (
               <button
                 className="btn btn-warning my-2 m-2"
                 onClick={() => setsubIndex(idx)}
               >
-                Paper {idx + 1}
+                No {idx + 1}
               </button>
             ))}
-          </div>
+          </div> */}
           <div className="my-2">
             <h1>Assigned Users:</h1>
             {submitted ? (
