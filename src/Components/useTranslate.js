@@ -6,13 +6,14 @@ export const useTranslate = (text, type) => {
   const [load, setLoad] = useState(true);
   const [data, setData] = useState("");
   const fecth = async () => {
-    setLoad(true);
     if (type === "en") {
       setData(text);
       setLoad(false);
     } else {
+      setLoad(true);
       const info = await postData("translate", { text: text || "" });
       if (info?.err) {
+        setData(text);
         setLoad(false);
       } else {
         // console.log(info);
