@@ -4,6 +4,7 @@ import useAuth from "../../../Hooks/useAuth";
 import QuizCom from "../QuizCom";
 const AttendQuiz = () => {
   const [show, setShow] = useState("quiz");
+  console.log(show);
   const [load, setLoad] = useState(true);
   const [quiz, setQuiz] = useState([]);
 
@@ -146,7 +147,7 @@ const AttendQuiz = () => {
                     className="btn btn-warning my-2 m-2"
                     onClick={() => setsubIndex(idx)}
                   >
-                   Paper {idx + 1}
+                    No {idx + 1}
                   </button>
                 ))}
               </div>
@@ -224,13 +225,13 @@ const AttendQuiz = () => {
                       Submit
                     </button>
                   </div>
-                  <div className="col-md-2">
+                  {/* <div className="col-md-2">
                     <div className="m-2 bg-white p-3">
                       Total: {qsInfo?.questions?.length}
                       <br></br>
                       Got: {qsInfo?.questions?.filter((i) => i?.right)?.length}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -252,7 +253,7 @@ const AttendQuiz = () => {
                 className="btn btn-warning my-2 m-2"
                 onClick={() => setsubIndex(idx)}
               >
-              Paper  {idx + 1}
+                No {idx + 1}
               </button>
             ))}
           </div>
@@ -311,6 +312,7 @@ const AttendQuiz = () => {
                     </div>
                   ))}
                 </div>
+
                 <div className="col-md-2">
                   <div className="m-2 bg-white p-3">
                     Total: {subIndex[subQuiz]?.total}
