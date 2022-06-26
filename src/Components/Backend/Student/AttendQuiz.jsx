@@ -146,7 +146,7 @@ const AttendQuiz = () => {
                     className="btn btn-warning my-2 m-2"
                     onClick={() => setsubIndex(idx)}
                   >
-                    {idx + 1}
+                   Paper {idx + 1}
                   </button>
                 ))}
               </div>
@@ -252,7 +252,7 @@ const AttendQuiz = () => {
                 className="btn btn-warning my-2 m-2"
                 onClick={() => setsubIndex(idx)}
               >
-                {idx + 1}
+              Paper  {idx + 1}
               </button>
             ))}
           </div>

@@ -36,7 +36,7 @@ const AddAdmin = () => {
         }
       });
   };
-  console.log(email);
+  // console.log(email);
   return (
     <>
       <div className="bg-white rounded">

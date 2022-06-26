@@ -84,13 +84,13 @@ const Quiz = () => {
       return alert("please fill all the fields.");
     const quizes = questions.filter((i, ix) => ix != edit);
     quizes.splice(edit, 0, quiz);
-    console.log(quizes);
+    // console.log(quizes);
     setQuestions(quizes);
     setEdit(null);
     setQuiz(initialState);
   };
 
-  console.log(students);
+  // console.log(students);
 
   const save = async () => {
     
@@ -109,7 +109,7 @@ const Quiz = () => {
     if (data.insertedId) {
       navigate("/adminDashboard/allQuiz");
     }
-    console.log(data);
+    // console.log(data);
   };
 
   return (

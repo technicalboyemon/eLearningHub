@@ -13,7 +13,7 @@ const Translate = ({ text, type }) => {
       const info = await postData("translate", { text: text || "" });
       if (info?.err) {
       } else {
-        console.log(info);
+        // console.log(info);
         setData(type === "en" ? text : info);
         setLoad(false);
       }

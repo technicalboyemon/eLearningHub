@@ -98,7 +98,7 @@ const Account = () => {
       </div>
     );
   }
-  console.log(user);
+  // console.log(user);
 
   return (
     <div>

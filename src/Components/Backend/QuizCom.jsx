@@ -31,8 +31,12 @@ const QuizCom = ({ quiz, submitted }) => {
   };
 
   const assignUser = async () => {
-    const data = await patchData(`quiz/updateUser/${subIndex[subQuiz]._id}`, students);
-    console.log(data);
+    const data = await patchData(
+      `quiz/updateUser/${subIndex[subQuiz]._id}`,
+      students
+    );
+    if (data?.modifiedCount) return alert("Student Added");
+    // console.log(data);
   };
 
   return (
@@ -54,7 +58,7 @@ const QuizCom = ({ quiz, submitted }) => {
                 className="btn btn-warning my-2 m-2"
                 onClick={() => setsubIndex(idx)}
               >
-                {idx + 1}
+                Paper {idx + 1}
               </button>
             ))}
           </div>

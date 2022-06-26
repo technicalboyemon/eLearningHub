@@ -15,7 +15,7 @@ export const useTranslate = (text, type) => {
       if (info?.err) {
         setLoad(false);
       } else {
-        console.log(info);
+        // console.log(info);
         setData(type === "en" ? text : info);
         setLoad(false);
       }
