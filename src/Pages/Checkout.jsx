@@ -5,9 +5,9 @@ import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
-
+import Translate from "../Components/Translate";
 const Checkout = () => {
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   const { emptyCart, isEmpty, cartTotal, items } = useCart();
   const [accountInfo, setAccountInfo] = useState({});
   const navigate = useNavigate();
@@ -31,11 +31,11 @@ const Checkout = () => {
       .then((data) => {
         if (data.insertedId) {
           Swal.fire({
-            icon: 'success',
-            title: 'Purchased',
-            text: 'Course Added!',
+            icon: "success",
+            title: "Purchased",
+            text: "Course Added!",
             // footer: '<a href="">Why do I have this issue?</a>'
-          })
+          });
           emptyCart();
           navigate("/dashboard/enrolledCourse");
         }
@@ -47,18 +47,27 @@ const Checkout = () => {
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
-          <span> Home &gt; Checkout </span>
+          <span>
+            {" "}
+            <Translate text="Home &gt; Checkout " type={trans} />{" "}
+          </span>
         </div>
       </div>
       <div className="secondaryBgColor py-5">
         <div className="container">
           {isEmpty ? (
-            <h1>Your cart is empty</h1>
+            <h1>
+              {" "}
+              <Translate text="Your cart is empty" type={trans} />
+            </h1>
           ) : (
             <div className="row">
               <div className="col-md-6">
                 <div className="checkoutForm">
-                  <div className="h5 fw-bold py-2">Checkout</div>
+                  <div className="h5 fw-bold py-2">
+                    {" "}
+                    <Translate text="Checkout" type={trans} />
+                  </div>
                   <div className="bg-white p-4 rounded">
                     <div>
                       <div className="row">
@@ -85,7 +94,10 @@ const Checkout = () => {
                               strokeLinejoin="round"
                             ></path>
                           </svg>
-                          <div className="h6 py-2">Debit Card</div>
+                          <div className="h6 py-2">
+                            {" "}
+                            <Translate text="Debit Card" type={trans} />
+                          </div>
                         </div>
                       </div>
                       <div className="row">
@@ -95,7 +107,7 @@ const Checkout = () => {
                               htmlFor="exampleInputEmail1"
                               className="form-label"
                             >
-                              Name on Card
+                              <Translate text="Name on Card" type={trans} />
                             </label>
                             <input
                               onChange={(e) => handleInput(e)}
@@ -115,7 +127,7 @@ const Checkout = () => {
                               htmlFor="exampleInputEmail1"
                               className="form-label"
                             >
-                              Card Number
+                              <Translate text="Card Number" type={trans} />
                             </label>
                             <input
                               onChange={(e) => handleInput(e)}
@@ -135,7 +147,10 @@ const Checkout = () => {
                               htmlFor="exampleInputEmail1"
                               className="form-label"
                             >
-                              Expiration Date (MM/YY)
+                              <Translate
+                                text="Expiration Date (MM/YY)"
+                                type={trans}
+                              />
                             </label>
                             <input
                               onChange={(e) => handleInput(e)}
@@ -153,7 +168,7 @@ const Checkout = () => {
                               htmlFor="exampleInputEmail1"
                               className="form-label"
                             >
-                              CVC
+                              <Translate text="CVC" type={trans} />
                             </label>
                             <input
                               onChange={(e) => handleInput(e)}
@@ -170,7 +185,7 @@ const Checkout = () => {
                         onClick={OrderPlace}
                         className="primaryBgColor mt-4 mb-2 d-block px-4 py-3 text-white text-center fw-bolder rounded text-uppercase"
                       >
-                        Confirm Payment
+                        <Translate text="Confirm Payment" type={trans} />
                       </div>
                     </div>
                   </div>
@@ -178,28 +193,42 @@ const Checkout = () => {
               </div>
               <div className="col-md-6">
                 <div className="checkoutForm">
-                  <div className="h5 fw-bold py-2">Summary</div>
+                  <div className="h5 fw-bold py-2">
+                    {" "}
+                    <Translate text="Summary" type={trans} />
+                  </div>
                   <div className="bg-white p-4 rounded">
                     <div>
                       {items.map((i, index) => (
                         <div key={index} className="d-flex py-2">
                           <img src={i?.preview} alt="" className="w-25" />
                           <div className="px-2">
-                            <div className="h5">{i?.name}</div>
-                            <div className="text-secondary">by {i?.instructorName}</div>
+                            <div className="h5">
+                              {" "}
+                              <Translate text="{i?.name}" type={trans} />
+                            </div>
+                            <div className="text-secondary">
+                              by {i?.instructorName}
+                            </div>
                             <div>€{i.price}</div>
                           </div>
                         </div>
                       ))}
 
                       <div className="d-flex align-items-center justify-content-between text-secondary pt-5 pb-4">
-                        <span>Subtotal</span>
+                        <span>
+                          {" "}
+                          <Translate text="Subtotal" type={trans} />
+                        </span>
                         <span>€{cartTotal}</span>
                       </div>
                       {/* <hr /> */}
 
                       <div className="d-flex align-items-center justify-content-between fs-5 fw-bold">
-                        <span>Total</span>
+                        <span>
+                          {" "}
+                          <Translate text="Total" type={trans} />
+                        </span>
                         <span>€{cartTotal}</span>
                       </div>
                     </div>

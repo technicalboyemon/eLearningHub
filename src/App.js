@@ -44,6 +44,7 @@ import InstructorQuiz from "./Components/Backend/Instructor/InstructorQuiz";
 import AttendQuiz from "./Components/Backend/Student/AttendQuiz";
 import { useEffect, useState } from "react";
 import { postData } from "./api/api";
+import AddForm from "./Pages/AddForm";
 
 function App() {
   return (
@@ -88,6 +89,7 @@ function App() {
               <Route path="updateCourse" element={<UpdateCourse />} />
               <Route path="quiz" element={<InstructorQuiz />} />
               <Route path="attendQuiz" element={<AttendQuiz />} />
+              <Route path="addForm" element={<AddForm />} />
             </Route>
             <Route path="adminDashboard" element={<AdminDashboard />}>
               <Route index element={<AdminWelcome />} />

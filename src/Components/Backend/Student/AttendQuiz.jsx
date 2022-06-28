@@ -121,24 +121,37 @@ const AttendQuiz = () => {
 
   return (
     <div>
-      <button className="btn btn-primary m-2" onClick={() => setShow("saved")}>
-        Submitted
-      </button>
-      <button className="btn btn-primary m-2" onClick={() => setShow("quiz")}>
-        Pending
-      </button>
-      <br></br>
+      <div className="form_responses_submitted text-center py-4 w-100 bg-white text-black">
+        <div className="fs-4 py-4">Attend Test</div>
+        <div className="d-flex justify-content-center">
+          <div
+            className="form_responses_submitted_forms m-2"
+            onClick={() => setShow("saved")}
+          >
+            Your Submitted Test
+          </div>
+          <div
+            className="form_responses_pending_forms m-2"
+            onClick={() => setShow("quiz")}
+          >
+            Pending Test
+          </div>
+        </div>
+      </div>
+
       {show == "quiz" ? (
         <>
-          {subjects.map((i) => (
-            <button
-              className="btn btn-primary m-2"
+          {subjects.map((i, index) => (
+            <div
+              className="form_responses_result my-4"
               onClick={() => handlesubIndex(i)}
             >
-              {i}
-            </button>
+              {index + 1}. {i}
+            </div>
           ))}
-
+{
+  subIndex.length <= 0 && ( <div className="form_question_show fs-3 my-4 bg-white px-4 py-3 text-center">You Don't Have Any Test Exam Right Now!!!</div> )
+}
           {subIndex.length > 0 && (
             <div>
               {/* <div className="my-2">
@@ -153,19 +166,26 @@ const AttendQuiz = () => {
               </div> */}
 
               <div className="my-2">
-                <h4>Subject: {subIndex[subQuiz]?.subject}</h4>
+                <div className="form_border">
+                  {/* Subject: */}
+                  <div className="form_title fs-3">
+                    {subIndex[subQuiz]?.subject}
+                  </div>
+                </div>
               </div>
-              <div className="my-2">
-                <h4 className="my-2">Questions:</h4>
+              <div className="form_question_show my-4 bg-white px-4 py-3">
+                {/* <h4 className="my-2">Questions:</h4> */}
                 <div className="row">
                   <div className="col-md-10">
                     {subIndex[subQuiz]?.questions?.map((i, idx) => (
                       <div>
                         <div className="my-2 bg-white p-2">
-                          <div className="fw-bold text-primary my-2">
+                          {/* <div className="fw-bold text-primary my-2">
                             <span>Question {idx + 1}</span>
-                          </div>
-                          <h4>{i.question}</h4>
+                          </div> */}
+                          <span className="form_question_show_fontSize pb-4">
+                            {idx + 1}. {i.question}
+                          </span>
                           <div>
                             <div className="row">
                               <div className="col-md-3">
@@ -178,7 +198,9 @@ const AttendQuiz = () => {
                                   }
                                   className="mx-2 form-check-input"
                                 />
-                                1. {i.answer1}
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer1}
+                                </span>
                               </div>
                               <div className="col-md-3">
                                 <input
@@ -189,7 +211,9 @@ const AttendQuiz = () => {
                                   }
                                   className="mx-2 form-check-input"
                                 />
-                                2. {i.answer2}
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer2}
+                                </span>
                               </div>
                               <div className="col-md-3">
                                 <input
@@ -200,7 +224,9 @@ const AttendQuiz = () => {
                                   }
                                   className="mx-2 form-check-input"
                                 />
-                                3. {i.answer3}
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer3}
+                                </span>
                               </div>
                               <div className="col-md-3">
                                 <input
@@ -211,7 +237,9 @@ const AttendQuiz = () => {
                                   }
                                   className="mx-2 form-check-input"
                                 />
-                                4. {i.answer4}
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer4}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -219,10 +247,10 @@ const AttendQuiz = () => {
                       </div>
                     ))}
                     <button
-                      className="btn-primary btn"
+                      className="form_question_add_btn"
                       onClick={() => handleSave()}
                     >
-                      Submit
+                      Submit Your Test
                     </button>
                   </div>
                   {/* <div className="col-md-2">
@@ -239,13 +267,13 @@ const AttendQuiz = () => {
         </>
       ) : (
         <div className="my-2">
-          {subjects.map((i) => (
-            <button
-              className="btn btn-primary m-2"
+          {subjects.map((i, index) => (
+            <div
+              className="form_responses_result my-4"
               onClick={() => handlesubIndex(i)}
             >
-              {i}
-            </button>
+              {index + 1}. {i}
+            </div>
           ))}
           {/* <div className="my-2">
             {subIndex.map((i, idx) => (
@@ -260,69 +288,94 @@ const AttendQuiz = () => {
 
           {subIndex.length > 0 && (
             <>
-              <h4 className="my-2">Questions:</h4>
-              <div className="row">
-                <div className="col-md-10">
-                  {subIndex[subQuiz]?.questions?.map((i, idx) => (
-                    <div>
-                      <div className="my-2 bg-white p-2">
-                        <div className="fw-bold text-primary my-2">
-                          <span>Question {idx + 1}</span>
-                          <br></br>
-                          <span>Answer: {i.ans.split("answer")[1]}</span>
-                        </div>
-                        <h4>{i.question}</h4>
-                        <div>
-                          <div className="row">
-                            <div className="col-md-3">
-                              <input
-                                type="checkbox"
-                                checked={i.studentAns == "answer1"}
-                                className="mx-2 form-check-input"
-                              />
-                              1. {i.answer1}
-                            </div>
-                            <div className="col-md-3">
-                              <input
-                                type="checkbox"
-                                checked={i.studentAns == "answer2"}
-                                className="mx-2 form-check-input"
-                              />
-                              2. {i.answer2}
-                            </div>
-                            <div className="col-md-3">
-                              <input
-                                type="checkbox"
-                                checked={i.studentAns == "answer3"}
-                                className="mx-2 form-check-input"
-                              />
-                              3. {i.answer3}
-                            </div>
-                            <div className="col-md-3">
-                              <input
-                                type="checkbox"
-                                checked={i.studentAns == "answer4"}
-                                className="mx-2 form-check-input"
-                              />
-                              4. {i.answer4}
+              {/* <h4 className="my-2">Questions:</h4> */}
+              <div className="form_border">
+                {/* Subject: */}
+                <div className="form_title fs-3">
+                  {subIndex[subQuiz]?.subject}
+                </div>
+              </div>
+              <div className="row justify-content-between mx-0">
+                <div className="col-md-9 form_question_show my-4 bg-white">
+                  <div className="">
+                    {subIndex[subQuiz]?.questions?.map((i, idx) => (
+                      <div className="">
+                        <div className="my-2 bg-white p-2">
+                          <div className="fw-bold text-primary my-2">
+                            {/* <span>Question {idx + 1}</span>
+                          <br></br> */}
+
+                            {/* <span>Answer: {i.ans.split("answer")[1]}</span> */}
+                          </div>
+                          <span className="form_question_show_fontSize pb-4">
+                            {idx + 1}. {i.question}
+                          </span>
+                          <div>
+                            <div className="row">
+                              <div className="col-md-3">
+                                <input
+                                  type="checkbox"
+                                  checked={i.studentAns == "answer1"}
+                                  className="mx-2 form-check-input"
+                                />
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer1}
+                                </span>
+                              </div>
+                              <div className="col-md-3">
+                                <input
+                                  type="checkbox"
+                                  checked={i.studentAns == "answer2"}
+                                  className="mx-2 form-check-input"
+                                />
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer2}
+                                </span>
+                              </div>
+                              <div className="col-md-3">
+                                <input
+                                  type="checkbox"
+                                  checked={i.studentAns == "answer3"}
+                                  className="mx-2 form-check-input"
+                                />
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer3}
+                                </span>
+                              </div>
+                              <div className="col-md-3">
+                                <input
+                                  type="checkbox"
+                                  checked={i.studentAns == "answer4"}
+                                  className="mx-2 form-check-input"
+                                />
+                                <span className="form_question_ans_fontSize">
+                                  {i.answer4}
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
+                        <hr />
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
-                <div className="col-md-2">
-                  <div className="m-2 bg-white p-3">
-                    Total: {subIndex[subQuiz]?.total}
-                    <br></br>
-                    Got: {subIndex[subQuiz]?.got}
+                <div className="col-md-3 gx-0 ">
+                  <div className="form_border ms-2 my-4">
+                  <div className="form_title">
+                    <div className="mx-2 py-4 bg-white text-center h4 p-3">
+                     <span> Total Mark: {subIndex[subQuiz]?.total}</span>
+                      <br /> <hr />
+                     <span className="fw-bolder"> Your Result: {subIndex[subQuiz]?.got}</span>
+                    </div>
+                  </div>
                   </div>
                 </div>
               </div>
             </>
           )}
+
         </div>
       )}
     </div>

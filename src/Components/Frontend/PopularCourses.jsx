@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import useAuth from "../../Hooks/useAuth";
+import Translate from "./../Translate";
 const PopularCourses = () => {
+  const { trans } = useAuth();
   const [CourseData, setCourseData] = useState([]);
 
   useEffect(() => {
@@ -13,7 +15,9 @@ const PopularCourses = () => {
   return (
     <div className="popularCourse py-1">
       <div className="container py-5">
-        <h1 className="fw-bolder py-5">Our Popular Courses</h1>
+        <h1 className="fw-bolder py-5">
+          <Translate text={"Our Popular Courses"} type={trans} />
+        </h1>
         <div className="row">
           {CourseData.map((i, index) => (
             <div key={index} className="col-md-4 my-2">
@@ -30,7 +34,7 @@ const PopularCourses = () => {
                 <div className="p-3 border-bottom">
                   <Link to={`/courses/${i._id}`}>
                     <span className="py-2 d-inline-block fs-5 text-black">
-                      {i?.name}
+                      <Translate text={i?.name} type={trans} />
                     </span>
                   </Link>
                   <div className="d-flex justify-content-between align-items-center py-1">
@@ -47,7 +51,9 @@ const PopularCourses = () => {
                       />
                       <span className="ps-1">{i?.instructorName}</span>
                     </div>
-                    <span>€{i?.price}</span>
+                    <span>
+                      €<Translate text={i?.price} type={trans} />
+                    </span>
                   </div>
                 </div>
                 <div className="p-3 d-flex justify-content-between align-items-center">
@@ -73,8 +79,10 @@ const PopularCourses = () => {
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       ></path>
-                    </svg>{" "}
-                    <span className="text-black-50">{i.category}</span>
+                    </svg>
+                    <span className="text-black-50">
+                      <Translate text={i.category} type={trans} />
+                    </span>
                   </span>
                   <span>
                     <svg
@@ -99,19 +107,20 @@ const PopularCourses = () => {
                         stroke-linejoin="round"
                       ></path>
                     </svg>{" "}
-                    {i?.files?.length} Lesson
+                    {i?.files?.length}{" "}
+                    <Translate text={"Lesson"} type={trans} />
                   </span>
                 </div>
               </div>
             </div>
-          )).splice(0,6)}
+          )).splice(0, 6)}
         </div>
         <div className="text-center py-5">
           <Link
             to="/courseList"
             className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded text-uppercase"
           >
-            Browse All Course
+            <Translate text={"Browse All Course"} type={trans} />
           </Link>
         </div>
       </div>

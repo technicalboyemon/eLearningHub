@@ -3,9 +3,12 @@ import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
 import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
+import Translate from "../Components/Translate";
+import useAuth from "../Hooks/useAuth";
+
 const Contact = () => {
   const form = useRef();
-
+  const { trans } = useAuth();
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -37,7 +40,10 @@ const Contact = () => {
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
-          <span> Home &gt; Contact </span>
+          <span>
+            {" "}
+            <Translate text="Home &gt; Contact " type={trans} />{" "}
+          </span>
         </div>
       </div>
       <div className="container py-5">
@@ -55,13 +61,20 @@ const Contact = () => {
           </div>
           <div className="col-md-6">
             <div className="aboutInfo">
-              <h1 className="fw-bolder">Our Branches</h1>
+              <h1 className="fw-bolder">
+                {" "}
+                <Translate text="Our Branches" type={trans} />
+              </h1>
               <p>
-                At eLearning, we’ve seen again and again how the seemingly
+                {" "}
+                {/* <Translate
+                  text="At eLearning, we have seen again and again how the seemingly
                 simple act of creating can be a force for growth, change, and
-                discovery in people’s lives. We want to inspire and multiply the
+                discovery in peoples lives. We want to inspire and multiply the
                 kind of creative exploration that furthers expression, learning
-                and application.
+                and application."
+                  type={trans}
+                /> */}
               </p>
               <div className="d-flex align-items-center py-2">
                 <div className="contactIcon contactIcon1">
@@ -96,7 +109,9 @@ const Contact = () => {
       </div>
       <div className="contact py-5">
         <div className="container py-4">
-          <h1 className="fw-bolder text-center py-2">Get In Touch</h1>
+          <h1 className="fw-bolder text-center py-2">
+            <Translate text="Get In Touch" type={trans} />
+          </h1>
           <div className="row py-4">
             <div className="col-md-5">
               <div className="contactInfo  pb-3">
@@ -141,7 +156,7 @@ const Contact = () => {
                   </div>
                   <div className="contactInfo w-75">
                     <span className="d-block fs-6 text-secondary fw-bold">
-                      ADDRESS
+                      <Translate text="ADDRESS" type={trans} />
                     </span>
                     <span className="d-block fs-5">Romania</span>
                   </div>
@@ -175,10 +190,10 @@ const Contact = () => {
                   </div>
                   <div className="contactInfo w-75">
                     <span className="d-block fs-6 text-secondary fw-bold">
-                      EMAIL
+                      <Translate text="EMAIL" type={trans} />
                     </span>
                     <span className="d-block fs-6">
-                    elearning-hub-boboc1998@gmail.com
+                      elearning-hub-boboc1998@gmail.com
                     </span>
                   </div>
                 </div>
@@ -204,7 +219,7 @@ const Contact = () => {
                   </div>
                   <div className="contactInfo w-75">
                     <span className="d-block fs-6 text-secondary fw-bold">
-                      PHONE
+                      <Translate text="PHONE" type={trans} />
                     </span>
                     <span className="d-block fs-5">+39 0000000000</span>
                   </div>
@@ -218,7 +233,7 @@ const Contact = () => {
                     <div className="col-md-6">
                       <div className="mb-3">
                         <label htmlFor="fName" className="form-label fw-bold">
-                          First Name
+                          <Translate text="First Name" type={trans} />
                         </label>
                         <input
                           name="from_name"
@@ -232,7 +247,7 @@ const Contact = () => {
                     <div className="col-md-6">
                       <div className="mb-3">
                         <label htmlFor="fName" className="form-label fw-bold">
-                          Email
+                          <Translate text="Email" type={trans} />
                         </label>
                         <input
                           name="email"
@@ -247,7 +262,7 @@ const Contact = () => {
                   <div>
                     <div className="mb-3">
                       <label htmlFor="subject" className="form-label fw-bold">
-                        Subject
+                        <Translate text="Subject" type={trans} />
                       </label>
                       <input
                         name="user_subject"
@@ -260,7 +275,7 @@ const Contact = () => {
                   </div>
                   <div className="mb-3">
                     <label htmlFor="Messages" className="form-label fw-bold">
-                      Messages
+                      <Translate text="Messages" type={trans} />
                     </label>
                     <textarea
                       name="message"

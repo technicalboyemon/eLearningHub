@@ -3,13 +3,16 @@ import AboutImg from "./../Images/contactUs.jpg";
 import MeetInstructor from "./../Components/Frontend/MeetInstructor";
 import NavBar from "../Components/Frontend/NavBar";
 import Footer from "../Components/Frontend/Footer";
+import Translate from "../Components/Translate";
+import useAuth from "../Hooks/useAuth";
 const About = () => {
+  const {trans} = useAuth();
   return (
     <>
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
-          <span> Home &gt; About </span>
+          <span> <Translate text="Home &gt; About" type={trans} />  </span>
         </div>
       </div>
       <div className="container my-5">
@@ -21,16 +24,16 @@ const About = () => {
           </div>
           <div className="col-md-6">
             <div className="aboutInfo">
-              <h1 className="fw-bolder">A Great Place To Grow.</h1>
+              <h1 className="fw-bolder"> <Translate text="A Great Place To Grow." type={trans} /></h1>
               <p>
-                Whether we are eLearning or not, our goal is to help those who
+              {/* <Translate text="Whether we are eLearning or not, our goal is to help those who
                 seriously want to be programming heroes. Making their learning
                 process enjoyable and effective. In this endeavor we are
-                constantly learning new things, trying.
+                constantly learning new things, trying." type={trans} /> */}
               </p>
               <p>
-                The thing I thought couldn’t be possible a year or two ago, is
-                actually happening.
+              <Translate text="The thing I thought couldn’t be possible a year or two ago, is
+                actually happening." type={trans} />
               </p>
             </div>
           </div>
@@ -38,25 +41,25 @@ const About = () => {
         <div className="row pt-5">
           <div className="col-md-6">
             <div className="aboutBoxBlack bg-dark rounded p-5 border border-3 border-dark">
-              <h2 className="text-white">Who We Are</h2>
+              <h2 className="text-white"> <Translate text="Who We Are" type={trans} /></h2>
               <p className="text-secondary">
-                At eLearning, we’ve seen again and again how the seemingly
+              {/* <Translate text="At eLearning, we’ve seen again and again how the seemingly
                 simple act of creating can be a force for growth, change, and
                 discovery in people’s lives. We want to inspire and multiply the
                 kind of creative exploration that furthers expression, learning
-                and application.
+                and application." type={trans} /> */}
               </p>
             </div>
           </div>
           <div className="col-md-6">
             <div className="aboutBoxBlack border border-3 border-light rounded p-5">
-              <h2>What We Are</h2>
+              <h2> <Translate text="What We Are" type={trans} /></h2>
               <p className="text-secondary">
-                eLearning is an online learning community with thousands of
+              {/* <Translate text="eLearning is an online learning community with thousands of
                 classes for creative and curious people, on topics including
                 illustration, design, photography, video, freelancing, and more.
                 On eLearning, members come together to find inspiration and take
-                the next step in their creative journey.
+                the next step in their creative journey." type={trans} /> */}
               </p>
             </div>
           </div>

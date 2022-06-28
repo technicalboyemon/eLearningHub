@@ -91,7 +91,7 @@ const Dashboard = () => {
                   <div className="py-3 NavText">Enrolled Course</div>
                 </Link>
                 <Link to="/dashboard/attendQuiz">
-                      <div className="py-3 NavText">Attend Quiz</div>
+                      <div className="py-3 NavText">Attend Test</div>
                     </Link>
                 {instructor && (
                   <>
@@ -105,7 +105,10 @@ const Dashboard = () => {
                       <div className="py-3 NavText">Add Student</div>
                     </Link>
                     <Link to="/dashboard/quiz">
-                      <div className="py-3 NavText">All Quiz</div>
+                      <div className="py-3 NavText">Form Response</div>
+                    </Link>
+                    <Link to="/dashboard/addForm">
+                      <div className="py-3 NavText">Add Form</div>
                     </Link>
                   </>
                 )}
@@ -143,6 +146,16 @@ const Dashboard = () => {
                     </Link>
                     <Link to="/dashboard/addStudent">
                       <div className="py-3 NavText" title="Add Student">
+                        <BsPersonPlusFill />
+                      </div>
+                    </Link>
+                    <Link to="/dashboard/addForm">
+                      <div className="py-3 NavText" title="Add Form">
+                        <BsPersonPlusFill />
+                      </div>
+                    </Link>
+                    <Link to="/dashboard/quiz">
+                      <div className="py-3 NavText" title="Form Response">
                         <BsPersonPlusFill />
                       </div>
                     </Link>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useTranslate } from "../useTranslate";
 import BannerPerson from "./../../Images/banner-person.png";
+import Translate from "./../Translate";
 const Header = () => {
   const { trans } = useAuth();
   return (
@@ -11,7 +12,10 @@ const Header = () => {
         <div className="row justify-content-center align-items-center py-2">
           <div className="col-md-6 py-5">
             <h1 className="display-3 fw-bolder">
-              Learn With Expert Anytime Anywhere.
+              <Translate
+                text="Learn With Expert Anytime Anywhere."
+                type={trans}
+              />
             </h1>
             <p className="fs-5 py-2 text-secondary">
               {useTranslate(
@@ -23,7 +27,7 @@ const Header = () => {
               to="/courseList"
               className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded"
             >
-              Start Your Learning
+              <Translate text={"Start Your Learning"} type={trans} />
             </Link>
           </div>
           <div className="col-md-6">

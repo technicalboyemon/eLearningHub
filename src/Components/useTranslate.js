@@ -25,5 +25,5 @@ export const useTranslate = (text, type) => {
   useEffect(() => {
     fecth();
   }, [type]);
-  return load ? "loading..." : data;
+  return load ? "..." : data;
 };

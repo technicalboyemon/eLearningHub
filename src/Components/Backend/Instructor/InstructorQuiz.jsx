@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getAll } from "../../../api/api";
 import useAuth from "../../../Hooks/useAuth";
 import QuizCom from "../QuizCom";
-
 const InstructorQuiz = () => {
   const [show, setShow] = useState("quiz");
 
@@ -30,8 +29,7 @@ const InstructorQuiz = () => {
     get();
   }, [show]);
 
-  console.log(submitted)
-
+  console.log(submitted);
 
   if (load) {
     return (
@@ -42,13 +40,29 @@ const InstructorQuiz = () => {
   }
   return (
     <div>
-      <button className="btn btn-primary m-2" onClick={() => setShow("saved")}>
-        Submitted
-      </button>
-      <button className="btn btn-primary m-2" onClick={() => setShow("quiz")}>
-        Pending
-      </button>
-      <QuizCom load={load} quiz={show == "quiz" ? quiz : submitted} submitted={show == "quiz" ? false : true}/>
+      <div className="form_responses_submitted text-center py-4 w-100 bg-white text-black">
+        <div className="fs-4 py-4">Responses</div>
+
+        <div className="d-flex justify-content-center">
+          <div
+            className="form_responses_submitted_forms m-2"
+            onClick={() => setShow("saved")}
+          >
+            Submitted Forms
+          </div>
+          <div
+            className="form_responses_pending_forms m-2"
+            onClick={() => setShow("quiz")}
+          >
+            Pending Forms
+          </div>
+        </div>
+      </div>
+      <QuizCom
+        load={load}
+        quiz={show == "quiz" ? quiz : submitted}
+        submitted={show == "quiz" ? false : true}
+      />
     </div>
   );
 };

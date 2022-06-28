@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import LOGO from "./../../Images/logo.png";
 import useAuth from "./../../Hooks/useAuth.jsx";
 import { useCart } from "react-use-cart";
+import Translate from "./../Translate";
+// import { useTranslate } from "./../useTranslate";
 const NavBar = () => {
-  const { user, admin, handleTransLate } = useAuth();
+  const { user, admin, handleTransLate, trans } = useAuth();
   const { totalItems } = useCart();
   return (
     <div className="container">
@@ -33,32 +35,32 @@ const NavBar = () => {
                   aria-current="page"
                   to="/"
                 >
-                  Home
+                  <Translate text={"Home"} type={trans} />
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/courseList" className="NavText nav-link">
-                  Course
+                  <Translate text={"Course"} type={trans} />
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/instructor" className="NavText nav-link" href="#">
-                  Instructor
+                  <Translate text={"Instructor"} type={trans} />
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/faq" className="NavText nav-link">
-                  FAQ
+                  <Translate text={"FAQ"} type={trans} />
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="NavText nav-link" to="/about">
-                  About
+                  <Translate text={"About"} type={trans} />
                 </Link>
               </li>
               <li className="nav-item">
                 <Link className="NavText nav-link" to="/contact">
-                  Contact
+                  <Translate text={"Contact"} type={trans} />
                 </Link>
               </li>
             </ul>
@@ -105,7 +107,9 @@ const NavBar = () => {
                     </span>
                     <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill primaryBgColor">
                       {totalItems}
-                      <span className="visually-hidden">Cart Items</span>
+                      <span className="visually-hidden">
+                        <Translate text={"Cart Items"} type={trans} />
+                      </span>
                     </span>
                   </span>
                 </Link>
@@ -118,7 +122,7 @@ const NavBar = () => {
                     to="/login"
                   >
                     <button type="button" className="btn btn-dark">
-                      LOGIN
+                      <Translate text={"LOGIN"} type={trans} />
                     </button>
                   </Link>
                 ) : (

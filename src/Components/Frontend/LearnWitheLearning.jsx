@@ -1,12 +1,17 @@
 import React from "react";
-
+import useAuth from "../../Hooks/useAuth";
+import Translate from "./../Translate";
 const LearnWitheLearning = () => {
+  const { trans } = useAuth();
   return (
     <div className="LearnWitheLearning py-4">
       <div className="container py-5">
         <div className="text-center">
           <h1 className="fw-bolder py-4">
-            Why You'll Learn With eLearning Hub
+            <Translate
+              text={"Why You'll Learn With eLearning Hub"}
+              type={trans}
+            />
           </h1>
         </div>
         <div className="row">
@@ -36,10 +41,16 @@ const LearnWitheLearning = () => {
                   ></path>
                 </svg>
               </div>
-
-              <div className="fs-4 py-4">250k Online Course</div>
+              <div className="fs-4 py-4">
+                <Translate text={"250k Online Course"} type={trans} />
+              </div>
               <span className="text-secondary">
-              Explore new skills, deepen existing passions, and get lost in creativity. What you find just might surprise and inspire you.
+                <Translate
+                  text={
+                    "Explore new skills, deepen existing passions, and get lost in creativity. What you find just might surprise and inspire you."
+                  }
+                  type={trans}
+                />
               </span>
             </div>
           </div>
@@ -88,9 +99,17 @@ const LearnWitheLearning = () => {
                 </svg>
               </div>
 
-              <div className="fs-4 py-4">Expert Instructor</div>
+              <div className="fs-4 py-4">
+                {" "}
+                <Translate text={"Expert Instructor"} type={trans} />
+              </div>
               <span className="text-secondary">
-              Move your creative journey forward without putting life on hold. Skillshare’s short online classes help you find inspiration that fits your routine.
+                <Translate
+                  text={
+                    "Move your creative journey forward without putting life on hold. Skillshare’s short online classes help you find inspiration that fits your routine."
+                  }
+                  type={trans}
+                />
               </span>
             </div>
           </div>
@@ -123,9 +142,17 @@ const LearnWitheLearning = () => {
                 </svg>
               </div>
 
-              <div className="fs-4 py-4">Lifetime Access</div>
+              <div className="fs-4 py-4">
+                {" "}
+                <Translate text={"Lifetime Access"} type={trans} />
+              </div>
               <span className="text-secondary">
-              Take classes on the go with the Skillshare app. Stream or download to watch on the plane, the subway, or wherever you learn best.
+                <Translate
+                  text={
+                    "Take classes on the go with the Skillshare app. Stream or download to watch on the plane, the subway, or wherever you learn best."
+                  }
+                  type={trans}
+                />
               </span>
             </div>
           </div>

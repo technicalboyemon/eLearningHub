@@ -64,7 +64,7 @@ const BrowseCategories = () => {
           to="/courseList"
           className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded text-uppercase"
         >
-          Browse All Course
+          <Translate text={"Browse All Course"} type={trans} />
         </Link>
       </div>
     </div>

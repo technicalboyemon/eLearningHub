@@ -3,16 +3,20 @@ import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-
+import Translate from "../Components/Translate";
+import useAuth from "../Hooks/useAuth";
 const Cart = () => {
   const { isEmpty, cartTotal, items, removeItem, totalItems } = useCart();
-
+  const { trans } = useAuth();
   return (
     <div>
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
-          <span> Home &gt; Cart </span>
+          <span>
+            {" "}
+            <Translate text="Home &gt; Cart " type={trans} />
+          </span>
         </div>
       </div>
       <div className="secondaryBgColor py-5">
@@ -21,14 +25,17 @@ const Cart = () => {
             <div className="col-md-8">
               <div className="cart">
                 {isEmpty ? (
-                  <h1 className="fs-5 fw-bold">Your cart is empty</h1>
+                  <h1 className="fs-5 fw-bold">
+                    <Translate text="Your cart is empty" type={trans} />
+                  </h1>
                 ) : (
                   <span className="fs-5 fw-bold">
-                    {totalItems} Course In Cart
+                    {totalItems}{" "}
+                    <Translate text="Course In Cart" type={trans} />
                   </span>
                 )}
 
-                {items.map((i,index) => (
+                {items.map((i, index) => (
                   <div key={index} className="cart py-3">
                     <div className="cartBox d-flex  bg-white">
                       <img
@@ -38,11 +45,16 @@ const Cart = () => {
                         alt="Cart"
                       />
                       <div className="p-3">
-                        <p className="fs-5">{i.name}</p>
+                        <p className="fs-5">
+                          <Translate text={i.name} type={trans} />
+                        </p>
                         <p className="text-secondary">By {i?.instructorName}</p>
                         <div className="d-flex justify-content-between">
                           <p className="fs-5">€{i.price}</p>
-                          <span className="fs-5" onClick={() => removeItem(i.id)}>
+                          <span
+                            className="fs-5"
+                            onClick={() => removeItem(i.id)}
+                          >
                             <svg
                               width="18"
                               height="18"
@@ -89,23 +101,29 @@ const Cart = () => {
             </div>
             <div className="col-md-4">
               <div className="CartSummery">
-                <span className="fs-5 fw-bold">Summery</span>
+                <span className="fs-5 fw-bold">
+                  <Translate text="Summery" type={trans} />
+                </span>
                 <div className="bg-white p-4 my-3 rounded">
                   <div className="d-flex align-items-center justify-content-between text-secondary">
-                    <span>Subtotal</span>
+                    <span>
+                      <Translate text="Subtotal" type={trans} />
+                    </span>
                     <span>€{cartTotal}</span>
                   </div>
                   <hr />
 
                   <div className="d-flex align-items-center justify-content-between fs-5 fw-bold">
-                    <span>Total</span>
+                    <span>
+                      <Translate text="Total" type={trans} />
+                    </span>
                     <span>€{cartTotal}</span>
                   </div>
                   <Link
                     to="/checkout"
                     className="primaryBgColor mt-4 mb-2 d-block px-4 py-3 text-white text-center fw-bolder rounded text-uppercase"
                   >
-                    Checkout
+                    <Translate text="Checkout" type={trans} />
                   </Link>
                 </div>
               </div>

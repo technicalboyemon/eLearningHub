@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import useAuth from "../../Hooks/useAuth";
-
+import Translate from "./../Translate";
 const MeetInstructor = () => {
-  const { user } = useAuth();
+  const { trans } = useAuth();
   const [instructorData, setInstructorData] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,9 @@ const MeetInstructor = () => {
   return (
     <div className="py-5">
       <div className="container py-3">
-        <h1 className="text-center fw-bolder">Meet Our Best Instructor</h1>
+        <h1 className="text-center fw-bolder">
+          <Translate text={"Meet Our Best Instructor"} type={trans} />
+        </h1>
         <div>
           <div>
             <Swiper
@@ -51,7 +53,7 @@ const MeetInstructor = () => {
                     <div className="instructorInfo p-3 border border-top-0">
                       <span className="fw-bold fs-5">{i.name}</span> <br />
                       <span className="d-inline-block text-secondary">
-                        {i.category}
+                        <Translate text={i.category} type={trans} />
                       </span>
                     </div>
                   </div>

@@ -5,16 +5,15 @@ import useAuth from "./../Hooks/useAuth";
 import { BsFillGrid1X2Fill } from "react-icons/bs";
 import {
   BsPersonLinesFill,
-  BsFillBookmarkStarFill,
   BsFillPersonXFill,
   BsFillInfoCircleFill,
-  BsChatDotsFill,
   BsPersonPlusFill,
   BsPlusCircleFill,
-  BsPlayCircle,
 } from "react-icons/bs";
+import Translate from "../Components/Translate";
+
 const AdminDashboard = () => {
-  const { logout } = useAuth();
+  const { logout, trans } = useAuth();
   return (
     <div>
       <div className="row g-0">
@@ -34,91 +33,94 @@ const AdminDashboard = () => {
                   to="/adminDashboard/"
                 >
                   <BsFillGrid1X2Fill />
-                  <span className="NavText"> Dashboard</span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Dashboard" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/dashboard/"
                 >
                   <BsFillGrid1X2Fill />
-                  <span className="NavText"> Instructor Dashboard</span>
+                  <span className="NavText"> <Translate text="Instructor Dashboard" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addCourse"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> Add Course</span>
+                  <span className="NavText"> <Translate text="Add Course" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addQuiz"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> Add Quiz</span>
+                  <span className="NavText"> <Translate text="Add Form" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/allQuiz"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> All Quiz</span>
+                  <span className="NavText"> <Translate text="All Forms" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addCategory"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> Add Category</span>
+                  <span className="NavText"> <Translate text="Add Category" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addStudent"
                 >
                   <BsPersonPlusFill />
-                  <span className="NavText"> Add Student</span>
+                  <span className="NavText"> <Translate text="Add Student" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addInstructor"
                 >
                   <BsPersonPlusFill />
-                  <span className="NavText"> Add Instructor</span>
+                  <span className="NavText"> <Translate text="Add Instructor" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addAdmin"
                 >
                   <BsPersonPlusFill />
-                  <span className="NavText"> Make Admin</span>
+                  <span className="NavText"> <Translate text="Make Admin" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/totalCourse"
                 >
                   <BsPersonLinesFill />
-                  <span className="NavText"> Total Course</span>
+                  <span className="NavText"> <Translate text="Total Course" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/totalStudent"
                 >
                   <BsPersonLinesFill />
-                  <span className="NavText"> Total Student</span>
+                  <span className="NavText"> <Translate text="Total Student" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/totalInstructor"
                 >
                   <BsPersonLinesFill />
-                  <span className="NavText"> Total Instructor</span>
+                  <span className="NavText"> <Translate text="Total Instructor" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/account"
                 >
                   <BsFillInfoCircleFill />
-                  <span className="NavText"> Setting</span>
+                  <span className="NavText"> <Translate text="Setting" type={trans} /></span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
@@ -126,7 +128,7 @@ const AdminDashboard = () => {
                   onClick={logout}
                 >
                   <BsFillPersonXFill />
-                  <span className="NavText"> Log Out</span>
+                  <span className="NavText"> <Translate text="Log Out" type={trans} /></span>
                 </Link>
               </div>
             </nav>

@@ -6,8 +6,11 @@ import {
   BsYoutube,
   BsLinkedin,
 } from "react-icons/bs";
-
+import useAuth from "../../Hooks/useAuth";
+import Translate from "../Translate";
 const Footer = () => {
+  const { trans } = useAuth();
+
   return (
     <div className="footer">
       <div className="border-bottom border-secondary">
@@ -20,7 +23,12 @@ const Footer = () => {
               /> */}
               <h1 className="fw-bolder text-white display-4">eLearning</h1>
               <p className="w-75 text-secondary py-1">
-              eLearning teachers are icons, experts, and industry rock stars excited to share their experience, wisdom, and trusted tools with you.
+                <Translate
+                  text="eLearning teachers are icons, experts, and industry rock stars
+                excited to share their experience, wisdom, and trusted tools
+                with you."
+                  type={trans}
+                />
               </p>
               <p>
                 <span className="text-white">
@@ -43,31 +51,55 @@ const Footer = () => {
               </p>
             </div>
             <div className="col-md-2">
-              <span className="d-block py-2 text-white fs-5">Company</span>
-              <span className="d-block py-1 text-secondary">About Us</span>
-              <span className="d-block py-1 text-secondary">Courses</span>
-              <span className="d-block py-1 text-secondary">Career</span>
-              <span className="d-block py-1 text-secondary">Affiliate</span>
+              <span className="d-block py-2 text-white fs-5">
+                <Translate text="Company" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="About Us" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Courses" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Career" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Affiliate" type={trans} />
+              </span>
             </div>
             <div className="col-md-2">
-              <span className="d-block py-2 text-white fs-5">Support</span>
-              <span className="d-block py-1 text-secondary">
-                Help & Supports
+              <span className="d-block py-2 text-white fs-5">
+                <Translate text="Support" type={trans} />
               </span>
               <span className="d-block py-1 text-secondary">
-                Privacy Policy
+                <Translate text=" Help & Supports" type={trans} />
               </span>
-              <span className="d-block py-1 text-secondary">FAQs</span>
-              <span className="d-block py-1 text-secondary">Contact Us</span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Privacy Policy" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="FAQs" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Contact Us" type={trans} />
+              </span>
             </div>
             <div className="col-md-2">
-              <span className="d-block py-2 text-white fs-5">Quick Links</span>
-              <span className="d-block py-1 text-secondary">Events</span>
-              <span className="d-block py-1 text-secondary">
-                Become a Instructor
+              <span className="d-block py-2 text-white fs-5">
+                <Translate text="Quick Links" type={trans} />
               </span>
-              <span className="d-block py-1 text-secondary">Partnerships</span>
-              <span className="d-block py-1 text-secondary">Get the app</span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Events" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text=" Become a Instructor" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Partnerships" type={trans} />
+              </span>
+              <span className="d-block py-1 text-secondary">
+                <Translate text="Get the app" type={trans} />
+              </span>
             </div>
           </div>
         </div>
@@ -75,10 +107,17 @@ const Footer = () => {
       <div className="container py-3">
         <div className="d-flex text-secondary justify-content-between align-items-center">
           <div className="">
-            <span>© 2022 - eLearning Hub. All rights reserved</span>
+            <span>
+              <Translate
+                text="© 2022 - eLearning Hub. All rights reserved"
+                type={trans}
+              />
+            </span>
           </div>
           <div className="text-end">
-            <span>Go To Top</span>
+            <span>
+              <Translate text="Go To Top" type={trans} />
+            </span>
           </div>
         </div>
       </div>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
 .primaryColor {
   color: #1089ff;
 }
@@ -358,4 +360,253 @@ input::placeholder {
     text-align: center;
     /* padding-top: 20px; */
   }
+}
+/* ---------------
+      Form 
+------------------*/
+
+.form_layout {
+  font-family: "Open Sans", sans-serif !important;
+  /* align-items: flex-start !important; */
+}
+.form_border {
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+}
+.form_border:hover {
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+.form_title {
+  background-color: white;
+  border-top-color: rgb(115, 73, 189);
+  border-top-width: 8px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 24px;
+  border-style: solid;
+  border-radius: 8px;
+}
+.form_title .form_border_style {
+  border: none !important;
+  font-size: 32px;
+}
+.form_title .form_border_style:focus {
+  outline: none !important;
+  color: #212529;
+  background-color: none !important;
+  border-color: none !important;
+  font-size: 32px;
+  box-shadow: none !important;
+}
+.form_title .form_border_style::-webkit-input-placeholder {
+  font-size: 32px;
+  line-height: 3;
+}
+.form_title_name {
+  padding-left: 10px;
+}
+.form_assign {
+  background-color: white;
+  border-top-color: rgb(115, 73, 189);
+  border-top-width: 8px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  border-style: solid;
+  border-radius: 8px;
+}
+.form_assign_title {
+  font-size: 24px;
+  font-weight: 400;
+}
+.form_question {
+  background-color: white;
+  border-bottom-width: 0px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  border-style: solid;
+  border-radius: 8px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border: 1px solid #dadce0;
+}
+.form_question:hover {
+  /* border-left-color: rgb(66,133,244); */
+  /* border-left-width: 6px; */
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+.form_question_border_style {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  font-size: 16px;
+  border-bottom-color: rgb(115, 73, 189) !important;
+  border-bottom-width: 2px !important;
+  border-style: solid;
+}
+.form_question_border_style:focus {
+  outline: none !important;
+  color: #212529;
+  background-color: none !important;
+  border-color: none !important;
+  font-size: 16px;
+  box-shadow: none !important;
+}
+.form_question_border_style::-webkit-input-placeholder {
+  font-size: 16px;
+}
+.form-control {
+  border-radius: 0 !important;
+}
+.form_options_border_style {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  font-size: 12px !important;
+  border-bottom-color: rgba(167, 167, 167, 0.938) !important;
+  border-bottom-width: 0px !important;
+  border-style: solid;
+}
+.form_options_border_style:focus {
+  outline: none !important;
+  color: #212529;
+  background-color: none !important;
+  border-color: none !important;
+  box-shadow: none !important;
+  border-bottom-width: 1px !important;
+}
+/* .form_options_border_style:hover{
+  border-bottom-color: rgb(115, 73, 189) !important;
+} */
+.form_options_border_style::-webkit-input-placeholder {
+  font-size: 10px;
+  line-height: 1;
+}
+.checkbox-round {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+.checkbox_size {
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+}
+.form_question_add_btn {
+  background-color: rgb(115, 73, 189);
+  padding: 6px 30px;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.form_question_submit_btn {
+  background-color: rgb(115, 73, 189);
+  width: 100%;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+}
+.form_question_show {
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+  /* padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 12px; */
+}
+.form_question_show:hover {
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+.form_question_show_fontSize {
+  font-size: 26px;
+  font-weight: 500;
+}
+.form_question_ans_fontSize {
+  font-size: 14px;
+  font-weight: 300;
+}
+.form_question_action_btn {
+  font-size: 20px;
+  color: #000;
+}
+.form_question_update_btn {
+  background-color: rgb(117, 39, 252);
+  padding: 6px 30px;
+  border: 0px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.form_selected_user_fontSize {
+  font-size: 14px !important;
+}
+.form_responses_submitted {
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  border-top-color: rgb(115, 73, 189);
+  border-top-width: 8px;
+  border-right-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-style: solid;
+}
+.form_responses_submitted:hover {
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+    0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+.form_responses_pending_forms {
+  border-bottom: 2px solid gray;
+  cursor: pointer;
+  font-size: 14px;
+}
+.form_responses_submitted_forms {
+  border-bottom: 2px solid gray;
+  cursor: pointer;
+  font-size: 14px;
+}
+.form_responses_result{
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  background-color: white;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 24px;
+  font-weight: 500;
+  font-size: 18px;
+}
+.form_responses_result:hover{
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+  0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+.form_assign_user_fontSize{
+  font-size: 12px;
+  font-weight: 300;
 }
