@@ -6,7 +6,7 @@ import NavBar from "../Components/Frontend/NavBar";
 const StudentRegister = () => {
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="my-5">
         <div className="container">
           <div className="row">
@@ -17,7 +17,7 @@ const StudentRegister = () => {
                   If You have Account? <Link to="/login">Log In</Link>
                 </p>
                 <div className="my-4 w-75">
-                <div className="my-2 text-black input-group-lg">
+                  <div className="my-2 text-black input-group-lg">
                     <label htmlFor="exampleInputEmail1" className="form-label">
                       Full Name
                     </label>
@@ -88,7 +88,7 @@ const StudentRegister = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

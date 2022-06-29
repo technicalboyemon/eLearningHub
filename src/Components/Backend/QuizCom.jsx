@@ -48,32 +48,20 @@ const QuizCom = ({ quiz, submitted }) => {
           className="form_responses_result my-4"
           onClick={() => handlesubIndex(i)}
         >
-          {index + 1}. <Translate text={i} type={trans} />
+          {index + 1}. {i}
         </div>
       ))}
 
       {subIndex.length > 0 && (
         <div>
-          {/* <div className="my-2">
-            {subIndex.map((i, idx) => (
-              <button
-                className="btn btn-warning my-2 m-2"
-                onClick={() => setsubIndex(idx)}
-              >
-                No {idx + 1}
-              </button>
-            ))}
-          </div> */}
           <div className="d-flex">
             <div className="w-75">
               <div className="form_border">
-                {/* <h1>Subject:</h1> */}
                 <div className="form_title fs-3">
                   <Translate text={subIndex[subQuiz]?.subject} type={trans} />
                 </div>
               </div>
               <div className="form_question_show my-4 bg-white px-4 py-3">
-                {/* <h1>Questions:</h1> */}
                 {subIndex[subQuiz]?.questions?.map((i, idx) => (
                   <div>
                     <div className="my-2 bg-white p-2">
@@ -134,7 +122,7 @@ const QuizCom = ({ quiz, submitted }) => {
               <div className="form_border text-center mb-3">
                 <div className="form_title text-center">
                   <div className="form_assign_title text-center">
-                    <Translate text={"Assigned User"} type={trans} />
+                    <Translate text={"Submitted"} type={trans} />
                   </div>
                   {submitted ? (
                     <p className="form_assign_user_fontSize">

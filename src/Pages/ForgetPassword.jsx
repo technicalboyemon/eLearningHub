@@ -19,7 +19,6 @@ const ForgetPassword = () => {
             <div className="col-md-6">
               <div className="loginFrom">
                 <h1 className="fw-bolder">
-                  {" "}
                   <Translate text="Forget Password" type={trans} />
                 </h1>
                 <p className="text-danger">
@@ -51,7 +50,6 @@ const ForgetPassword = () => {
                       className="primaryBgColor d-block px-4 py-3 text-white fw-bolder rounded text-uppercase text-center text-uppercase"
                     >
                       <Translate text=" Forget Password" type={trans} />
-                     
                     </div>
                   </div>
                 </div>

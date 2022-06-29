@@ -19,8 +19,7 @@ const CourseList = () => {
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
           <span>
-            {" "}
-            <Translate text="Home &gt; Course" type={trans} />{" "}
+            <Translate text="Home &gt; Course" type={trans} />
           </span>
         </div>
         <div className="courseList py-3">

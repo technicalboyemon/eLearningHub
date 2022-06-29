@@ -19,7 +19,7 @@ const LearningSteps = () => {
               <div className="w-75">
                 <span className="fs-5">
                   <Translate text={"Make Your Own Place."} type={trans} />
-                </span>{" "}
+                </span>
                 <br />
                 <span className="fs-6 text-secondary">
                   <Translate
@@ -39,7 +39,7 @@ const LearningSteps = () => {
                     text={"Find Best Course With Better Filtter."}
                     type={trans}
                   />
-                </span>{" "}
+                </span>
                 <br />
                 <span className="fs-6 text-secondary">
                   <Translate
@@ -59,7 +59,7 @@ const LearningSteps = () => {
                     text={"And Become a Master in Your Field."}
                     type={trans}
                   />
-                </span>{" "}
+                </span>
                 <br />
                 <span className="fs-6 text-secondary">
                   <Translate

@@ -294,14 +294,20 @@ const Account = () => {
       <div className="row">
         <div className="col-md-9">
           <div className="bg-white rounded p-4 mb-3">
-            <h6 className=" fs-5">Change Password</h6>
+            <h6 className=" fs-5">
+              {" "}
+              <Translate text={"Change Password"} type={trans} />
+            </h6>
             <div className="w-100">
               <div className="my-4">
                 <label
                   htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
-                  <span>New Password</span>
+                  <span>
+                    {" "}
+                    <Translate text={"New Password"} type={trans} />
+                  </span>
                 </label>
                 <input
                   onChange={getPassword}
@@ -320,7 +326,7 @@ const Account = () => {
                 to="/dashboard"
                 className="primaryBgColor px-4 py-3 text-white fw-bold rounded text-uppercase d-inline-block"
               >
-                Update Password
+                <Translate text={"Update Password"} type={trans} />
               </div>
             </div>
           </div>

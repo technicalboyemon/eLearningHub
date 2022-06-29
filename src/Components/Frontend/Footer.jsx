@@ -17,10 +17,6 @@ const Footer = () => {
         <div className="container  py-3">
           <div className="row py-5 ">
             <div className="col-md-6">
-              {/* <img
-                src="https://eduguard-html.netlify.app/dist/images/logo/footerlogo.png"
-                alt=""
-              /> */}
               <h1 className="fw-bolder text-white display-4">eLearning</h1>
               <p className="w-75 text-secondary py-1">
                 <Translate

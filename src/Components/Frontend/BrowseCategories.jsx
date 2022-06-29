@@ -20,7 +20,6 @@ const BrowseCategories = () => {
     <div className="container">
       <div className="mx-auto text-center my-5 py-5">
         <h1 className="fw-bolder">
-          {" "}
           {useTranslate("Browse Course With Top Categories", trans)}
         </h1>
         <div>

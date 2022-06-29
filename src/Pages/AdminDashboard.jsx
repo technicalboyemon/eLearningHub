@@ -43,84 +43,120 @@ const AdminDashboard = () => {
                   to="/dashboard/"
                 >
                   <BsFillGrid1X2Fill />
-                  <span className="NavText"> <Translate text="Instructor Dashboard" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Instructor Dashboard" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addCourse"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> <Translate text="Add Course" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Add Course" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addQuiz"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> <Translate text="Add Form" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Add Form" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/allQuiz"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> <Translate text="All Forms" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="All Forms" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addCategory"
                 >
                   <BsPlusCircleFill />
-                  <span className="NavText"> <Translate text="Add Category" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Add Category" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addStudent"
                 >
                   <BsPersonPlusFill />
-                  <span className="NavText"> <Translate text="Add Student" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Add Student" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addInstructor"
                 >
                   <BsPersonPlusFill />
-                  <span className="NavText"> <Translate text="Add Instructor" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Add Instructor" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addAdmin"
                 >
                   <BsPersonPlusFill />
-                  <span className="NavText"> <Translate text="Make Admin" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Make Admin" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/totalCourse"
                 >
                   <BsPersonLinesFill />
-                  <span className="NavText"> <Translate text="Total Course" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Total Course" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/totalStudent"
                 >
                   <BsPersonLinesFill />
-                  <span className="NavText"> <Translate text="Total Student" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Total Student" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/totalInstructor"
                 >
                   <BsPersonLinesFill />
-                  <span className="NavText"> <Translate text="Total Instructor" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Total Instructor" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/account"
                 >
                   <BsFillInfoCircleFill />
-                  <span className="NavText"> <Translate text="Setting" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Setting" type={trans} />
+                  </span>
                 </Link>
                 <Link
                   className="align-items-center d-flex NavText py-2 my-1"
@@ -128,7 +164,10 @@ const AdminDashboard = () => {
                   onClick={logout}
                 >
                   <BsFillPersonXFill />
-                  <span className="NavText"> <Translate text="Log Out" type={trans} /></span>
+                  <span className="NavText">
+                    {" "}
+                    <Translate text="Log Out" type={trans} />
+                  </span>
                 </Link>
               </div>
             </nav>

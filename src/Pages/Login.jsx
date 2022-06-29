@@ -34,9 +34,7 @@ const Login = () => {
                 <h1 className="fw-bolder">
                   <Translate text="Login" type={trans} />
                 </h1>
-                <p className="text-danger">
-                  <Translate text={error} type={trans} />
-                </p>
+                <p className="text-danger">{error}</p>
                 <div className="my-5 w-75">
                   <div className="my-4 input-group-lg">
                     <label htmlFor="exampleInputEmail1" className="form-label">
@@ -57,7 +55,7 @@ const Login = () => {
                       className="form-label d-flex justify-content-between align-items-center"
                     >
                       <span>
-                        <Translate text="Password" type={trans} />{" "}
+                        <Translate text="Password" type={trans} />
                       </span>
                       <span>
                         <Link to="/forget-password">

@@ -14,7 +14,6 @@ const Cart = () => {
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
           <span>
-            {" "}
             <Translate text="Home &gt; Cart " type={trans} />
           </span>
         </div>
@@ -30,7 +29,7 @@ const Cart = () => {
                   </h1>
                 ) : (
                   <span className="fs-5 fw-bold">
-                    {totalItems}{" "}
+                    {totalItems}
                     <Translate text="Course In Cart" type={trans} />
                   </span>
                 )}

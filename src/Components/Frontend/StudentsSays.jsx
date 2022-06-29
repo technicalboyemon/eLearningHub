@@ -16,7 +16,7 @@ const StudentsSays = () => {
     <div className="StudentSays py-5">
       <div className="container py-4">
         <h1 className="fw-bolder text-center">
-          <Translate text={"What Our Students Says"} type={trans} /> <br />{" "}
+          <Translate text={"What Our Students Says"} type={trans} /> <br />
           <Translate text={"About Our Services"} type={trans} />
         </h1>
         <div className="py-5 studentDataSwiper">
@@ -66,8 +66,6 @@ const StudentsSays = () => {
                         count={i.rating}
                         size={24}
                         fullIcon={<BsStarFill />}
-                        // activeColor="#ffd700"
-                        // style={{'color':'#ffd700'}}
                         color="#ffd700"
                         edit={false}
                       />

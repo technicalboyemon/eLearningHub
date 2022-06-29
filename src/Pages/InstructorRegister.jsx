@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import AuthBanner from "../Components/Frontend/AuthBanner";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-import useAuth from "../Hooks/useAuth";
 
 const InstructorRegister = () => {
-  const { trans } = useAuth();
   return (
     <div>
       <NavBar />

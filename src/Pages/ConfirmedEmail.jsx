@@ -23,7 +23,10 @@ const ConfirmedEmail = () => {
           <div className="row py-3 align-items-center">
             <div className="col-md-6">
               <div className="loginFrom">
-                <h1 className="fw-bolder"> <Translate text="Confirm Your Email" type={trans} /></h1>
+                <h1 className="fw-bolder">
+                  {" "}
+                  <Translate text="Confirm Your Email" type={trans} />
+                </h1>
                 <p className="text-danger">{error}</p>
                 <div className="my-5 w-75">
                   <div className="my-5 input-group-lg">
@@ -31,7 +34,10 @@ const ConfirmedEmail = () => {
                       htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
-                      <span> <Translate text="Email" type={trans} /></span>
+                      <span>
+                        {" "}
+                        <Translate text="Email" type={trans} />
+                      </span>
                     </label>
                     <input
                       onBlur={getPassword}
@@ -47,7 +53,7 @@ const ConfirmedEmail = () => {
                       to="/password"
                       className="primaryBgColor d-block px-4 py-3 text-white fw-bolder rounded text-uppercase text-center text-uppercase"
                     >
-                       <Translate text="Login" type={trans} />
+                      <Translate text="Login" type={trans} />
                     </Link>
                   </div>
                 </div>

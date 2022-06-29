@@ -5,7 +5,6 @@ import LOGO from "./../../Images/logo.png";
 import useAuth from "./../../Hooks/useAuth.jsx";
 import { useCart } from "react-use-cart";
 import Translate from "./../Translate";
-// import { useTranslate } from "./../useTranslate";
 const NavBar = () => {
   const { user, admin, handleTransLate, trans } = useAuth();
   const { totalItems } = useCart();

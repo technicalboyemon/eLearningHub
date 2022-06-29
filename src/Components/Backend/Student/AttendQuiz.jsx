@@ -110,6 +110,7 @@ const AttendQuiz = () => {
     };
     const save = postData(`quiz/save/${user?.email}`, postNow);
     console.log(save);
+    window.location.reload();
   };
 
   if (load) {
@@ -154,12 +155,12 @@ const AttendQuiz = () => {
               {index + 1}. <Translate text={i} type={trans} />
             </div>
           ))}
-          {subIndex.length <= 0 && (
+          {quiz.length === 0 && (
             <div className="form_question_show fs-3 my-4 bg-white px-4 py-3 text-center">
               <Translate
                 text="Right Now, You Have Not Any Test Exam."
                 type={trans}
-              />{" "}
+              />
             </div>
           )}
           {subIndex.length > 0 && (

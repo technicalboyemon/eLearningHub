@@ -91,8 +91,6 @@ const Quiz = () => {
     setQuiz(initialState);
   };
 
-  // console.log(students);
-
   const save = async () => {
     if (students.length == 0) return alert("No student assigned");
     if (questions.length == 0) return alert("Add at least one question");
@@ -107,9 +105,8 @@ const Quiz = () => {
 
     const data = await postData("quiz/add", post);
     if (data.insertedId) {
-      navigate("/adminDashboard/allQuiz");
+      window.location.reload();
     }
-    // console.log(data);
   };
 
   return (
@@ -117,9 +114,7 @@ const Quiz = () => {
       <div className="form w-75 mx-2">
         <div className="form_border">
           <div className="form_title">
-            {/* <h4 className="form_title_name">{subject}</h4> */}
             <div className="">
-              {/* <label className="form-label">Subject</label> */}
               <input
                 onChange={(e) => setSubject(e.target.value)}
                 type="text"
@@ -134,7 +129,6 @@ const Quiz = () => {
           <div>
             <div className="form_question_show my-4 bg-white px-4 py-3">
               <div className="fw-bold text-primary my-3">
-                {/* <span className="fw-bold">Question {idx + 1}</span> */}
               </div>
               <div className="form_question_show_fontSize pb-4">
                 {i.question}

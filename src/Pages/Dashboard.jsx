@@ -56,7 +56,11 @@ const Dashboard = () => {
                 <div>
                   <h4>{userInfo[0]?.name}</h4>
                   <span className="fs-5 text-secondary">
-                    <Translate text={userInfo[0]?.profession} type={trans} />
+                    {userInfo[0]?.profession ? (
+                      <Translate text={userInfo[0]?.profession} type={trans} />
+                    ) : (
+                      userInfo[0]?.profession
+                    )}
                   </span>
                 </div>
               </div>
@@ -88,7 +92,6 @@ const Dashboard = () => {
                 <div>
                   <h4>{enrollCourse.length}</h4>
                   <span className="fs-6 text-secondary">
-                    {" "}
                     <Translate text="Enrolled Courses" type={trans} />
                   </span>
                 </div>
