@@ -1,5 +1,5 @@
 import axios from "axios";
-export const baseUrl = "http://localhost:5000";
+export const baseUrl = "https://elearning-hub-boboc1998.vercel.app/";
 
 export const getAll = async (url) => {
   const res = await fetch(`${baseUrl}/${url}`, {
