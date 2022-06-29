@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-
+import Translate from "../Components/Translate";
+import useAuth from "../Hooks/useAuth";
 const CourseList = () => {
   const [CourseData, setCourseData] = useState([]);
-
+  const { trans } = useAuth();
   useEffect(() => {
     fetch("https://cryptic-temple-44121.herokuapp.com/courses")
       .then((res) => res.json())
@@ -17,7 +18,10 @@ const CourseList = () => {
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
-          <span> Home &gt; Course </span>
+          <span>
+            {" "}
+            <Translate text="Home &gt; Course" type={trans} />{" "}
+          </span>
         </div>
         <div className="courseList py-3">
           <div className="container py-5">
@@ -37,7 +41,7 @@ const CourseList = () => {
                     <div className="p-3 border-bottom">
                       <Link to={`/courses/${i._id}`}>
                         <span className="py-2 d-inline-block fs-5 text-black">
-                          {i?.name}
+                          <Translate text={i?.name} type={trans} />
                         </span>
                       </Link>
                       <div className="d-flex justify-content-between align-items-center py-1">
@@ -52,9 +56,7 @@ const CourseList = () => {
                             }
                             alt="Instructor"
                           />
-                          <span className="ps-1">
-                            {i?.instructorName}
-                          </span>
+                          <span className="ps-1">{i?.instructorName}</span>
                         </div>
                         <span>€{i?.price}</span>
                       </div>

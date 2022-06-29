@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
+import Translate from "./../../Translate";
 
 const TotalInstructor = () => {
   const [totalUsers, setTotalUser] = useState([]);
-
+  const { trans } = useAuth();
   useEffect(() => {
     fetch("https://cryptic-temple-44121.herokuapp.com/users/instructor")
       .then((res) => res.json())
@@ -33,24 +35,39 @@ const TotalInstructor = () => {
   return (
     <div>
       <div>
-        <div className="h1 fw-bolder">Total Instructor</div>
+        <div className="h1 fw-bolder">
+          <Translate text={"Total Instructor"} type={trans} />
+        </div>
         <hr />
         <div className="bg-white rounded p-4 my-5">
           <table className="table text-center">
             <thead>
               <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Category</th>
-                <th scope="col">Action</th>
+                <th scope="col">
+                  <Translate text={"Name"} type={trans} />
+                </th>
+                <th scope="col">
+                  <Translate text={"Email"} type={trans} />
+                </th>
+                <th scope="col">
+                  <Translate text={"Category"} type={trans} />
+                </th>
+                <th scope="col">
+                  <Translate text={"Action"} type={trans} />
+                </th>
               </tr>
             </thead>
             <tbody>
               {totalUsers?.map((user) => (
                 <tr>
-                  <td>{user.name}</td>
+                  <td>
+                    <Translate text={user.name} type={trans} />
+                    {user.name}
+                  </td>
                   <td>{user.email}</td>
-                  <td>{user.category}</td>
+                  <td>
+                    <Translate text={user.category} type={trans} />
+                  </td>
                   <td>
                     <div className="NavText">
                       <button
@@ -58,7 +75,7 @@ const TotalInstructor = () => {
                         type="button"
                         className="btn btn-dark"
                       >
-                        Remove
+                        <Translate text={"Remove"} type={trans} />
                       </button>
                     </div>
                   </td>

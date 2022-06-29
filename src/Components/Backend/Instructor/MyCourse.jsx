@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Translate from "./../../Translate";
+
 const MyCourse = () => {
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   const [myCourse, setMyCourse] = useState([]);
   useEffect(() => {
-    fetch(`https://cryptic-temple-44121.herokuapp.com/course/account?email=${user.email}`)
+    fetch(
+      `https://cryptic-temple-44121.herokuapp.com/course/account?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyCourse(data);
@@ -39,19 +43,25 @@ const MyCourse = () => {
                 alt="Thumbnail"
               />
               <div className="p-3">
-                <span className="py-2 d-inline-block fs-5">{i?.name}</span>
+                <span className="py-2 d-inline-block fs-5">
+                  {" "}
+                  <Translate text={i?.name} type={trans} />
+                </span>
               </div>
               <div className="w-100 text-white text-center text-uppercase fw-bold pointer d-flex">
                 <Link className="w-50" to={`/watch/${i._id}`}>
                   <div className="p-3 primaryBgColor text-white text-center text-uppercase fw-bold pointer">
-                    <span>Watch Course</span>
+                    <span>
+                      {" "}
+                      <Translate text="Watch Course" type={trans} />
+                    </span>
                   </div>
                 </Link>
                 <span
                   onClick={() => DeleteUser(i._id)}
                   className="w-50 bg-danger p-3 "
                 >
-                  Delete Course
+                  <Translate text="Delete Course" type={trans} />
                 </span>
               </div>
             </div>

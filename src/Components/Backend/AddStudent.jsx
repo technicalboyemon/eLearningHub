@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Translate from "./../Translate";
+
 const AddStudent = () => {
-  const { AuthEmailSend, error } = useAuth();
+  const { AuthEmailSend, error, trans } = useAuth();
   const [loginData, setLoginData] = useState({});
   const [category, setCategory] = useState([]);
   const [courseCategory, setCourseCategory] = useState("");
@@ -61,7 +63,9 @@ const AddStudent = () => {
             htmlFor="addStudent"
             className="form-label d-flex justify-content-between align-items-center"
           >
-            <span className="fs-5">Student</span>
+            <span className="fs-5">
+              <Translate text={"Student"} type={trans} />
+            </span>
           </label>
           <p className="text-danger">{error}</p>
         </div>
@@ -85,10 +89,12 @@ const AddStudent = () => {
               aria-label="Default select example"
               onChange={(event) => setCourseCategory(event.target.value)}
             >
-              <option selected>Select Category</option>
+              <option selected>
+                <Translate text={"Select Category"} type={trans} />
+              </option>
               {category.map((i, index) => (
                 <option key={index} value={i.category}>
-                  {i.category}
+                  <Translate text={i.category} type={trans} />
                 </option>
               ))}
             </select>
@@ -100,7 +106,7 @@ const AddStudent = () => {
             type="button"
             className="btn btn-dark d-inline-block"
           >
-            Add Student
+            <Translate text={"Add Student"} type={trans} />
           </button>
         </div>
       </div>

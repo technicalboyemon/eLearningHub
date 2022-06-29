@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
 import { getAuth, updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import Translate from "./../Translate";
 const auth = getAuth();
-
 const Account = () => {
-  const { user, setPassword, UpdatePass } = useAuth();
+  const { user, setPassword, UpdatePass, trans } = useAuth();
   const [accountInfo, setAccountInfo] = useState({});
   const [profilePic, setProfilePic] = useState("");
   const [preLoading, setPreLoading] = useState(false);
@@ -35,13 +35,16 @@ const Account = () => {
   }, [user.email]);
 
   const UpdateUserInfo = (e) => {
-    fetch(`https://cryptic-temple-44121.herokuapp.com/users/account/${user.email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": " application/json",
-      },
-      body: JSON.stringify(accountInfo),
-    })
+    fetch(
+      `https://cryptic-temple-44121.herokuapp.com/users/account/${user.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": " application/json",
+        },
+        body: JSON.stringify(accountInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -105,14 +108,20 @@ const Account = () => {
       <div className="row">
         <div className="col-md-9">
           <div className="bg-white rounded p-4 mb-3">
-            <h6 className="py-2 fs-5">Your Information</h6>
+            <h6 className="py-2 fs-5">
+              {" "}
+              <Translate text={"Your Information"} type={trans} />
+            </h6>
             <div className="w-100">
               <div className="my-4">
                 <label
                   htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
-                  <span>Full Name</span>
+                  <span>
+                    {" "}
+                    <Translate text={"Full Name"} type={trans} />
+                  </span>
                 </label>
                 <input
                   onChange={(e) => handleInput(e)}
@@ -129,7 +138,10 @@ const Account = () => {
                   htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
-                  <span>Email</span>
+                  <span>
+                    {" "}
+                    <Translate text={"Email"} type={trans} />
+                  </span>
                 </label>
                 <input
                   disabled
@@ -145,7 +157,10 @@ const Account = () => {
                   htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
-                  <span>What Do You Do</span>
+                  <span>
+                    {" "}
+                    <Translate text={"What Do You Do"} type={trans} />
+                  </span>
                 </label>
                 <input
                   onChange={(e) => handleInput(e)}
@@ -162,7 +177,10 @@ const Account = () => {
                   htmlFor="exampleInputEmail1"
                   className="form-label d-flex justify-content-between align-items-center"
                 >
-                  <span>About Yourself</span>
+                  <span>
+                    {" "}
+                    <Translate text={"About Yourself"} type={trans} />
+                  </span>
                 </label>
                 <textarea
                   onChange={(e) => handleInput(e)}
@@ -182,7 +200,10 @@ const Account = () => {
                       htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
-                      <span>Phone Number</span>
+                      <span>
+                        {" "}
+                        <Translate text={"Phone Number"} type={trans} />
+                      </span>
                     </label>
                     <input
                       onChange={(e) => handleInput(e)}
@@ -201,7 +222,10 @@ const Account = () => {
                       htmlFor="national"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
-                      <span>Nationality</span>
+                      <span>
+                        {" "}
+                        <Translate text={"Nationality"} type={trans} />
+                      </span>
                     </label>
                     <input
                       onChange={(e) => handleInput(e)}
@@ -221,7 +245,7 @@ const Account = () => {
                   to="/dashboard"
                   className="primaryBgColor px-4 py-3 text-white fw-bold rounded text-uppercase d-inline-block"
                 >
-                  Save Changes
+                  <Translate text={"Save Changes"} type={trans} />
                 </div>
               </div>
             </div>
@@ -250,7 +274,10 @@ const Account = () => {
             />
             {preLoading ? (
               <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
+                <span className="visually-hidden">
+                  {" "}
+                  <Translate text={"Loading..."} type={trans} />
+                </span>
               </div>
             ) : (
               <button
@@ -258,7 +285,7 @@ const Account = () => {
                 type="button"
                 className="btn btn-outline-primary my-3"
               >
-                Change Image
+                <Translate text={"Change Image"} type={trans} />
               </button>
             )}
           </div>

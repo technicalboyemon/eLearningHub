@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import AuthBanner from "../Components/Frontend/AuthBanner";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-
 const StudentRegister = () => {
   return (
     <div>

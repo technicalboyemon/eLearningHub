@@ -4,8 +4,10 @@ import Footer from "../../Frontend/Footer";
 import NavBar from "../../Frontend/NavBar";
 import Comment from "../Comment/Comment";
 import ReactPlayer from "react-player";
-
+import useAuth from "../../../Hooks/useAuth";
+import Translate from "./../../Translate";
 const WatchCourse = () => {
+  const { user, trans } = useAuth();
   const { id } = useParams();
   const [courseWatch, setCourseWatch] = useState({});
   const [playList, setPlayList] = useState({ addFileDataLink: "" });
@@ -86,7 +88,11 @@ const WatchCourse = () => {
                     </div>
                   )}
 
-                  <div className="h5 fw-bold px-4 py-3">{playListTitle}</div>
+                  <div className="h5 fw-bold px-4 py-3">
+                    {" "}
+                    <Translate text={playListTitle} type={trans} />
+                    
+                  </div>
                 </div>
                 <div>
                   <Comment
@@ -171,7 +177,7 @@ const WatchCourse = () => {
                           setPlayListTitle(file?.addTitle);
                         }}
                       >
-                        {file?.addTitle}
+                        <Translate text={file?.addTitle} type={trans} />
                       </div>
                     </div>
                     <div className="col-md-3">
@@ -189,7 +195,7 @@ const WatchCourse = () => {
                             href={file?.addFileDataLink}
                             download
                           >
-                            Download
+                            <Translate text={"Download"} type={trans} />
                           </a>
                         )}
                         {get_url_extension(file?.addFileDataLink) == "pdf" && (
@@ -199,7 +205,7 @@ const WatchCourse = () => {
                               href={file?.addFileDataLink}
                               download
                             >
-                              Download
+                              <Translate text={"Download"} type={trans} />
                             </a>
                           </>
                         )}

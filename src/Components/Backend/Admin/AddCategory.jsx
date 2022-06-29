@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-
+import Translate from "./../../Translate";
+import useAuth from "./../../../Hooks/useAuth";
 const AddCategory = () => {
+  const { trans } = useAuth();
   const [category, setCategory] = useState("");
   const [catFile, setCatFile] = useState("");
   const [preLoading, setPreLoading] = useState(false);
@@ -40,7 +42,7 @@ const AddCategory = () => {
               showConfirmButton: false,
               timer: 2500,
             });
-            setCategory('')
+            setCategory("");
           }
         });
     }
@@ -53,7 +55,10 @@ const AddCategory = () => {
             htmlFor="addCategory"
             className="form-label d-flex justify-content-between align-items-center"
           >
-            <span className="fs-5">Category</span>
+            <span className="fs-5">
+              {" "}
+              <Translate text="Category" type={trans} />
+            </span>
           </label>
         </div>
         <div className="col-md-4">
@@ -84,7 +89,10 @@ const AddCategory = () => {
         <div className="col-md-3">
           {preLoading ? (
             <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
+              <span className="visually-hidden">
+                {" "}
+                <Translate text="Loading..." type={trans} />
+              </span>
             </div>
           ) : (
             <button
@@ -92,7 +100,7 @@ const AddCategory = () => {
               type="button"
               className="btn btn-dark d-inline-block"
             >
-              Add Category
+              <Translate text="Add Category" type={trans} />
             </button>
           )}
         </div>

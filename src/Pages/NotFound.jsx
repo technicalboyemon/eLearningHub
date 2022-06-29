@@ -1,7 +1,8 @@
 import React from "react";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-
+import useAuth from "../Hooks/useAuth";
+import Translate from "../Components/Translate";
 const NotFound = () => {
   return (
     <div>

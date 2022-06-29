@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Translate from "./../../Translate";
+import useAuth from "./../../../Hooks/useAuth";
 
 const AddAdmin = () => {
+  const { trans } = useAuth();
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
@@ -46,7 +49,9 @@ const AddAdmin = () => {
               htmlFor="addStudent"
               className="form-label d-flex justify-content-between align-items-center"
             >
-              <span className="fs-5">Admin</span>
+              <span className="fs-5">
+                <Translate text="Admin" type={trans} />
+              </span>
             </label>
           </div>
           <div className="col-md-7">
@@ -68,7 +73,7 @@ const AddAdmin = () => {
               type="button"
               className="btn btn-dark d-inline-block"
             >
-              Add Admin
+              <Translate text={"Add Admin"} type={trans} />
             </button>
           </div>
         </div>

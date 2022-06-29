@@ -4,9 +4,9 @@ import AuthBanner from "../Components/Frontend/AuthBanner";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
 import useAuth from "../Hooks/useAuth";
-
+import Translate from "../Components/Translate";
 const Login = () => {
-  const { loginUser, user, error } = useAuth();
+  const { loginUser, user, error, trans } = useAuth();
   const [loginData, setLoginData] = useState({});
 
   const handleLog = (e) => {
@@ -31,12 +31,16 @@ const Login = () => {
           <div className="row py-3">
             <div className="col-md-6">
               <div className="loginFrom">
-                <h1 className="fw-bolder">Login</h1>
-                <p className="text-danger">{error}</p>
+                <h1 className="fw-bolder">
+                  <Translate text="Login" type={trans} />
+                </h1>
+                <p className="text-danger">
+                  <Translate text={error} type={trans} />
+                </p>
                 <div className="my-5 w-75">
                   <div className="my-4 input-group-lg">
                     <label htmlFor="exampleInputEmail1" className="form-label">
-                      Email
+                      <Translate text="Email" type={trans} />
                     </label>
                     <input
                       onChange={handleLog}
@@ -52,9 +56,13 @@ const Login = () => {
                       htmlFor="exampleInputEmail1"
                       className="form-label d-flex justify-content-between align-items-center"
                     >
-                      <span>Password </span>
                       <span>
-                        <Link to="/forget-password">Forget</Link>
+                        <Translate text="Password" type={trans} />{" "}
+                      </span>
+                      <span>
+                        <Link to="/forget-password">
+                          <Translate text="Forget" type={trans} />
+                        </Link>
                       </span>
                     </label>
                     <input
@@ -72,7 +80,7 @@ const Login = () => {
                       to="/dashboard"
                       className="primaryBgColor d-block px-4 py-3 text-white fw-bolder rounded text-uppercase text-center text-uppercase"
                     >
-                      Login
+                      <Translate text="Login" type={trans} />
                     </Link>
                   </div>
                 </div>

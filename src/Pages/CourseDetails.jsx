@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import NavBar from "../Components/Frontend/NavBar";
 import Footer from "../Components/Frontend/Footer";
+import Translate from "../Components/Translate";
+
 import {
   BsFacebook,
   BsInstagram,
@@ -14,7 +16,7 @@ import useAuth from "../Hooks/useAuth";
 
 const CourseDetails = () => {
   const { addItem } = useCart();
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   const [CourseDetails, setCourseDetails] = useState([]);
 
   const { id } = useParams();
@@ -35,12 +37,16 @@ const CourseDetails = () => {
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container pt-5 pb-3  text-secondary">
-          <span> Home &gt; Course &gt; {CourseDetails.name}</span>
+          <span>
+            {" "}
+            <Translate text="Home &gt; Course &gt;" type={trans} />{" "}
+            <Translate text={CourseDetails.name} type={trans} />
+          </span>
           <div className="row d-flex justify-content-between py-4">
             <div className="col-md-12">
               <div className="courseTitle">
                 <span className="fs-2 text-black fw-bold">
-                  {CourseDetails.name}
+                  <Translate text={CourseDetails.name} type={trans} />
                 </span>
                 <div className="d-flex align-items-center">
                   <div className="pt-3 ">
@@ -56,7 +62,10 @@ const CourseDetails = () => {
                     />
                   </div>
                   <div className="px-2">
-                    <span>Created By</span> <br />
+                    <span>
+                      <Translate text="Created By" type={trans} />
+                    </span>{" "}
+                    <br />
                     <span className="fw-bold">
                       {CourseDetails?.instructorName}
                     </span>
@@ -97,7 +106,7 @@ const CourseDetails = () => {
                         aria-controls="pills-home"
                         aria-selected="true"
                       >
-                        Overview
+                        <Translate text="Overview" type={trans} />
                       </div>
                     </li>
                     <li className="nav-item" role="presentation">
@@ -111,7 +120,7 @@ const CourseDetails = () => {
                         aria-controls="pills-profile"
                         aria-selected="false"
                       >
-                        Curriculum
+                        <Translate text="Curriculum" type={trans} />
                       </div>
                     </li>
                   </ul>
@@ -122,8 +131,10 @@ const CourseDetails = () => {
                       role="tabpanel"
                       aria-labelledby="pills-home-tab"
                     >
-                      <p>Description </p>
-                      {CourseDetails.overview}
+                      <p>
+                        <Translate text="Description" type={trans} />{" "}
+                      </p>
+                      <Translate text={CourseDetails.overview} type={trans} />
                     </div>
                     <div
                       className="tab-pane fade"
@@ -156,11 +167,16 @@ const CourseDetails = () => {
                                 </div>
                                 <div className="col-md-9">
                                   <div className="text-black">
-                                    {item?.addTitle}
+                                    <Translate
+                                      text={item?.addTitle}
+                                      type={trans}
+                                    />
                                   </div>
                                 </div>
                                 <div className="col-md-2">
-                                  <div className="text-black">Locked</div>
+                                  <div className="text-black">
+                                    <Translate text={"Locked"} type={trans} />
+                                  </div>
                                 </div>
                               </div>
                             </>
@@ -181,30 +197,41 @@ const CourseDetails = () => {
                     to="/courseList"
                     className="primaryBgColor d-block px-4 py-3 my-3 text-white fw-bolder rounded text-uppercase text-center pointer"
                   >
-                    BUY NOW
+                    <Translate text={"BUY NOW"} type={trans} />
                   </div>
                   <hr />
-                  <p className="text-black h5">This course includes:</p>
+                  <p className="text-black h5">
+                    <Translate text={"This course includes:"} type={trans} />
+                  </p>
                   <div className="py-1">
                     <img
                       src="https://eduguard-html.netlify.app/dist/images/icon/dollar.png"
                       alt="dollar"
                     />
-                    <span className="ms-1">Full Lifetime Access</span>
+                    <span className="ms-1">
+                      <Translate text={"Full Lifetime Access"} type={trans} />
+                    </span>
                   </div>
                   <div className="py-1">
                     <img
                       src="https://eduguard-html.netlify.app/dist/images/icon/clock-2.png"
                       alt="clock"
                     />
-                    <span className="ms-1">30 Days Money Back Guarantee</span>
+                    <span className="ms-1">
+                      <Translate
+                        text={"30 Days Money Back Guarantee"}
+                        type={trans}
+                      />
+                    </span>
                   </div>
                   <div className="py-1">
                     <img
                       src="https://eduguard-html.netlify.app/dist/images/icon/paper-plus.png"
                       alt="paper"
                     />
-                    <span className="ms-1">Free Exercises File</span>
+                    <span className="ms-1">
+                      <Translate text={"Free Exercises File"} type={trans} />
+                    </span>
                   </div>
                   <div className="py-1">
                     <img
@@ -212,7 +239,10 @@ const CourseDetails = () => {
                       alt="airplay"
                     />
                     <span className="ms-1">
-                      Access on Mobile , Tablet and TV
+                      <Translate
+                        text={"Access on Mobile , Tablet and TV"}
+                        type={trans}
+                      />
                     </span>
                   </div>
                   <div className="py-1">
@@ -220,10 +250,17 @@ const CourseDetails = () => {
                       src="https://eduguard-html.netlify.app/dist/images/icon/clipboard.png"
                       alt="clipboard"
                     />
-                    <span className="ms-1">Certificate of Completion</span>
+                    <span className="ms-1">
+                      <Translate
+                        text={"Certificate of Completion"}
+                        type={trans}
+                      />
+                    </span>
                   </div>
                   <hr />
-                  <p className="h5">Share This Course</p>
+                  <p className="h5">
+                    <Translate text={"Share This Course"} type={trans} />
+                  </p>
                   <span className="text-black">
                     <span className="fs-4 me-2">
                       <BsFacebook />

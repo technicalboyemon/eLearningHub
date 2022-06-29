@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
+import Translate from "./../../Translate";
 const EnrolledCourse = () => {
   const [enrollCourse, setEnrollCourse] = useState([]);
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   useEffect(() => {
-    fetch(`https://cryptic-temple-44121.herokuapp.com/order/account?email=${user.email}`)
+    fetch(
+      `https://cryptic-temple-44121.herokuapp.com/order/account?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setEnrollCourse(data));
   }, []);
-console.log(enrollCourse);
+  console.log(enrollCourse);
   return (
     <div>
       <div className="row">
@@ -18,10 +21,14 @@ console.log(enrollCourse);
             {i.purchasedItems.items.map((item, index) => (
               <div key={index}>
                 <div className="courseCard m-1 rounded">
-                  <img  style={{ height: "240px" }} src={item.preview} alt="Thumbnail" />
+                  <img
+                    style={{ height: "240px" }}
+                    src={item.preview}
+                    alt="Thumbnail"
+                  />
                   <div className="p-3">
                     <span className="py-2 d-inline-block fs-5">
-                      {item.name}
+                      <Translate text={item.name} type={trans} />
                     </span>
                     <div className="d-flex justify-content-between align-items-center py-1">
                       <div className="d-flex justify-content-between align-items-center">
@@ -35,14 +42,22 @@ console.log(enrollCourse);
                           }
                           alt="Thumbnail"
                         />
-                        <span className="ps-1">{item?.instructorProfile?.name}</span>
+                        <span className="ps-1">
+                          {item?.instructorProfile?.name}
+                        </span>
                       </div>
-                      <span className="text-secondary">Developer</span>
+                      <span className="text-secondary">
+                        {" "}
+                        <Translate text="Developer" type={trans} />
+                      </span>
                     </div>
                   </div>
                   <Link to={`/watch/${item._id}`}>
                     <div className="p-3 primaryBgColor text-white text-center text-uppercase fw-bold pointer">
-                      <span>Watch Course</span>
+                      <span>
+                        {" "}
+                        <Translate text="Watch Course" type={trans} />
+                      </span>
                     </div>
                   </Link>
                 </div>

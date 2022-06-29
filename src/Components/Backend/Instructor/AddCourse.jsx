@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import Translate from "./../../Translate";
+import useAuth from "../../../Hooks/useAuth";
 
 const AddCourse = () => {
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   const [loading, setLoading] = useState(false);
   const [preLoading, setPreLoading] = useState(false);
   const [coursePrice, setCoursePrice] = useState("");
@@ -118,7 +119,9 @@ const AddCourse = () => {
       <div className="text-end">
         {preLoading ? (
           <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
+            <span className="visually-hidden">
+              <Translate text="Loading..." type={trans} />
+            </span>
           </div>
         ) : (
           <div className="">
@@ -126,14 +129,16 @@ const AddCourse = () => {
               onClick={courseSubmit}
               className="primaryBgColor d-inline-block px-4 py-3 text-white fw-bolder rounded text-uppercase"
             >
-              Add Course
+              <Translate text="Add Course" type={trans} />
             </div>
           </div>
         )}
       </div>
       <div className="bg-white p-4 my-4 rounded">
         <div className="row align-items-center mb-4">
-          <div className="col-md-2">Name</div>
+          <div className="col-md-2">
+            <Translate text="Name" type={trans} />
+          </div>
           <div className="col-md-10">
             <input
               onChange={(e) => setCourseName(e.target.value)}
@@ -145,7 +150,9 @@ const AddCourse = () => {
           </div>
         </div>
         <div className="row align-items-center mb-4">
-          <div className="col-md-2">Price</div>
+          <div className="col-md-2">
+            <Translate text="Price" type={trans} />
+          </div>
           <div className="col-md-10">
             <input
               onChange={(e) => setCoursePrice(e.target.value)}
@@ -157,7 +164,9 @@ const AddCourse = () => {
           </div>
         </div>
         <div className="row align-items-center mb-4">
-          <div className="col-md-2">Category</div>
+          <div className="col-md-2">
+            <Translate text="Category" type={trans} />
+          </div>
           <div className="col-md-10">
             <select
               className="form-select"
@@ -165,18 +174,20 @@ const AddCourse = () => {
               onChange={(event) => setCourseCategory(event.target.value)}
             >
               <option selected value="Others">
-                Select Category
+                <Translate text="Select Category" type={trans} />
               </option>
               {category.map((i, index) => (
                 <option key={index} value={i.category}>
-                  {i.category}
+                  <Translate text={i.category} type={trans} />
                 </option>
               ))}
             </select>
           </div>
         </div>
         <div className="row align-items-center mb-4">
-          <div className="col-md-2">Preview</div>
+          <div className="col-md-2">
+            <Translate text="Preview" type={trans} />
+          </div>
           <div className="col-md-10">
             <input
               onChange={(e) => setCoursePreview(e.target.files[0])}
@@ -188,7 +199,9 @@ const AddCourse = () => {
           </div>
         </div>
         <div className="row align-items-start mb-4">
-          <div className="col-md-2">Overview</div>
+          <div className="col-md-2">
+            <Translate text="Overview" type={trans} />
+          </div>
           <div className="col-md-10">
             <textarea
               onChange={(e) => setCourseOverview(e.target.value)}
@@ -201,7 +214,9 @@ const AddCourse = () => {
           </div>
         </div>
         <div className="row mb-3">
-          <div className="col-md-2">Curriculum</div>
+          <div className="col-md-2">
+            <Translate text="Curriculum" type={trans} />
+          </div>
           <div className="col-md-6">
             <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li className="nav-item" role="presentation">
@@ -214,7 +229,7 @@ const AddCourse = () => {
                   aria-controls="pills-profile"
                   aria-selected="false"
                 >
-                  File Upload
+                  <Translate text=" File Upload" type={trans} />
                 </div>
               </li>
             </ul>
@@ -226,10 +241,13 @@ const AddCourse = () => {
                 aria-labelledby="pills-profile-tab"
               >
                 <div className="row align-items-center my-4 ">
-                  <div className="col-md-3 text-black-50 fw-bold">Title</div>
+                  <div className="col-md-3 text-black-50 fw-bold">
+                    {" "}
+                    <Translate text="Title" type={trans} />
+                  </div>
                   <div className="col-md-9">
                     <input
-                    defaultValue={clear}
+                      defaultValue={clear}
                       onChange={(e) => setAddTitle(e.target.value)}
                       type="text"
                       className="border-0 px-2 rounded border-dark w-100 py-2 bg-light"
@@ -243,7 +261,7 @@ const AddCourse = () => {
                       htmlFor="formFile"
                       className="form-label text-black-50 fw-bold"
                     >
-                      Upload
+                      <Translate text="Upload" type={trans} />
                     </label>
                   </div>
                   <div className="col-md-9">
@@ -272,18 +290,22 @@ const AddCourse = () => {
                     type="button"
                     className="btn btn-dark d-inline-block"
                   >
-                    Add
+                    <Translate text="Add" type={trans} />
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-md-4">
-            <div>Course Contents</div>
+            <div>
+              <Translate text="Course Contents" type={trans} />
+            </div>
             {loading ? (
               <div className="d-flex justify-content-center">
                 <div className="spinner-border  m-5" role="status">
-                  <span className="visually-hidden">Loading...</span>
+                  <span className="visually-hidden">
+                    <Translate text="Loading..." type={trans} />
+                  </span>
                 </div>
               </div>
             ) : (
@@ -307,7 +329,9 @@ const AddCourse = () => {
                     </svg>
                   </div>
                   <div className="col-md-11">
-                    <div className="text-black-50">{i?.addTitle}</div>
+                    <div className="text-black-50">
+                      <Translate text={i?.addTitle} type={trans} />
+                    </div>
                   </div>
                 </div>
               ))

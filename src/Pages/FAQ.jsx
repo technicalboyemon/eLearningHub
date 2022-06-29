@@ -1,14 +1,18 @@
 import React from "react";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
-
+import useAuth from "../Hooks/useAuth";
+import Translate from "../Components/Translate";
 const FAQ = () => {
+  const { trans } = useAuth();
   return (
     <div>
       <NavBar />
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
-          <span> Home &gt; FAQ </span>
+          <span>
+            <Translate text="Home &gt; FAQ" type={trans} />
+          </span>
         </div>
       </div>
       <div className="faq py-5">
@@ -27,7 +31,7 @@ const FAQ = () => {
                   aria-expanded="true"
                   aria-controls="panelsStayOpen-collapseOne"
                 >
-                  Who is this course for?
+                  <Translate text="Who is this course for?" type={trans} />
                 </button>
               </h2>
               <div
@@ -36,13 +40,13 @@ const FAQ = () => {
                 aria-labelledby="panelsStayOpen-headingOne"
               >
                 <div className="accordion-body">
-                  Those who want to be a web developer. For those who learn web
+                  {" "}
+                  <Translate
+                    text="Those who want to be a web developer. For those who learn web
                   development from scratch and then want to work for a software
-                  company as a web developer. For those who don't know much
-                  about programming or web development. Even those who have not
-                  been able to figure out how to do it even after four years of
-                  CSE, and have not learned much, will also be able to apply for
-                  a job by learning Complete Web Development from this course.
+                  company as a web developer."
+                    type={trans}
+                  />
                 </div>
               </div>
             </div>
@@ -56,8 +60,12 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseTwo"
                 >
-                  What prior experience do I need to have before starting this
-                  course?
+                  {" "}
+                  <Translate
+                    text="   What prior experience do I need to have before starting this
+                course?"
+                    type={trans}
+                  />
                 </button>
               </h2>
               <div
@@ -87,7 +95,7 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseThree"
                 >
-                  What's in the course?
+                  <Translate text=" What's in the course?" type={trans} />
                 </button>
               </h2>
               <div
@@ -121,7 +129,7 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseThree"
                 >
-                  How to get course videos?
+                  <Translate text="  How to get course videos? " type={trans} />
                 </button>
               </h2>
               <div
@@ -151,36 +159,7 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseThree"
                 >
-                  What is the educational background to do the course?
-                </button>
-              </h2>
-              <div
-                id="panelsStayOpen-collapseThree"
-                className="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingThree"
-              >
-                <div className="accordion-body">
-                  We have arranged the course in a way that does not matter the
-                  academic background. You can do this course from any academic
-                  background. It has been started from scratch so that varsity
-                  students, college students, employees, unemployed, boyfriends,
-                  runaway boyfriends, even girlfriends who don't pick up the
-                  phone can learn if they want. However, the time must be given
-                  7-8 hours. Minimum 4-5 hours.
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
-              <h2 className="accordion-header" id="panelsStayOpen-headingThree">
-                <button
-                  className="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree"
-                >
-                  What things do I need?
+                  <Translate text=" What things do I need?" type={trans} />
                 </button>
               </h2>
               <div

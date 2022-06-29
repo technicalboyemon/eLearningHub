@@ -4,12 +4,12 @@ import { getAll, postData } from "../../api/api";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { BsX, BsPencilSquare, BsTrash } from "react-icons/bs";
-
+import Translate from "./../Translate";
 const arr = ["answer1", "answer2", "answer3", "answer4"];
 
 const Quiz = () => {
   let navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -147,7 +147,9 @@ const Quiz = () => {
                       checked={i.ans == "answer1"}
                       className="mx-2 form-check-input"
                     />
-                    <span className="form_question_ans_fontSize">{i.answer1}</span>
+                    <span className="form_question_ans_fontSize">
+                      {i.answer1}
+                    </span>
                   </div>
                   <div className="col-md-3">
                     <input
@@ -155,7 +157,9 @@ const Quiz = () => {
                       checked={i.ans == "answer2"}
                       className="mx-2 form-check-input"
                     />
-                    <span className="form_question_ans_fontSize">{i.answer2}</span>
+                    <span className="form_question_ans_fontSize">
+                      {i.answer2}
+                    </span>
                   </div>
                   <div className="col-md-3">
                     <input
@@ -163,7 +167,9 @@ const Quiz = () => {
                       checked={i.ans == "answer3"}
                       className="mx-2 form-check-input"
                     />
-                    <span className="form_question_ans_fontSize">{i.answer3}</span>
+                    <span className="form_question_ans_fontSize">
+                      {i.answer3}
+                    </span>
                   </div>
                   <div className="col-md-3">
                     <input
@@ -171,13 +177,15 @@ const Quiz = () => {
                       checked={i.ans == "answer4"}
                       className="mx-2 form-check-input"
                     />
-                    <span className="form_question_ans_fontSize">{i.answer4}</span>
+                    <span className="form_question_ans_fontSize">
+                      {i.answer4}
+                    </span>
                   </div>
                 </div>
               </div>
               <hr />
               <div className="d-flex justify-content-end">
-              <span 
+                <span
                   className="form_question_action_btn me-2"
                   onClick={() => {
                     handleEdit(`${idx}`);
@@ -185,7 +193,7 @@ const Quiz = () => {
                 >
                   <BsPencilSquare />
                 </span>
-                <span 
+                <span
                   className="form_question_action_btn"
                   onClick={() => {
                     setQuestions(questions.filter((i, ix) => ix != idx));
@@ -193,7 +201,6 @@ const Quiz = () => {
                 >
                   <BsTrash />
                 </span>
-                
               </div>
             </div>
           </div>
@@ -226,7 +233,7 @@ const Quiz = () => {
                     name={i}
                     className="form-control form_options_border_style"
                     value={getValueInput(i)}
-                    placeholder={"Options " + (idx+1)}
+                    placeholder={"Options " + (idx + 1)}
                   />
                 </div>
               </div>
@@ -235,15 +242,18 @@ const Quiz = () => {
         </div>
 
         {edit ? (
-          <button onClick={() => updateQuiz()} className="form_question_update_btn">
-            Update Quiz
+          <button
+            onClick={() => updateQuiz()}
+            className="form_question_update_btn"
+          >
+            <Translate text={"Update Quiz"} type={trans} />
           </button>
         ) : (
           <button
             onClick={() => adQuiztoui()}
             className="form_question_add_btn"
           >
-            Add Quiz
+            <Translate text={"Add Quiz"} type={trans} />
           </button>
         )}
       </div>
@@ -251,7 +261,9 @@ const Quiz = () => {
       <div className="w-25 ">
         <div className="form_assign mx-2">
           <div className="my-2">
-            <label className="form-label form_assign_title">Select Users</label>
+            <label className="form-label form_assign_title">
+              <Translate text={"Select Users"} type={trans} />
+            </label>
             <select
               className="form-select mb-4"
               onChange={(e) => {
@@ -264,7 +276,9 @@ const Quiz = () => {
                 ]);
               }}
             >
-              <option selected>Add Students</option>
+              <option selected>
+                <Translate text={"Add Students"} type={trans} />
+              </option>
               {users?.map((i) => (
                 <>
                   <option value={i?._id}>{i?.name}</option>
@@ -292,7 +306,7 @@ const Quiz = () => {
         <div className="mt-4 mx-2">
           {questions.length > 0 && (
             <button onClick={save} className="form_question_submit_btn py-4 h5">
-              Save Form
+              <Translate text={"Save Form"} type={trans} />
             </button>
           )}
         </div>

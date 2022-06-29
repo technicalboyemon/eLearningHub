@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAll, postData } from "../../../api/api";
 import useAuth from "../../../Hooks/useAuth";
 import QuizCom from "../QuizCom";
+import Translate from "./../../Translate";
 const AttendQuiz = () => {
   const [show, setShow] = useState("quiz");
   console.log(show);
@@ -11,7 +12,7 @@ const AttendQuiz = () => {
   const [subQuiz, setsubIndex] = useState(0);
   const [subIndex, setSubIndex] = useState([]);
 
-  const { user } = useAuth();
+  const { user, trans } = useAuth();
   useEffect(() => {
     setsubIndex(0);
     setSubIndex([]);
@@ -114,7 +115,9 @@ const AttendQuiz = () => {
   if (load) {
     return (
       <div className="spinner-border" role="status">
-        <span className="visually-hidden">Loading...</span>
+        <span className="visually-hidden">
+          <Translate text="Loading..." type={trans} />
+        </span>
       </div>
     );
   }
@@ -122,19 +125,21 @@ const AttendQuiz = () => {
   return (
     <div>
       <div className="form_responses_submitted text-center py-4 w-100 bg-white text-black">
-        <div className="fs-4 py-4">Attend Test</div>
+        <div className="fs-4 py-4">
+          <Translate text="Attend Test" type={trans} />
+        </div>
         <div className="d-flex justify-content-center">
           <div
             className="form_responses_submitted_forms m-2"
             onClick={() => setShow("saved")}
           >
-            Your Submitted Test
+            <Translate text="Your Submitted Test" type={trans} />
           </div>
           <div
             className="form_responses_pending_forms m-2"
             onClick={() => setShow("quiz")}
           >
-            Pending Test
+            <Translate text="Pending Test" type={trans} />
           </div>
         </div>
       </div>
@@ -146,12 +151,17 @@ const AttendQuiz = () => {
               className="form_responses_result my-4"
               onClick={() => handlesubIndex(i)}
             >
-              {index + 1}. {i}
+              {index + 1}. <Translate text={i} type={trans} />
             </div>
           ))}
-{
-  subIndex.length <= 0 && ( <div className="form_question_show fs-3 my-4 bg-white px-4 py-3 text-center">You Don't Have Any Test Exam Right Now!!!</div> )
-}
+          {subIndex.length <= 0 && (
+            <div className="form_question_show fs-3 my-4 bg-white px-4 py-3 text-center">
+              <Translate
+                text="Right Now, You Have Not Any Test Exam."
+                type={trans}
+              />{" "}
+            </div>
+          )}
           {subIndex.length > 0 && (
             <div>
               {/* <div className="my-2">
@@ -169,7 +179,7 @@ const AttendQuiz = () => {
                 <div className="form_border">
                   {/* Subject: */}
                   <div className="form_title fs-3">
-                    {subIndex[subQuiz]?.subject}
+                    <Translate text={subIndex[subQuiz]?.subject} type={trans} />
                   </div>
                 </div>
               </div>
@@ -184,7 +194,8 @@ const AttendQuiz = () => {
                             <span>Question {idx + 1}</span>
                           </div> */}
                           <span className="form_question_show_fontSize pb-4">
-                            {idx + 1}. {i.question}
+                            {idx + 1}.{" "}
+                            <Translate text={i.question} type={trans} />
                           </span>
                           <div>
                             <div className="row">
@@ -199,7 +210,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer1}
+                                  <Translate text={i.answer1} type={trans} />
                                 </span>
                               </div>
                               <div className="col-md-3">
@@ -212,7 +223,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer2}
+                                  <Translate text={i.answer2} type={trans} />
                                 </span>
                               </div>
                               <div className="col-md-3">
@@ -225,7 +236,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer3}
+                                  <Translate text={i.answer3} type={trans} />
                                 </span>
                               </div>
                               <div className="col-md-3">
@@ -238,7 +249,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer4}
+                                  <Translate text={i.answer4} type={trans} />
                                 </span>
                               </div>
                             </div>
@@ -250,7 +261,7 @@ const AttendQuiz = () => {
                       className="form_question_add_btn"
                       onClick={() => handleSave()}
                     >
-                      Submit Your Test
+                      <Translate text="Submit Your Test" type={trans} />
                     </button>
                   </div>
                   {/* <div className="col-md-2">
@@ -272,7 +283,7 @@ const AttendQuiz = () => {
               className="form_responses_result my-4"
               onClick={() => handlesubIndex(i)}
             >
-              {index + 1}. {i}
+              {index + 1}. <Translate text={i} type={trans} />
             </div>
           ))}
           {/* <div className="my-2">
@@ -292,7 +303,7 @@ const AttendQuiz = () => {
               <div className="form_border">
                 {/* Subject: */}
                 <div className="form_title fs-3">
-                  {subIndex[subQuiz]?.subject}
+                  <Translate text={subIndex[subQuiz]?.subject} type={trans} />
                 </div>
               </div>
               <div className="row justify-content-between mx-0">
@@ -308,7 +319,8 @@ const AttendQuiz = () => {
                             {/* <span>Answer: {i.ans.split("answer")[1]}</span> */}
                           </div>
                           <span className="form_question_show_fontSize pb-4">
-                            {idx + 1}. {i.question}
+                            {idx + 1}.{" "}
+                            <Translate text={i.question} type={trans} />
                           </span>
                           <div>
                             <div className="row">
@@ -319,7 +331,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer1}
+                                  <Translate text={i.answer1} type={trans} />
                                 </span>
                               </div>
                               <div className="col-md-3">
@@ -329,7 +341,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer2}
+                                  <Translate text={i.answer2} type={trans} />
                                 </span>
                               </div>
                               <div className="col-md-3">
@@ -339,7 +351,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer3}
+                                  <Translate text={i.answer3} type={trans} />
                                 </span>
                               </div>
                               <div className="col-md-3">
@@ -349,7 +361,7 @@ const AttendQuiz = () => {
                                   className="mx-2 form-check-input"
                                 />
                                 <span className="form_question_ans_fontSize">
-                                  {i.answer4}
+                                  <Translate text={i.answer4} type={trans} />
                                 </span>
                               </div>
                             </div>
@@ -363,19 +375,32 @@ const AttendQuiz = () => {
 
                 <div className="col-md-3 gx-0 ">
                   <div className="form_border ms-2 my-4">
-                  <div className="form_title">
-                    <div className="mx-2 py-4 bg-white text-center h4 p-3">
-                     <span> Total Mark: {subIndex[subQuiz]?.total}</span>
-                      <br /> <hr />
-                     <span className="fw-bolder"> Your Result: {subIndex[subQuiz]?.got}</span>
+                    <div className="form_title">
+                      <div className="mx-2 py-4 bg-white text-center h4 p-3">
+                        <span>
+                          {" "}
+                          <Translate text="Total Mark:" type={trans} />{" "}
+                          <Translate
+                            text={subIndex[subQuiz]?.total}
+                            type={trans}
+                          />
+                        </span>
+                        <br /> <hr />
+                        <span className="fw-bolder">
+                          {" "}
+                          <Translate text="Your Result:" type={trans} />{" "}
+                          <Translate
+                            text={subIndex[subQuiz]?.got}
+                            type={trans}
+                          />
+                        </span>
+                      </div>
                     </div>
-                  </div>
                   </div>
                 </div>
               </div>
             </>
           )}
-
         </div>
       )}
     </div>

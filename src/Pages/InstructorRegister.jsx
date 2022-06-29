@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import AuthBanner from "../Components/Frontend/AuthBanner";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
+import useAuth from "../Hooks/useAuth";
 
 const InstructorRegister = () => {
+  const { trans } = useAuth();
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="my-5">
         <div className="container">
           <div className="row">
@@ -101,7 +103,7 @@ const InstructorRegister = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

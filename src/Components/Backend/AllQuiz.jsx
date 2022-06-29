@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getAll } from "../../api/api";
 import QuizCom from "./QuizCom";
-
+import useAuth from "../../Hooks/useAuth";
+import Translate from "./../Translate";
 const AllQuiz = () => {
   const [show, setShow] = useState("quiz");
-
+  const { user, trans } = useAuth();
   const [load, setLoad] = useState(true);
   const [quiz, setQuiz] = useState([]);
 
@@ -38,13 +39,21 @@ const AllQuiz = () => {
   return (
     <div>
       <div className="form_responses_submitted text-center py-4 w-100 bg-white text-black">
-        <div className="fs-4 py-4">Responses</div>
+        <div className="fs-4 py-4">
+          <Translate text={"Responses"} type={trans} />
+        </div>
         <div className="d-flex justify-content-center">
-          <div className="form_responses_submitted_forms m-2" onClick={() => setShow("saved")}>
-            Submitted Forms
+          <div
+            className="form_responses_submitted_forms m-2"
+            onClick={() => setShow("saved")}
+          >
+            <Translate text={"Submitted Forms"} type={trans} />
           </div>
-          <div className="form_responses_pending_forms m-2" onClick={() => setShow("quiz")}>
-            Pending Forms
+          <div
+            className="form_responses_pending_forms m-2"
+            onClick={() => setShow("quiz")}
+          >
+            <Translate text={"Pending Forms"} type={trans} />
           </div>
         </div>
       </div>

@@ -22,7 +22,6 @@ import Faq from "./Pages/FAQ";
 import InstructorRegister from "./Pages/InstructorRegister";
 import StudentRegister from "./Pages/StudentRegister";
 import MyCourse from "./Components/Backend/Instructor/MyCourse";
-import Inbox from "./Components/Backend/Inbox";
 import AddStudent from "./Components/Backend/AddStudent";
 import AddInstructor from "./Components/Backend/Admin/AddInstructor";
 import AdminDashboard from "./Pages/AdminDashboard";
@@ -84,7 +83,6 @@ function App() {
               <Route path="account" element={<Account />} />
               <Route path="enrolledCourse" element={<EnrolledCourse />} />
               <Route path="myCourse" element={<MyCourse />} />
-              <Route path="inbox" element={<Inbox />} />
               <Route path="addCourse" element={<AddCourse />} />
               <Route path="updateCourse" element={<UpdateCourse />} />
               <Route path="quiz" element={<InstructorQuiz />} />

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
+import Translate from "./../../Translate";
 const AddInstructor = () => {
-  const { AuthEmailSend, error } = useAuth();
+  const { AuthEmailSend, trans } = useAuth();
   const [loginData, setLoginData] = useState({});
   const [category, setCategory] = useState([]);
   const [preLoading, setPreLoading] = useState(false);
@@ -80,7 +80,10 @@ const AddInstructor = () => {
             htmlFor="addStudent"
             className="form-label d-flex justify-content-between align-items-center"
           >
-            <span className="fs-5">Instructor</span>
+            <span className="fs-5">
+              {" "}
+              <Translate text="Instructor" type={trans} />
+            </span>
           </label>
         </div>
         <div className="col-md-3">
@@ -115,10 +118,13 @@ const AddInstructor = () => {
               aria-label="Default select example"
               onChange={(event) => setCourseCategory(event.target.value)}
             >
-              <option selected>Select Category</option>
+              <option selected>
+                {" "}
+                <Translate text="Select Category" type={trans} />
+              </option>
               {category.map((i, index) => (
                 <option key={index} value={i.category}>
-                  {i.category}
+                  <Translate text={i.category} type={trans} />
                 </option>
               ))}
             </select>
@@ -127,7 +133,10 @@ const AddInstructor = () => {
         <div className="col-md-3">
           {preLoading ? (
             <div className="spinner-border" role="status">
-              <span className="visually-hidden">Loading...</span>
+              <span className="visually-hidden">
+                {" "}
+                <Translate text="Loading..." type={trans} />
+              </span>
             </div>
           ) : (
             <button
@@ -135,7 +144,7 @@ const AddInstructor = () => {
               type="button"
               className="btn btn-dark d-inline-block"
             >
-              Add Instructor
+              <Translate text="Add Instructor" type={trans} />
             </button>
           )}
         </div>

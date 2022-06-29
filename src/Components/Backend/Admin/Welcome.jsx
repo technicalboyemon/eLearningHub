@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-
+import Translate from "./../../Translate";
+import useAuth from "./../../../Hooks/useAuth";
 const Welcome = () => {
   const [totalInstructor, setTotalInstructor] = useState([]);
   const [totalStudent, setTotalStudent] = useState([]);
   const [totalCourse, setTotalCourse] = useState([]);
+  const { trans } = useAuth();
   useEffect(() => {
     fetch("https://cryptic-temple-44121.herokuapp.com/users/instructor")
       .then((res) => res.json())
@@ -28,7 +30,9 @@ const Welcome = () => {
 
   return (
     <div>
-      <div className="h1 fw-bolder">Dashboard</div>
+      <div className="h1 fw-bolder">
+        <Translate text="Dashboard" type={trans} />
+      </div>
       <hr />
       <div className="row py-4">
         <div className="col-md-4">
@@ -59,7 +63,9 @@ const Welcome = () => {
                 </svg>
               </div>
               <div>
-                <span className="text-black-50">Total Courses</span>
+                <span className="text-black-50">
+                  <Translate text="Total Courses" type={trans} />
+                </span>
                 <div className="h3 fw-bold">{totalCourse.length}</div>
               </div>
             </div>
@@ -111,7 +117,9 @@ const Welcome = () => {
                 </svg>
               </div>
               <div>
-                <span className="text-black-50">Active Student</span>
+                <span className="text-black-50">
+                  <Translate text="Active Student" type={trans} />
+                </span>
                 <div className="h3 fw-bold">{totalStudent.length}</div>
               </div>
             </div>
@@ -163,7 +171,9 @@ const Welcome = () => {
                 </svg>
               </div>
               <div>
-                <span className="text-black-50">Active Instructor</span>
+                <span className="text-black-50">
+                  <Translate text="Active Instructor" type={trans} />
+                </span>
                 <div className="h3 fw-bold">{totalInstructor.length}</div>
               </div>
             </div>
