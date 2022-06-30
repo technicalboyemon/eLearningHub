@@ -53,7 +53,7 @@ const AllQuiz = () => {
             className="form_responses_pending_forms m-2"
             onClick={() => setShow("quiz")}
           >
-            <Translate text={"Pending Forms"} type={trans} />
+            <Translate text={"All Forms"} type={trans} />
           </div>
         </div>
       </div>

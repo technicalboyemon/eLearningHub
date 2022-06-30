@@ -41,8 +41,7 @@ const Contact = () => {
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
           <span>
-            {" "}
-            <Translate text="Home &gt; Contact " type={trans} />{" "}
+            <Translate text="Home &gt; Contact " type={trans} />
           </span>
         </div>
       </div>
@@ -62,19 +61,15 @@ const Contact = () => {
           <div className="col-md-6">
             <div className="aboutInfo">
               <h1 className="fw-bolder">
-                {" "}
                 <Translate text="Our Branches" type={trans} />
               </h1>
               <p>
-                {" "}
-                {/* <Translate
-                  text="At eLearning, we have seen again and again how the seemingly
-                simple act of creating can be a force for growth, change, and
-                discovery in peoples lives. We want to inspire and multiply the
+                <Translate
+                  text="We want to inspire and multiply the
                 kind of creative exploration that furthers expression, learning
                 and application."
                   type={trans}
-                /> */}
+                />
               </p>
               <div className="d-flex align-items-center py-2">
                 <div className="contactIcon contactIcon1">

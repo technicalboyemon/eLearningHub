@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getAll, postData } from "../../../api/api";
 import useAuth from "../../../Hooks/useAuth";
-import QuizCom from "../QuizCom";
+import { uiAnswerQuizData } from "../QuizCom";
+
 import Translate from "./../../Translate";
+
 const AttendQuiz = () => {
   const [show, setShow] = useState("quiz");
   console.log(show);
@@ -63,39 +65,69 @@ const AttendQuiz = () => {
   const qsInfo = quiz?.find((i) => i?._id === subIndex[subQuiz]?._id);
 
   const [finalSubmit, setFinalSubmit] = useState([]);
-  const handleQuestion = (id, ans) => {
-    console.log(subIndex[subQuiz]._id, id, ans);
-
-    const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
-    const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
-
-    let qsData = qsInfo.questions.find((t) => t.id == id);
-    if (qsData) {
-      qsData["studentAns"] = ans;
-      if (ans == qsData.ans) {
-        qsData["right"] = 1;
-      } else {
-        qsData["right"] = 0;
+  const handleQuestion = (id, ans, type) => {
+    if (type == 0) {
+      const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
+      const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
+      let qsData = qsInfo.questions.find((t) => t.id == id);
+      if (qsData) {
+        qsData["studentAns"] = ans;
+        if (ans == qsData.ans) {
+          qsData["right"] = 1;
+        } else {
+          qsData["right"] = 0;
+        }
       }
+      setFinalSubmit(qsInfo);
+      const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
+      qsFilter.splice(qsIdx, 0, qsInfo);
+      setQuiz(qsFilter);
     }
-    setFinalSubmit(qsInfo);
-    const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
-    qsFilter.splice(qsIdx, 0, qsInfo);
-    setQuiz(qsFilter);
-
-    // const qs = quiz.filter((i) => {
-    //   let qsData = i.questions.find((t) => t.id == id);
-    //   if (qsData) {
-    //     qsData["studentAns"] = ans;
-    //     if (ans == qsData.ans) {
-    //       qsData["right"] = 1;
-    //     } else {
-    //       qsData["right"] = 0;
-    //     }
-    //   }
-    //   return qsData;
-    // });
-    // setMarks(qs.map((i) => i.questions.map((t) => t.right)));
+    if (type == 1) {
+      console.log(subIndex[subQuiz]._id, id, ans);
+      const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
+      const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
+      let qsData = qsInfo.questions.find((t) => t.id == id);
+      if (qsData) {
+        if (qsData.studentAns) {
+          qsData["mark"] = [...qsData.studentAns, ans];
+        } else {
+          qsData["mark"] = [ans];
+        }
+        if (qsData.ans.find((i) => i == ans)) {
+          qsData["right"] = 1;
+        } else {
+          qsData["right"] = 0;
+        }
+      }
+      setFinalSubmit(qsInfo);
+      const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
+      qsFilter.splice(qsIdx, 0, qsInfo);
+      setQuiz(qsFilter);
+    }
+    if (type == 2) {
+      const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
+      const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
+      let qsData = qsInfo.questions.find((t) => t.id == id);
+      if (qsData) {
+        qsData["studentAns"] = ans;
+        if (ans == qsData.ans) {
+          qsData["right"] = 1;
+        } else {
+          qsData["right"] = 0;
+        }
+      }
+      console.log(qsInfo);
+      setFinalSubmit(qsInfo);
+      const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
+      qsFilter.splice(qsIdx, 0, qsInfo);
+      setQuiz(qsFilter);
+    }
+    // setFinalSubmit(qsInfo);
+    //   const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
+    //   qsFilter.splice(qsIdx, 0, qsInfo);
+    //   setQuiz(qsFilter);
+    // }
   };
 
   const handleSave = () => {
@@ -110,6 +142,7 @@ const AttendQuiz = () => {
     };
     const save = postData(`quiz/save/${user?.email}`, postNow);
     console.log(save);
+    // window.location.reload();
   };
 
   if (load) {
@@ -154,12 +187,12 @@ const AttendQuiz = () => {
               {index + 1}. <Translate text={i} type={trans} />
             </div>
           ))}
-          {subIndex.length <= 0 && (
+          {quiz.length === 0 && (
             <div className="form_question_show fs-3 my-4 bg-white px-4 py-3 text-center">
               <Translate
                 text="Right Now, You Have Not Any Test Exam."
                 type={trans}
-              />{" "}
+              />
             </div>
           )}
           {subIndex.length > 0 && (
@@ -199,59 +232,13 @@ const AttendQuiz = () => {
                           </span>
                           <div>
                             <div className="row">
-                              <div className="col-md-3">
-                                <input
-                                  type="radio"
-                                  name={`studentAns${i?._id}${idx}`}
-                                  value={i.right ? "on" : "off"}
-                                  onChange={(e) =>
-                                    handleQuestion(i.id, "answer1")
-                                  }
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer1} type={trans} />
-                                </span>
-                              </div>
-                              <div className="col-md-3">
-                                <input
-                                  type="radio"
-                                  name={`studentAns${i?._id}${idx}`}
-                                  onChange={(e) =>
-                                    handleQuestion(i.id, "answer2")
-                                  }
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer2} type={trans} />
-                                </span>
-                              </div>
-                              <div className="col-md-3">
-                                <input
-                                  type="radio"
-                                  name={`studentAns${i?._id}${idx}`}
-                                  onChange={(e) =>
-                                    handleQuestion(i.id, "answer3")
-                                  }
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer3} type={trans} />
-                                </span>
-                              </div>
-                              <div className="col-md-3">
-                                <input
-                                  type="radio"
-                                  name={`studentAns${i?._id}${idx}`}
-                                  onChange={(e) =>
-                                    handleQuestion(i.id, "answer4")
-                                  }
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer4} type={trans} />
-                                </span>
-                              </div>
+                              {uiQuizData(
+                                i?.type,
+                                i,
+                                idx,
+                                handleQuestion,
+                                trans
+                              )}
                             </div>
                           </div>
                         </div>
@@ -324,46 +311,13 @@ const AttendQuiz = () => {
                           </span>
                           <div>
                             <div className="row">
-                              <div className="col-md-3">
-                                <input
-                                  type="checkbox"
-                                  checked={i.studentAns == "answer1"}
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer1} type={trans} />
-                                </span>
-                              </div>
-                              <div className="col-md-3">
-                                <input
-                                  type="checkbox"
-                                  checked={i.studentAns == "answer2"}
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer2} type={trans} />
-                                </span>
-                              </div>
-                              <div className="col-md-3">
-                                <input
-                                  type="checkbox"
-                                  checked={i.studentAns == "answer3"}
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer3} type={trans} />
-                                </span>
-                              </div>
-                              <div className="col-md-3">
-                                <input
-                                  type="checkbox"
-                                  checked={i.studentAns == "answer4"}
-                                  className="mx-2 form-check-input"
-                                />
-                                <span className="form_question_ans_fontSize">
-                                  <Translate text={i.answer4} type={trans} />
-                                </span>
-                              </div>
+                              {uiAnswerQuizData(
+                                i?.type,
+                                i,
+                                idx,
+                                handleQuestion,
+                                trans
+                              )}
                             </div>
                           </div>
                         </div>
@@ -406,5 +360,116 @@ const AttendQuiz = () => {
     </div>
   );
 };
+
+const uiQuizData = (type, i, idx, handleQuestion, trans) => {
+  switch (type) {
+    case 0:
+      return (
+        <>
+          <div className="col-md-3">
+            <input
+              type="radio"
+              name={`studentAns${i?._id}${idx}`}
+              value={i.right ? "on" : "off"}
+              onChange={(e) => handleQuestion(i.id, "answer1", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">
+              <Translate text={i.answer1} type={trans} />
+            </span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="radio"
+              name={`studentAns${i?._id}${idx}`}
+              onChange={(e) => handleQuestion(i.id, "answer2", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">
+              <Translate text={i.answer2} type={trans} />
+            </span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="radio"
+              name={`studentAns${i?._id}${idx}`}
+              onChange={(e) => handleQuestion(i.id, "answer3", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">
+              <Translate text={i.answer3} type={trans} />
+            </span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="radio"
+              name={`studentAns${i?._id}${idx}`}
+              onChange={(e) => handleQuestion(i.id, "answer4", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">
+              <Translate text={i.answer4} type={trans} />
+            </span>
+          </div>
+        </>
+      );
+    case 1:
+      return (
+        <>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              onChange={(e) => handleQuestion(i.id, "answer2", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">
+              <Translate text={i.answer2} type={trans} />
+            </span>
+
+            <span className="form_question_ans_fontSize">{i.answer1}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              onChange={(e) => handleQuestion(i.id, "answer2", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">{i.answer2}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              onChange={(e) => handleQuestion(i.id, "answer3", type)}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer3}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              onChange={(e) => handleQuestion(i.id, "answer4", type)}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">{i.answer4}</span>
+          </div>
+        </>
+      );
+    case 2:
+      return (
+        <div>
+          <span className="form_question_ans_fontSize">
+            <input
+              type="text"
+              onChange={(e) => handleQuestion(i.id, e.target.value, type)}
+              className="mx-2 form-control"
+              placeholder="Answer"
+            />
+          </span>
+        </div>
+      );
+  }
+};
+
 
 export default AttendQuiz;

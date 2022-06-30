@@ -38,15 +38,22 @@ const CourseDetails = () => {
       <div className="courseBreadcrumb">
         <div className="container pt-5 pb-3  text-secondary">
           <span>
-            {" "}
-            <Translate text="Home &gt; Course &gt;" type={trans} />{" "}
-            <Translate text={CourseDetails.name} type={trans} />
+            <Translate text="Home &gt; Course &gt;" type={trans} />
+            {CourseDetails.name ? (
+              <Translate text={CourseDetails.name} type={trans} />
+            ) : (
+              CourseDetails.name
+            )}
           </span>
           <div className="row d-flex justify-content-between py-4">
             <div className="col-md-12">
               <div className="courseTitle">
                 <span className="fs-2 text-black fw-bold">
-                  <Translate text={CourseDetails.name} type={trans} />
+                  {CourseDetails.name ? (
+                    <Translate text={CourseDetails.name} type={trans} />
+                  ) : (
+                    CourseDetails.name
+                  )}
                 </span>
                 <div className="d-flex align-items-center">
                   <div className="pt-3 ">
@@ -64,7 +71,7 @@ const CourseDetails = () => {
                   <div className="px-2">
                     <span>
                       <Translate text="Created By" type={trans} />
-                    </span>{" "}
+                    </span>
                     <br />
                     <span className="fw-bold">
                       {CourseDetails?.instructorName}
@@ -134,7 +141,12 @@ const CourseDetails = () => {
                       <p>
                         <Translate text="Description" type={trans} />{" "}
                       </p>
-                      <Translate text={CourseDetails.overview} type={trans} />
+
+                      {CourseDetails.overview ? (
+                        <Translate text={CourseDetails.overview} type={trans} />
+                      ) : (
+                        CourseDetails.overview
+                      )}
                     </div>
                     <div
                       className="tab-pane fade"

@@ -100,7 +100,6 @@ const LearnWitheLearning = () => {
               </div>
 
               <div className="fs-4 py-4">
-                {" "}
                 <Translate text={"Expert Instructor"} type={trans} />
               </div>
               <span className="text-secondary">
@@ -143,7 +142,6 @@ const LearnWitheLearning = () => {
               </div>
 
               <div className="fs-4 py-4">
-                {" "}
                 <Translate text={"Lifetime Access"} type={trans} />
               </div>
               <span className="text-secondary">

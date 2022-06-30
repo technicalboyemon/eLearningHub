@@ -137,9 +137,8 @@ const Quiz = () => {
 
     const data = await postData("quiz/add", post);
     if (data.insertedId) {
-      navigate("/adminDashboard/allQuiz");
+      window.location.reload();
     }
-    // console.log(data);
   };
 
   return (
@@ -147,9 +146,7 @@ const Quiz = () => {
       <div className="form w-75 mx-2">
         <div className="form_border">
           <div className="form_title">
-            {/* <h4 className="form_title_name">{subject}</h4> */}
             <div className="">
-              {/* <label className="form-label">Subject</label> */}
               <input
                 onChange={(e) => setSubject(e.target.value)}
                 type="text"
@@ -160,32 +157,10 @@ const Quiz = () => {
           </div>
         </div>
 
-        <div className="my-2">
-          <select
-            className="form-select mb-4"
-            onChange={(e) => {
-              console.log(e);
-              setQuiz(
-                (e.target.value == 0 && simple) ||
-                  (e.target.value == 1 && multiple) ||
-                  (e.target.value == 2 && typepAnswer)
-              );
-            }}
-          >
-            <option selected>Select Question Type</option>
-
-            <option value={0}>Normal</option>
-            <option value={1}>Multiple</option>
-            <option value={2}>Input</option>
-          </select>
-        </div>
-
         {questions.map((i, idx) => (
           <div>
             <div className="form_question_show my-4 bg-white px-4 py-3">
-              <div className="fw-bold text-primary my-3">
-                {/* <span className="fw-bold">Question {idx + 1}</span> */}
-              </div>
+              <div className="fw-bold text-primary my-3"></div>
               <div className="form_question_show_fontSize pb-4">
                 {i.question}
               </div>
@@ -217,14 +192,37 @@ const Quiz = () => {
 
         <div className="my-4 form_question">
           {/* <label className="form-label">Question</label> */}
-          <input
-            onChange={(e) => handleQuiz(e)}
-            type="text"
-            name="question"
-            className="form-control form_question_border_style my-2 "
-            value={quiz?.question}
-            placeholder="Question"
-          />
+          <div className="row">
+            <div className="col-md-8">
+              <input
+                onChange={(e) => handleQuiz(e)}
+                type="text"
+                name="question"
+                className="form-control form_question_border_style my-2 "
+                value={quiz?.question}
+                placeholder="Question"
+              />
+            </div>
+            <div className="my-2 col-md-4">
+              <select
+                className="form-select mb-4"
+                onChange={(e) => {
+                  console.log(e);
+                  setQuiz(
+                    (e.target.value == 0 && simple) ||
+                      (e.target.value == 1 && multiple) ||
+                      (e.target.value == 2 && typepAnswer)
+                  );
+                }}
+              >
+                <option selected>Select Question Type</option>
+
+                <option value={0}>Normal</option>
+                <option value={1}>Multiple</option>
+                <option value={2}>Input</option>
+              </select>
+            </div>
+          </div>
           <div className="row my-4 justify-content-start align-items-center">
             {quiz.type == 2 ? (
               <>
@@ -334,7 +332,15 @@ const Quiz = () => {
   );
 };
 
-const uiQuiz = (type, i, idx, quiz, setQuiz, getValueInput, handleQuiz) => {
+export const uiQuiz = (
+  type,
+  i,
+  idx,
+  quiz,
+  setQuiz,
+  getValueInput,
+  handleQuiz
+) => {
   switch (type) {
     case 0:
       return (
@@ -361,7 +367,7 @@ const uiQuiz = (type, i, idx, quiz, setQuiz, getValueInput, handleQuiz) => {
         <>
           {" "}
           <input
-            type="radio"
+            type="checkbox"
             className="mx-2 checkbox_size"
             onChange={() => setQuiz({ ...quiz, ans: [...quiz.ans, i] })}
           />
@@ -377,14 +383,14 @@ const uiQuiz = (type, i, idx, quiz, setQuiz, getValueInput, handleQuiz) => {
       );
   }
 };
-const uiQuizData = (type, i) => {
+export const uiQuizData = (type, i) => {
   switch (type) {
     case 0:
       return (
         <>
           <div className="col-md-3">
             <input
-              type="checkbox"
+              type="radio"
               checked={i.ans == "answer1"}
               className="mx-2 form-check-input"
             />
@@ -393,7 +399,7 @@ const uiQuizData = (type, i) => {
           </div>
           <div className="col-md-3">
             <input
-              type="checkbox"
+              type="radio"
               checked={i.ans == "answer2"}
               className="mx-2 form-check-input"
             />
@@ -401,7 +407,7 @@ const uiQuizData = (type, i) => {
           </div>
           <div className="col-md-3">
             <input
-              type="checkbox"
+              type="radio"
               checked={i.ans == "answer3"}
               className="mx-2 form-check-input"
             />
@@ -410,7 +416,7 @@ const uiQuizData = (type, i) => {
           </div>
           <div className="col-md-3">
             <input
-              type="checkbox"
+              type="radio"
               checked={i.ans == "answer4"}
               className="mx-2 form-check-input"
             />

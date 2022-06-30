@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import { postData } from "../api/api";
 
 const Translate = ({ text, type }) => {
+  // console.log(text);
   const [load, setLoad] = useState(false);
   const [data, setData] = useState("");
   const fecth = async () => {
-    if (type === "en") {
+    if (type == "en") {
       setData(text);
     } else {
       setLoad(true);

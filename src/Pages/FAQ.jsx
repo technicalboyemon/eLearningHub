@@ -40,7 +40,6 @@ const FAQ = () => {
                 aria-labelledby="panelsStayOpen-headingOne"
               >
                 <div className="accordion-body">
-                  {" "}
                   <Translate
                     text="Those who want to be a web developer. For those who learn web
                   development from scratch and then want to work for a software
@@ -60,9 +59,8 @@ const FAQ = () => {
                   aria-expanded="false"
                   aria-controls="panelsStayOpen-collapseTwo"
                 >
-                  {" "}
                   <Translate
-                    text="   What prior experience do I need to have before starting this
+                    text="What prior experience do I need to have before starting this
                 course?"
                     type={trans}
                   />
@@ -77,11 +75,7 @@ const FAQ = () => {
                   Since we are teaching from scratch. So you don't have to know
                   that much in advance. But if you have time, you can do these
                   three things. <br /> 1. You just have to be more
-                  discriminating with the help you render toward other people.{" "}
-                  <br /> 2. Joining the course will not make you an auto web
-                  developer. You have to have the mentality to work hard, to
-                  stick. <br /> 3. If you are stuck somewhere, you have to have
-                  the mentality to seek help and the desire to stick.
+                  discriminating with the help you render toward other people.
                 </div>
               </div>
             </div>
@@ -106,16 +100,7 @@ const FAQ = () => {
                 <div className="accordion-body">
                   You can understand that only by looking at the course
                   curriculum. But in short, this course has everything you need
-                  to be a serious web developer right now. In short, there is
-                  HTML, CSS, bootstrap, JavaScript, Git, ES6, REST API, server,
-                  JSON. At the same time, there is a system to create a complete
-                  website with the React, advanced React framework that is the
-                  most employed at present. In addition there are many more
-                  things including node, database (mongodb), debug, problem
-                  solving, interview questions. And throughout the course you
-                  will be shown 11 websites. There will be 11 more websites as
-                  your homework. There is no way out without being a good junior
-                  web developer if you can finish this whole thing somehow.
+                  to be a serious web developer right now.
                 </div>
               </div>
             </div>
@@ -125,31 +110,25 @@ const FAQ = () => {
                   className="accordion-button collapsed"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#panelsStayOpen-collapseThree"
+                  data-bs-target="#panelsStayOpen-collapseFour"
                   aria-expanded="false"
-                  aria-controls="panelsStayOpen-collapseThree"
+                  aria-controls="panelsStayOpen-collapseFour"
                 >
                   <Translate text="  How to get course videos? " type={trans} />
                 </button>
               </h2>
               <div
-                id="panelsStayOpen-collapseThree"
+                id="panelsStayOpen-collapseFour"
                 className="accordion-collapse collapse"
-                aria-labelledby="panelsStayOpen-headingThree"
+                aria-labelledby="panelsStayOpen-headingFour"
               >
                 <div className="accordion-body">
                   Course videos will be pre-recorded. You opened an account and
-                  enrolled in this course. The videos will be given one module
-                  per day from the beginning of the course. Each module usually
-                  contains 10 to 12 videos. You must watch and finish these
-                  videos within the day they are released. So you have to have a
-                  dedicated time every day for the course. And in that time, if
-                  you want, you can watch the video lying down, standing,
-                  leaning, shaking your legs, dancing, or hiding under the bed.
+                  enrolled in this course.
                 </div>
               </div>
             </div>
-            <div className="accordion-item">
+            {/* <div className="accordion-item">
               <h2 className="accordion-header" id="panelsStayOpen-headingThree">
                 <button
                   className="accordion-button collapsed"
@@ -177,7 +156,7 @@ const FAQ = () => {
                   of 4 months of serious hard work.
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

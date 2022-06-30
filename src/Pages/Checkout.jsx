@@ -48,8 +48,7 @@ const Checkout = () => {
       <div className="courseBreadcrumb">
         <div className="container py-5 text-secondary">
           <span>
-            {" "}
-            <Translate text="Home &gt; Checkout " type={trans} />{" "}
+            <Translate text="Home &gt; Checkout " type={trans} />
           </span>
         </div>
       </div>
@@ -57,7 +56,6 @@ const Checkout = () => {
         <div className="container">
           {isEmpty ? (
             <h1>
-              {" "}
               <Translate text="Your cart is empty" type={trans} />
             </h1>
           ) : (
@@ -65,7 +63,6 @@ const Checkout = () => {
               <div className="col-md-6">
                 <div className="checkoutForm">
                   <div className="h5 fw-bold py-2">
-                    {" "}
                     <Translate text="Checkout" type={trans} />
                   </div>
                   <div className="bg-white p-4 rounded">
@@ -95,7 +92,6 @@ const Checkout = () => {
                             ></path>
                           </svg>
                           <div className="h6 py-2">
-                            {" "}
                             <Translate text="Debit Card" type={trans} />
                           </div>
                         </div>
@@ -194,7 +190,6 @@ const Checkout = () => {
               <div className="col-md-6">
                 <div className="checkoutForm">
                   <div className="h5 fw-bold py-2">
-                    {" "}
                     <Translate text="Summary" type={trans} />
                   </div>
                   <div className="bg-white p-4 rounded">
@@ -204,8 +199,7 @@ const Checkout = () => {
                           <img src={i?.preview} alt="" className="w-25" />
                           <div className="px-2">
                             <div className="h5">
-                              {" "}
-                              <Translate text="{i?.name}" type={trans} />
+                              <Translate text={i?.name} type={trans} />
                             </div>
                             <div className="text-secondary">
                               by {i?.instructorName}
@@ -217,16 +211,12 @@ const Checkout = () => {
 
                       <div className="d-flex align-items-center justify-content-between text-secondary pt-5 pb-4">
                         <span>
-                          {" "}
                           <Translate text="Subtotal" type={trans} />
                         </span>
                         <span>€{cartTotal}</span>
                       </div>
-                      {/* <hr /> */}
-
                       <div className="d-flex align-items-center justify-content-between fs-5 fw-bold">
                         <span>
-                          {" "}
                           <Translate text="Total" type={trans} />
                         </span>
                         <span>€{cartTotal}</span>

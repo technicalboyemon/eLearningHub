@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import AuthBanner from "../Components/Frontend/AuthBanner";
 import Footer from "../Components/Frontend/Footer";
 import NavBar from "../Components/Frontend/NavBar";
@@ -24,9 +23,7 @@ const Password = () => {
                 <h1 className="fw-bolder">
                   <Translate text="Set Your Password" type={trans} />
                 </h1>
-                <p className="text-danger">
-                  <Translate text={error} type={trans} />
-                </p>
+                <p className="text-danger">{error}</p>
                 <div className="my-5 w-75">
                   <div className="my-4 input-group-lg">
                     <label
