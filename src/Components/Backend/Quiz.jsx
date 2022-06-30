@@ -24,6 +24,35 @@ const Quiz = () => {
   const [subject, setSubject] = useState("");
   const [questions, setQuestions] = useState([]);
 
+  //simple 0
+  //multiple 1
+  //typepAnser 2
+  const simple = {
+    id: nanoid(),
+    question: "",
+    ans: "",
+    answer1: "",
+    answer2: "",
+    answer3: "",
+    answer4: "",
+    type: 0,
+  };
+  const multiple = {
+    id: nanoid(),
+    question: "",
+    ans: "",
+    answer1: "",
+    answer2: "",
+    answer3: "",
+    answer4: "",
+    type: 1,
+  };
+  const typepAnswer = {
+    id: nanoid(),
+    question: "",
+    ans: "",
+    type: 2,
+  };
   const initialState = {
     id: nanoid(),
     question: "",
@@ -32,24 +61,25 @@ const Quiz = () => {
     answer2: "",
     answer3: "",
     answer4: "",
+    type: "",
   };
 
-  const [quiz, setQuiz] = useState(initialState);
+  const [quiz, setQuiz] = useState(simple);
 
   const handleQuiz = (e) => {
     setQuiz({ ...quiz, [e.target.name]: e.target.value });
   };
 
   const adQuiztoui = () => {
-    if (
-      !quiz.question ||
-      !quiz.answer1 ||
-      !quiz.answer2 ||
-      !quiz.answer3 ||
-      !quiz.answer4 ||
-      !quiz.ans
-    )
-      return alert("please fill all the fields.");
+    // if (
+    //   !quiz.question ||
+    //   !quiz.answer1 ||
+    //   !quiz.answer2 ||
+    //   !quiz.answer3 ||
+    //   !quiz.answer4 ||
+    //   !quiz.ans
+    // )
+    //   return alert("please fill all the fields.");
     setQuestions([...questions, quiz]);
     setQuiz(initialState);
   };
@@ -74,15 +104,15 @@ const Quiz = () => {
   };
 
   const updateQuiz = () => {
-    if (
-      !quiz.question ||
-      !quiz.answer1 ||
-      !quiz.answer2 ||
-      !quiz.answer3 ||
-      !quiz.answer4 ||
-      !quiz.ans
-    )
-      return alert("please fill all the fields.");
+    // if (
+    //   !quiz.question ||
+    //   !quiz.answer1 ||
+    //   !quiz.answer2 ||
+    //   !quiz.answer3 ||
+    //   !quiz.answer4 ||
+    //   !quiz.ans
+    // )
+    //   return alert("please fill all the fields.");
     const quizes = questions.filter((i, ix) => ix != edit);
     quizes.splice(edit, 0, quiz);
     // console.log(quizes);
@@ -91,7 +121,7 @@ const Quiz = () => {
     setQuiz(initialState);
   };
 
-  // console.log(students);
+  console.log(quiz);
 
   const save = async () => {
     if (students.length == 0) return alert("No student assigned");
@@ -130,6 +160,26 @@ const Quiz = () => {
           </div>
         </div>
 
+        <div className="my-2">
+          <select
+            className="form-select mb-4"
+            onChange={(e) => {
+              console.log(e);
+              setQuiz(
+                (e.target.value == 0 && simple) ||
+                  (e.target.value == 1 && multiple) ||
+                  (e.target.value == 2 && typepAnswer)
+              );
+            }}
+          >
+            <option selected>Select Question Type</option>
+
+            <option value={0}>Normal</option>
+            <option value={1}>Multiple</option>
+            <option value={2}>Input</option>
+          </select>
+        </div>
+
         {questions.map((i, idx) => (
           <div>
             <div className="form_question_show my-4 bg-white px-4 py-3">
@@ -140,48 +190,7 @@ const Quiz = () => {
                 {i.question}
               </div>
               <div>
-                <div className="row">
-                  <div className="col-md-3">
-                    <input
-                      type="checkbox"
-                      checked={i.ans == "answer1"}
-                      className="mx-2 form-check-input"
-                    />
-                    <span className="form_question_ans_fontSize">
-                      {i.answer1}
-                    </span>
-                  </div>
-                  <div className="col-md-3">
-                    <input
-                      type="checkbox"
-                      checked={i.ans == "answer2"}
-                      className="mx-2 form-check-input"
-                    />
-                    <span className="form_question_ans_fontSize">
-                      {i.answer2}
-                    </span>
-                  </div>
-                  <div className="col-md-3">
-                    <input
-                      type="checkbox"
-                      checked={i.ans == "answer3"}
-                      className="mx-2 form-check-input"
-                    />
-                    <span className="form_question_ans_fontSize">
-                      {i.answer3}
-                    </span>
-                  </div>
-                  <div className="col-md-3">
-                    <input
-                      type="checkbox"
-                      checked={i.ans == "answer4"}
-                      className="mx-2 form-check-input"
-                    />
-                    <span className="form_question_ans_fontSize">
-                      {i.answer4}
-                    </span>
-                  </div>
-                </div>
+                <div className="row">{uiQuizData(i.type, i)}</div>
               </div>
               <hr />
               <div className="d-flex justify-content-end">
@@ -217,27 +226,37 @@ const Quiz = () => {
             placeholder="Question"
           />
           <div className="row my-4 justify-content-start align-items-center">
-            {arr.map((i, idx) => (
-              <div className="col-md-12 my-1 ">
-                {/* <label className="form-label">{idx + 1}</label> */}
-                <div className="d-flex justify-content-start align-items-center">
-                  <input
-                    type="radio"
-                    checked={quiz.ans == i}
-                    className="mx-2 checkbox_size"
-                    onChange={() => setQuiz({ ...quiz, ans: i })}
-                  />
-                  <input
-                    onChange={(e) => handleQuiz(e)}
-                    type="text"
-                    name={i}
-                    className="form-control form_options_border_style"
-                    value={getValueInput(i)}
-                    placeholder={"Options " + (idx + 1)}
-                  />
-                </div>
-              </div>
-            ))}
+            {quiz.type == 2 ? (
+              <>
+                <input
+                  onChange={(e) => handleQuiz(e)}
+                  type="text"
+                  name="ans"
+                  className="form-control form_options_border_style"
+                  value={quiz.ans}
+                  placeholder={"Answer"}
+                />{" "}
+              </>
+            ) : (
+              <>
+                {arr.map((i, idx) => (
+                  <div className="col-md-12 my-1 ">
+                    {/* <label className="form-label">{idx + 1}</label> */}
+                    <div className="d-flex justify-content-start align-items-center">
+                      {uiQuiz(
+                        quiz.type,
+                        i,
+                        idx,
+                        quiz,
+                        setQuiz,
+                        getValueInput,
+                        handleQuiz
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </div>
 
@@ -258,7 +277,7 @@ const Quiz = () => {
         )}
       </div>
 
-      <div className="w-25 ">
+      <div className="w-50">
         <div className="form_assign mx-2">
           <div className="my-2">
             <label className="form-label form_assign_title">
@@ -313,6 +332,144 @@ const Quiz = () => {
       </div>
     </div>
   );
+};
+
+const uiQuiz = (type, i, idx, quiz, setQuiz, getValueInput, handleQuiz) => {
+  switch (type) {
+    case 0:
+      return (
+        <>
+          {" "}
+          <input
+            type="radio"
+            checked={quiz.ans == i}
+            className="mx-2 checkbox_size"
+            onChange={() => setQuiz({ ...quiz, ans: i })}
+          />
+          <input
+            onChange={(e) => handleQuiz(e)}
+            type="text"
+            name={i}
+            className="form-control form_options_border_style"
+            value={getValueInput(i)}
+            placeholder={"Options " + (idx + 1)}
+          />{" "}
+        </>
+      );
+    case 1:
+      return (
+        <>
+          {" "}
+          <input
+            type="radio"
+            className="mx-2 checkbox_size"
+            onChange={() => setQuiz({ ...quiz, ans: [...quiz.ans, i] })}
+          />
+          <input
+            onChange={(e) => handleQuiz(e)}
+            type="text"
+            name={i}
+            className="form-control form_options_border_style"
+            value={getValueInput(i)}
+            placeholder={"Options " + (idx + 1)}
+          />{" "}
+        </>
+      );
+  }
+};
+const uiQuizData = (type, i) => {
+  switch (type) {
+    case 0:
+      return (
+        <>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              checked={i.ans == "answer1"}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer1}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              checked={i.ans == "answer2"}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">{i.answer2}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              checked={i.ans == "answer3"}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer3}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              checked={i.ans == "answer4"}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer4}</span>
+          </div>
+        </>
+      );
+    case 1:
+      return (
+        <>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              disabled
+              checked={i.ans.find((j) => j == "answer1")}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer1}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              disabled
+              checked={i.ans.find((j) => j == "answer2")}
+              className="mx-2 form-check-input"
+            />
+            <span className="form_question_ans_fontSize">{i.answer2}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              disabled
+              checked={i.ans.find((j) => j == "answer3")}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer3}</span>
+          </div>
+          <div className="col-md-3">
+            <input
+              type="checkbox"
+              disabled
+              checked={i.ans.find((j) => j == "answer4")}
+              className="mx-2 form-check-input"
+            />
+
+            <span className="form_question_ans_fontSize">{i.answer4}</span>
+          </div>
+        </>
+      );
+    case 2:
+      return (
+        <div>
+          <span className="form_question_ans_fontSize">{i.ans}</span>
+        </div>
+      );
+  }
 };
 
 export default Quiz;
