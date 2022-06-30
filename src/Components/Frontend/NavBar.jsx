@@ -34,7 +34,7 @@ const NavBar = () => {
                   aria-current="page"
                   to="/"
                 >
-                  <Translate text={"Home"} type={trans} />
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
@@ -73,7 +73,7 @@ const NavBar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Translate
+                  Language
                 </a>
                 <ul
                   className="dropdown-menu"
