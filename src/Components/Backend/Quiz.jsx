@@ -239,10 +239,10 @@ const Quiz = () => {
               >
                 {/* <option selected>Select Question Type</option> */}
                 <option selected value={0}>
-                  Normal
+                  Multiple Choice
                 </option>
-                <option value={1}>Multiple</option>
-                <option value={2}>Input</option>
+                <option value={1}>Checkboxes</option>
+                <option value={2}>Short Answer</option>
               </select>
             </div>
           </div>

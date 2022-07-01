@@ -1,5 +1,5 @@
 import axios from "axios";
-export const baseUrl = "http://localhost:5000";
+export const baseUrl = "https://cryptic-temple-44121.herokuapp.com";
 
 export const getAll = async (url) => {
   const res = await fetch(`${baseUrl}/${url}`, {

@@ -9,6 +9,8 @@ import {
   BsFillInfoCircleFill,
   BsPersonPlusFill,
   BsPlusCircleFill,
+  BsFillFileEarmarkTextFill,
+  BsFillFileEarmarkPlusFill,
 } from "react-icons/bs";
 import Translate from "../Components/Translate";
 
@@ -62,7 +64,7 @@ const AdminDashboard = () => {
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/addQuiz"
                 >
-                  <BsPlusCircleFill />
+                  <BsFillFileEarmarkPlusFill />
                   <span className="NavText">
                     {" "}
                     <Translate text="Add Form" type={trans} />
@@ -72,7 +74,7 @@ const AdminDashboard = () => {
                   className="align-items-center d-flex NavText py-2 my-1"
                   to="/adminDashboard/allQuiz"
                 >
-                  <BsPlusCircleFill />
+                  <BsFillFileEarmarkTextFill />
                   <span className="NavText">
                     {" "}
                     <Translate text="All Forms" type={trans} />
