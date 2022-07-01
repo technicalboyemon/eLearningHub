@@ -164,8 +164,8 @@ const Quiz = () => {
   };
 
   return (
-    <div className="d-inline-flex align-items-start form_layout">
-      <div className="form w-75 mx-2">
+    <div className="row align-items-start form_layout">
+      <div className="form col-md-8 my-2">
         <div className="form_border">
           <div className="form_title">
             <div className="">
@@ -215,7 +215,7 @@ const Quiz = () => {
         <div className="my-4 form_question">
           {/* <label className="form-label">Question</label> */}
           <div className="row">
-            <div className="col-md-8">
+            <div className="w-75">
               <input
                 onChange={(e) => handleQuiz(e)}
                 type="text"
@@ -225,7 +225,7 @@ const Quiz = () => {
                 placeholder="Question"
               />
             </div>
-            <div className="my-2 col-md-4">
+            <div className="w-25 my-2">
               <select
                 className="form-select mb-4"
                 onChange={(e) => {
@@ -237,7 +237,7 @@ const Quiz = () => {
                   );
                 }}
               >
-                <option selected>Select Question Type</option>
+                {/* <option selected>Select Question Type</option> */}
                 <option selected value={0}>
                   Normal
                 </option>
@@ -298,8 +298,8 @@ const Quiz = () => {
         )}
       </div>
 
-      <div className="w-50">
-        <div className="form_assign mx-2">
+      <div className="col-md-4 my-2">
+        <div className="form_assign">
           <div className="my-2">
             <label className="form-label form_assign_title">
               <Translate text={"Select Users"} type={trans} />

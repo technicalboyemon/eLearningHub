@@ -77,8 +77,8 @@ const QuizCom = ({ quiz, submitted }) => {
 
       {subIndex.length > 0 && (
         <div>
-          <div className="d-flex">
-            <div className="w-75">
+          <div className="row">
+            <div className="col-md-8">
               <div className="form_border">
                 <div className="form_title fs-3">
                   <p>{subIndex?.[subQuiz]?.subject}</p>
@@ -87,7 +87,7 @@ const QuizCom = ({ quiz, submitted }) => {
               {submitted ? (
                 <div className="form_question_show my-4 bg-white px-4 py-3">
                   {userQuiz?.length == 0 ? (
-                    <div>Quiz Not Attended</div>
+                    <div>Form Not Attended</div>
                   ) : userQsLoading ? (
                     <>
                       <h1>Loading...</h1>
@@ -134,7 +134,7 @@ const QuizCom = ({ quiz, submitted }) => {
                 </div>
               )}
             </div>
-            <div className="w-25 mx-2">
+            <div className="col-md-4">
               <div className="form_border text-center mb-3">
                 <div className="form_title text-center">
                   <div className="form_assign_title text-center">

@@ -10,6 +10,9 @@ import {
   BsPersonPlusFill,
   BsPlusCircleFill,
   BsPlayCircle,
+  BsFillFileEarmarkTextFill,
+  BsFillFileEarmarkPlusFill,
+  BsFillFileEarmarkPostFill,
 } from "react-icons/bs";
 import useAuth from "../Hooks/useAuth";
 import Translate from "../Components/Translate";
@@ -167,6 +170,11 @@ const Dashboard = () => {
                     <BsFillBookmarkStarFill />
                   </div>
                 </Link>
+                <Link to="/dashboard/attendQuiz">
+                  <div className="py-3 NavText" title="Enrolled Course">
+                    <BsFillFileEarmarkPostFill />
+                  </div>
+                </Link>
                 {instructor && (
                   <>
                     <Link to="/dashboard/myCourse">
@@ -186,12 +194,12 @@ const Dashboard = () => {
                     </Link>
                     <Link to="/dashboard/addForm">
                       <div className="py-3 NavText" title="Add Form">
-                        <BsPersonPlusFill />
+                        <BsFillFileEarmarkPlusFill />
                       </div>
                     </Link>
                     <Link to="/dashboard/quiz">
                       <div className="py-3 NavText" title="Form Response">
-                        <BsPersonPlusFill />
+                        <BsFillFileEarmarkTextFill />
                       </div>
                     </Link>
                   </>
