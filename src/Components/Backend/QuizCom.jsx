@@ -10,18 +10,25 @@ const QuizCom = ({ quiz, submitted }) => {
   const [subIndex, setSubIndex] = useState([]);
   const { trans } = useAuth();
 
+  const [subjects, setSubjects] = useState([]);
+
   const [showUser, setShowUser] = useState("");
   const [userQuiz, setUserQuiz] = useState([]);
+  const [userQsLoading, setUserQsLoading] = useState(false);
 
   useEffect(() => {
     if (showUser) {
+      setUserQsLoading(true);
       const get = async () => {
         const fetch = await getAll(`user/submittedQuiz/${showUser}`);
-        setUserQuiz(fetch);
+        setUserQuiz(
+          fetch.filter((i) => i.subject === subIndex?.[subQuiz]?.subject)
+        );
+        setUserQsLoading(false);
       };
       get();
     }
-  }, [showUser]);
+  }, [showUser, subIndex]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -32,7 +39,6 @@ const QuizCom = ({ quiz, submitted }) => {
   }, []);
 
   const [students, setStudents] = useState([]);
-  const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
     setSubIndex([]);
@@ -43,6 +49,8 @@ const QuizCom = ({ quiz, submitted }) => {
   }, [quiz]);
 
   const handlesubIndex = (data) => {
+    setShowUser("");
+    setUserQuiz([]);
     const value = quiz.filter((i) => i.subject == data);
     setSubIndex(value);
   };
@@ -55,8 +63,7 @@ const QuizCom = ({ quiz, submitted }) => {
     if (data?.modifiedCount) return alert("Student Added");
   };
 
-
-
+  console.log();
   return (
     <div>
       {subjects.map((i, index) => (
@@ -74,30 +81,37 @@ const QuizCom = ({ quiz, submitted }) => {
             <div className="w-75">
               <div className="form_border">
                 <div className="form_title fs-3">
-                  <Translate text={subIndex[subQuiz]?.subject} type={trans} />
+                  <p>{subIndex?.[subQuiz]?.subject}</p>
                 </div>
               </div>
               {submitted ? (
                 <div className="form_question_show my-4 bg-white px-4 py-3">
                   {userQuiz?.length == 0 ? (
                     <div>Quiz Not Attended</div>
+                  ) : userQsLoading ? (
+                    <>
+                      <h1>Loading...</h1>
+                    </>
                   ) : (
-                    userQuiz[subQuiz]?.questions?.map((i, idx) => (
-                      <div>
-                        <div className="my-2 bg-white p-2">
-                          <span className="form_question_show_fontSize pb-4">
-                            {idx + 1}.{" "}
-                            <Translate text={i.question} type={trans} />
-                          </span>
+                    <>
+                      {userQuiz.map((t) =>
+                        t?.questions?.map((i, idx) => (
                           <div>
-                            <div className="row">
-                              {uiAnswerQuizData(i?.type, i)}
+                            <div className="my-2 bg-white p-2">
+                              <span className="form_question_show_fontSize pb-4">
+                                {idx + 1}. {i.question}
+                              </span>
+                              <div>
+                                <div className="row">
+                                  {uiAnswerQuizData(i?.type, i)}
+                                </div>
+                              </div>
                             </div>
+                            <hr />
                           </div>
-                        </div>
-                        <hr />
-                      </div>
-                    ))
+                        ))
+                      )}
+                    </>
                   )}
                 </div>
               ) : (
@@ -106,8 +120,7 @@ const QuizCom = ({ quiz, submitted }) => {
                     <div>
                       <div className="my-2 bg-white p-2">
                         <span className="form_question_show_fontSize pb-4">
-                          {idx + 1}.{" "}
-                          <Translate text={i.question} type={trans} />
+                          {idx + 1}. {i.question}
                         </span>
                         <div>
                           <div className="row">
@@ -138,6 +151,7 @@ const QuizCom = ({ quiz, submitted }) => {
                         <select
                           className="form-select mb-4"
                           onChange={(e) => setShowUser(e.target.value)}
+                          value={showUser}
                         >
                           <option selected>
                             <Translate text={"Select Students"} type={trans} />
@@ -152,7 +166,7 @@ const QuizCom = ({ quiz, submitted }) => {
                     </>
                   ) : (
                     <p className="form_assign_user_fontSize">
-                      {quiz?.[subQuiz].showUsers?.map((i) => (
+                      {subIndex?.[subQuiz].showUsers?.map((i) => (
                         <p className="p-2 bg-secondary text-white form_selected_user_fontSize">
                           {i?.name}
                         </p>
@@ -161,54 +175,56 @@ const QuizCom = ({ quiz, submitted }) => {
                   )}
                 </div>
               </div>
-              <div className="form_assign text-center mx-2">
-                <label className="form-label form_assign_title">
-                  <Translate text={"Select Users"} type={trans} />
-                </label>
-                <select
-                  className="form-select mb-4"
-                  onChange={(e) => {
-                    setStudents([
-                      ...students,
-                      {
-                        ...users.find((i) => i._id == e.target.value),
-                        isSubmitted: false,
-                      },
-                    ]);
-                  }}
-                >
-                  <option selected>
-                    <Translate text={"Add Students"} type={trans} />
-                  </option>
-                  {users?.map((i) => (
-                    <>
-                      <option value={i?._id}>{i?.name}</option>
-                    </>
-                  ))}
-                </select>
-                <div className="d-flex">
-                  {students.map((i) => (
-                    <p className="p-2 bg-secondary text-white form_selected_user_fontSize">
-                      {i?.name}{" "}
-                      <span
-                        className="ms-2"
-                        style={{ cursor: "pointer" }}
-                        onClick={() =>
-                          setStudents(students.filter((t) => t?._id != i._id))
-                        }
-                      >
-                        <BsX />
-                      </span>
-                    </p>
-                  ))}
+              {!submitted && (
+                <div className="form_assign text-center mx-2">
+                  <label className="form-label form_assign_title">
+                    <Translate text={"Select Users"} type={trans} />
+                  </label>
+                  <select
+                    className="form-select mb-4"
+                    onChange={(e) => {
+                      setStudents([
+                        ...students,
+                        {
+                          ...users.find((i) => i._id == e.target.value),
+                          isSubmitted: false,
+                        },
+                      ]);
+                    }}
+                  >
+                    <option selected>
+                      <Translate text={"Add Students"} type={trans} />
+                    </option>
+                    {users?.map((i) => (
+                      <>
+                        <option value={i?._id}>{i?.name}</option>
+                      </>
+                    ))}
+                  </select>
+                  <div className="d-flex">
+                    {students.map((i) => (
+                      <p className="p-2 bg-secondary text-white form_selected_user_fontSize">
+                        {i?.name}{" "}
+                        <span
+                          className="ms-2"
+                          style={{ cursor: "pointer" }}
+                          onClick={() =>
+                            setStudents(students.filter((t) => t?._id != i._id))
+                          }
+                        >
+                          <BsX />
+                        </span>
+                      </p>
+                    ))}
+                  </div>
+                  <button
+                    className="form_question_add_btn w-100"
+                    onClick={assignUser}
+                  >
+                    <Translate text={"Add Users"} type={trans} />
+                  </button>
                 </div>
-                <button
-                  className="form_question_add_btn w-100"
-                  onClick={assignUser}
-                >
-                  <Translate text={"Add Users"} type={trans} />
-                </button>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -218,6 +234,7 @@ const QuizCom = ({ quiz, submitted }) => {
 };
 
 export const uiAnswerQuizData = (type, i) => {
+  console.log(type);
   switch (type) {
     case 0:
       return (

@@ -7,7 +7,7 @@ import Translate from "./../../Translate";
 
 const AttendQuiz = () => {
   const [show, setShow] = useState("quiz");
-  console.log(show);
+
   const [load, setLoad] = useState(true);
   const [quiz, setQuiz] = useState([]);
 
@@ -29,6 +29,8 @@ const AttendQuiz = () => {
 
   const [submitted, setSubmitted] = useState([]);
 
+  console.log(submitted, quiz);
+
   useEffect(() => {
     setsubIndex(0);
     setSubIndex([]);
@@ -41,7 +43,6 @@ const AttendQuiz = () => {
   }, [show]);
 
   const [subjects, setSubjects] = useState([]);
-  console.log(subjects);
 
   useEffect(() => {
     const chars =
@@ -51,8 +52,6 @@ const AttendQuiz = () => {
     const uniqueChars = [...new Set(chars)];
     setSubjects(uniqueChars);
   }, [quiz]);
-
-  console.log(subIndex);
 
   const handlesubIndex = (data) => {
     const value =
@@ -65,11 +64,12 @@ const AttendQuiz = () => {
   const qsInfo = quiz?.find((i) => i?._id === subIndex[subQuiz]?._id);
 
   const [finalSubmit, setFinalSubmit] = useState([]);
-  const handleQuestion = (id, ans, type) => {
+  const handleQuestion = (id, ans, type, e) => {
+    const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
+    const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
+    let qsData = qsInfo.questions.find((t) => t.id == id);
+
     if (type == 0) {
-      const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
-      const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
-      let qsData = qsInfo.questions.find((t) => t.id == id);
       if (qsData) {
         qsData["studentAns"] = ans;
         if (ans == qsData.ans) {
@@ -78,37 +78,32 @@ const AttendQuiz = () => {
           qsData["right"] = 0;
         }
       }
-      setFinalSubmit(qsInfo);
-      const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
-      qsFilter.splice(qsIdx, 0, qsInfo);
-      setQuiz(qsFilter);
     }
+
+    function arrays_equal(a, b) {
+      return !!a && !!b && !(a < b || b < a);
+    }
+
     if (type == 1) {
-      console.log(subIndex[subQuiz]._id, id, ans);
-      const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
-      const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
-      let qsData = qsInfo.questions.find((t) => t.id == id);
+      const { name, checked } = e.target;
       if (qsData) {
-        if (qsData.studentAns) {
-          qsData["mark"] = [...qsData.studentAns, ans];
+        if (checked) {
+          if (qsData.studentAns) {
+            qsData["studentAns"] = [...qsData.studentAns, ans];
+          } else {
+            qsData["studentAns"] = [ans];
+          }
         } else {
-          qsData["mark"] = [ans];
+          if (qsData.studentAns) {
+            qsData["studentAns"] = qsData.studentAns.filter((i) => i != ans);
+          } else {
+            qsData["studentAns"] = [];
+          }
         }
-        if (qsData.ans.find((i) => i == ans)) {
-          qsData["right"] = 1;
-        } else {
-          qsData["right"] = 0;
-        }
+        qsData["right"] = arrays_equal(qsData.ans, qsData.studentAns) ? 1 : 0;
       }
-      setFinalSubmit(qsInfo);
-      const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
-      qsFilter.splice(qsIdx, 0, qsInfo);
-      setQuiz(qsFilter);
     }
     if (type == 2) {
-      const qsInfo = quiz.find((i) => i._id === subIndex[subQuiz]._id);
-      const qsIdx = quiz.findIndex((i) => i._id === subIndex[subQuiz]._id);
-      let qsData = qsInfo.questions.find((t) => t.id == id);
       if (qsData) {
         qsData["studentAns"] = ans;
         if (ans == qsData.ans) {
@@ -117,20 +112,15 @@ const AttendQuiz = () => {
           qsData["right"] = 0;
         }
       }
-      console.log(qsInfo);
-      setFinalSubmit(qsInfo);
-      const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
-      qsFilter.splice(qsIdx, 0, qsInfo);
-      setQuiz(qsFilter);
     }
-    // setFinalSubmit(qsInfo);
-    //   const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
-    //   qsFilter.splice(qsIdx, 0, qsInfo);
-    //   setQuiz(qsFilter);
-    // }
+    setFinalSubmit(qsInfo);
+    const qsFilter = quiz.filter((i) => i._id != subIndex[subQuiz]._id);
+    qsFilter.splice(qsIdx, 0, qsInfo);
+    setQuiz(qsFilter);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    if (finalSubmit.length == 0) return;
     const postNow = {
       qsRef: finalSubmit._id,
       questions: finalSubmit?.questions,
@@ -140,9 +130,14 @@ const AttendQuiz = () => {
       instructorUid: subIndex[subQuiz]?.instructorUid,
       subject: subIndex[subQuiz]?.subject,
     };
-    const save = postData(`quiz/save/${user?.email}`, postNow);
-    console.log(save);
+    const save = await postData(
+      `quiz/save/${user?.email}/${subIndex[subQuiz]._id}`,
+      postNow
+    );
+
+    // if (save.modifiedCount > 0) {
     // window.location.reload();
+    // }
   };
 
   if (load) {
@@ -184,7 +179,7 @@ const AttendQuiz = () => {
               className="form_responses_result my-4"
               onClick={() => handlesubIndex(i)}
             >
-              {index + 1}. <Translate text={i} type={trans} />
+              {index + 1}. {i}
             </div>
           ))}
           {quiz.length === 0 && (
@@ -212,7 +207,7 @@ const AttendQuiz = () => {
                 <div className="form_border">
                   {/* Subject: */}
                   <div className="form_title fs-3">
-                    <Translate text={subIndex[subQuiz]?.subject} type={trans} />
+                    {subIndex[subQuiz]?.subject}
                   </div>
                 </div>
               </div>
@@ -227,8 +222,7 @@ const AttendQuiz = () => {
                             <span>Question {idx + 1}</span>
                           </div> */}
                           <span className="form_question_show_fontSize pb-4">
-                            {idx + 1}.{" "}
-                            <Translate text={i.question} type={trans} />
+                            {idx + 1}. {i.question}
                           </span>
                           <div>
                             <div className="row">
@@ -251,13 +245,6 @@ const AttendQuiz = () => {
                       <Translate text="Submit Your Test" type={trans} />
                     </button>
                   </div>
-                  {/* <div className="col-md-2">
-                    <div className="m-2 bg-white p-3">
-                      Total: {qsInfo?.questions?.length}
-                      <br></br>
-                      Got: {qsInfo?.questions?.filter((i) => i?.right)?.length}
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -270,19 +257,9 @@ const AttendQuiz = () => {
               className="form_responses_result my-4"
               onClick={() => handlesubIndex(i)}
             >
-              {index + 1}. <Translate text={i} type={trans} />
+              {index + 1}.{i}
             </div>
           ))}
-          {/* <div className="my-2">
-            {subIndex.map((i, idx) => (
-              <button
-                className="btn btn-warning my-2 m-2"
-                onClick={() => setsubIndex(idx)}
-              >
-                No {idx + 1}
-              </button>
-            ))}
-          </div> */}
 
           {subIndex.length > 0 && (
             <>
@@ -290,7 +267,7 @@ const AttendQuiz = () => {
               <div className="form_border">
                 {/* Subject: */}
                 <div className="form_title fs-3">
-                  <Translate text={subIndex[subQuiz]?.subject} type={trans} />
+                  {subIndex[subQuiz]?.subject}
                 </div>
               </div>
               <div className="row justify-content-between mx-0">
@@ -299,12 +276,7 @@ const AttendQuiz = () => {
                     {subIndex[subQuiz]?.questions?.map((i, idx) => (
                       <div className="">
                         <div className="my-2 bg-white p-2">
-                          <div className="fw-bold text-primary my-2">
-                            {/* <span>Question {idx + 1}</span>
-                          <br></br> */}
-
-                            {/* <span>Answer: {i.ans.split("answer")[1]}</span> */}
-                          </div>
+                          <div className="fw-bold text-primary my-2"></div>
                           <span className="form_question_show_fontSize pb-4">
                             {idx + 1}.{" "}
                             <Translate text={i.question} type={trans} />
@@ -374,9 +346,7 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
               onChange={(e) => handleQuestion(i.id, "answer1", type)}
               className="mx-2 form-check-input"
             />
-            <span className="form_question_ans_fontSize">
-              <Translate text={i.answer1} type={trans} />
-            </span>
+            <span className="form_question_ans_fontSize">{i.answer1}</span>
           </div>
           <div className="col-md-3">
             <input
@@ -385,9 +355,7 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
               onChange={(e) => handleQuestion(i.id, "answer2", type)}
               className="mx-2 form-check-input"
             />
-            <span className="form_question_ans_fontSize">
-              <Translate text={i.answer2} type={trans} />
-            </span>
+            <span className="form_question_ans_fontSize">{i.answer2}</span>
           </div>
           <div className="col-md-3">
             <input
@@ -396,9 +364,7 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
               onChange={(e) => handleQuestion(i.id, "answer3", type)}
               className="mx-2 form-check-input"
             />
-            <span className="form_question_ans_fontSize">
-              <Translate text={i.answer3} type={trans} />
-            </span>
+            <span className="form_question_ans_fontSize">{i.answer3}</span>
           </div>
           <div className="col-md-3">
             <input
@@ -407,9 +373,7 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
               onChange={(e) => handleQuestion(i.id, "answer4", type)}
               className="mx-2 form-check-input"
             />
-            <span className="form_question_ans_fontSize">
-              <Translate text={i.answer4} type={trans} />
-            </span>
+            <span className="form_question_ans_fontSize">{i.answer4}</span>
           </div>
         </>
       );
@@ -419,19 +383,16 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
           <div className="col-md-3">
             <input
               type="checkbox"
-              onChange={(e) => handleQuestion(i.id, "answer2", type)}
+              onChange={(e) => handleQuestion(i.id, "answer1", type, e)}
               className="mx-2 form-check-input"
             />
-            <span className="form_question_ans_fontSize">
-              <Translate text={i.answer2} type={trans} />
-            </span>
 
             <span className="form_question_ans_fontSize">{i.answer1}</span>
           </div>
           <div className="col-md-3">
             <input
               type="checkbox"
-              onChange={(e) => handleQuestion(i.id, "answer2", type)}
+              onChange={(e) => handleQuestion(i.id, "answer2", type, e)}
               className="mx-2 form-check-input"
             />
             <span className="form_question_ans_fontSize">{i.answer2}</span>
@@ -439,7 +400,7 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
           <div className="col-md-3">
             <input
               type="checkbox"
-              onChange={(e) => handleQuestion(i.id, "answer3", type)}
+              onChange={(e) => handleQuestion(i.id, "answer3", type, e)}
               className="mx-2 form-check-input"
             />
 
@@ -448,7 +409,7 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
           <div className="col-md-3">
             <input
               type="checkbox"
-              onChange={(e) => handleQuestion(i.id, "answer4", type)}
+              onChange={(e) => handleQuestion(i.id, "answer4", type, e)}
               className="mx-2 form-check-input"
             />
             <span className="form_question_ans_fontSize">{i.answer4}</span>
@@ -470,6 +431,5 @@ const uiQuizData = (type, i, idx, handleQuestion, trans) => {
       );
   }
 };
-
 
 export default AttendQuiz;

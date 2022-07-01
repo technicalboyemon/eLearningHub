@@ -71,15 +71,24 @@ const Quiz = () => {
   };
 
   const adQuiztoui = () => {
-    // if (
-    //   !quiz.question ||
-    //   !quiz.answer1 ||
-    //   !quiz.answer2 ||
-    //   !quiz.answer3 ||
-    //   !quiz.answer4 ||
-    //   !quiz.ans
-    // )
-    //   return alert("please fill all the fields.");
+    if (quiz.type == 0) {
+      if (
+        !quiz.question ||
+        !quiz.answer1 ||
+        !quiz.answer2 ||
+        !quiz.answer3 ||
+        !quiz.answer4 ||
+        !quiz.ans
+      )
+        return alert("please fill all the fields.");
+    }
+    if (quiz.type == 1) {
+      if (!quiz.question) return alert("please fill all the fields.");
+    }
+    if (quiz.type == 2) {
+      if (!quiz.question || !quiz.ans)
+        return alert("please fill all the fields.");
+    }
     setQuestions([...questions, quiz]);
     setQuiz(initialState);
   };
@@ -104,15 +113,24 @@ const Quiz = () => {
   };
 
   const updateQuiz = () => {
-    // if (
-    //   !quiz.question ||
-    //   !quiz.answer1 ||
-    //   !quiz.answer2 ||
-    //   !quiz.answer3 ||
-    //   !quiz.answer4 ||
-    //   !quiz.ans
-    // )
-    //   return alert("please fill all the fields.");
+    if (quiz.type == 0) {
+      if (
+        !quiz.question ||
+        !quiz.answer1 ||
+        !quiz.answer2 ||
+        !quiz.answer3 ||
+        !quiz.answer4 ||
+        !quiz.ans
+      )
+        return alert("please fill all the fields.");
+    }
+    if (quiz.type == 1) {
+      if (!quiz.question) return alert("please fill all the fields.");
+    }
+    if (quiz.type == 2) {
+      if (!quiz.question || !quiz.ans)
+        return alert("please fill all the fields.");
+    }
     const quizes = questions.filter((i, ix) => ix != edit);
     quizes.splice(edit, 0, quiz);
     // console.log(quizes);
@@ -341,6 +359,20 @@ export const uiQuiz = (
   getValueInput,
   handleQuiz
 ) => {
+  const handleCheckBox = (e, value) => {
+    const { name, checked } = e.target;
+    if (checked) {
+      setQuiz({
+        ...quiz,
+        ans: [...quiz.ans, value],
+      });
+    } else {
+      setQuiz({
+        ...quiz,
+        ans: quiz.ans.filter((i) => i != value),
+      });
+    }
+  };
   switch (type) {
     case 0:
       return (
@@ -369,7 +401,7 @@ export const uiQuiz = (
           <input
             type="checkbox"
             className="mx-2 checkbox_size"
-            onChange={() => setQuiz({ ...quiz, ans: [...quiz.ans, i] })}
+            onChange={(e) => handleCheckBox(e, i)}
           />
           <input
             onChange={(e) => handleQuiz(e)}

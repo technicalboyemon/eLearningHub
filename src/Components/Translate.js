@@ -25,7 +25,7 @@ const Translate = ({ text, type }) => {
   };
   useEffect(() => {
     fecth();
-  }, [type]);
+  }, [type, text]);
   return <span>{load ? "..." : data}</span>;
 };
 
