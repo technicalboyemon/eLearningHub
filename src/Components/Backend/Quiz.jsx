@@ -234,8 +234,7 @@ const Quiz = () => {
                 }}
               >
                 <option selected>Select Question Type</option>
-
-                <option value={0}>Normal</option>
+                <option selected value={0}>Normal</option>
                 <option value={1}>Multiple</option>
                 <option value={2}>Input</option>
               </select>
@@ -288,7 +287,7 @@ const Quiz = () => {
             onClick={() => adQuiztoui()}
             className="form_question_add_btn"
           >
-            <Translate text={"Add Quiz"} type={trans} />
+            <Translate text={"Add"} type={trans} />
           </button>
         )}
       </div>

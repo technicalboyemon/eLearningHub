@@ -135,9 +135,9 @@ const AttendQuiz = () => {
       postNow
     );
 
-    // if (save.modifiedCount > 0) {
-    // window.location.reload();
-    // }
+    if (save.modifiedCount > 0) {
+    window.location.reload();
+    }
   };
 
   if (load) {
