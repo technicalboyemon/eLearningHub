@@ -90,7 +90,11 @@ const Quiz = () => {
         return alert("please fill all the fields.");
     }
     setQuestions([...questions, quiz]);
-    setQuiz(initialState);
+    setQuiz(
+      (quiz.type == 0 && simple) ||
+        (quiz.type == 1 && multiple) ||
+        (quiz.type == 2 && typepAnswer)
+    );
   };
 
   const getValueInput = (data) => {
@@ -234,7 +238,9 @@ const Quiz = () => {
                 }}
               >
                 <option selected>Select Question Type</option>
-                <option selected value={0}>Normal</option>
+                <option selected value={0}>
+                  Normal
+                </option>
                 <option value={1}>Multiple</option>
                 <option value={2}>Input</option>
               </select>
